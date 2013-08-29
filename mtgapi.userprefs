@@ -1,0 +1,43 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Modules/IndexModule.cs">
+    <Files>
+      <File FileName="Properties/AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="IndexModule.cs" Line="1" Column="1" />
+      <File FileName="Bootstrapper.cs" Line="1" Column="1" />
+      <File FileName="Web.config" Line="1" Column="1" />
+      <File FileName="Modules/IndexModule.cs" Line="68" Column="5" />
+      <File FileName="README.md" Line="1" Column="1" />
+      <File FileName="Models/Card.cs" Line="1" Column="1" />
+      <File FileName="Views/index.cshtml" Line="1" Column="1" />
+      <File FileName="Models/IndexModel.cs" Line="1" Column="1" />
+      <File FileName="Models/Set.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="mtgapi" expanded="True" selected="True">
+            <Node name="References" expanded="True" />
+            <Node name="Content" expanded="True" />
+            <Node name="Models" expanded="True" />
+            <Node name="Modules" expanded="True" />
+            <Node name="Views" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+      <Pad Id="ConnectionManagerPad">
+        <State selected="True" />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
