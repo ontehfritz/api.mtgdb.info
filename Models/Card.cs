@@ -6,8 +6,9 @@ namespace Mtg.Model
 {
 	public class Card
 	{
+		private string _imageUrl = "http://localhost:8081/Content/card_images/{0}.jpeg";
 		public int Id { get; set; }
-		public int card_set_number { get; set; }
+		public int set_number { get; set; }
 		public string name { get; set; }
 		public string description { get; set; }
 		public string flavor { get; set; }
@@ -22,11 +23,15 @@ namespace Mtg.Model
 		public int loyalty { get; set; }
 		public string rarity { get; set; }
 		public string artist { get; set; }
-		public string card_image { get; set; }
+
+		public string card_image { 
+			get{
+				return string.Format (_imageUrl, Id.ToString ());
+			}
+		}
+
 		public string card_set_id { get; set; }
-		public DateTime card_released_at { get; set; }
-		public DateTime created_at { get; set; }
-		public DateTime modified_at { get; set; }
+		public DateTime released_at { get; set; }
 	}
 }
 

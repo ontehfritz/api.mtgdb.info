@@ -1,23 +1,90 @@
-﻿<h1>MTGAPI</h1>
+﻿<html>
+<head>
+<title>MtgDB API Beta</title>
+</head>
+<body style='font-family:"Lucida Console", Monaco, monospace'>
+<div style="padding:0px 50px 10px 50px;">
+<h1>API mtgdb.info <small><i>beta</i></small></h1>
 <p>
-This is a card database API for "Magic: The Gathering". It is simple and free, and you can use it freely in your 
-applications.  
-</p>
+A card database API for "Magic: The Gathering". Ultra simple. Open source. JSON API to create your own magic:
+the gathering database. 
 
-<ul>
-<li>
-Card
-</li>
-<ul>
-<li>
-Get a card
-</li>
-</ul>
-<li>
-CardSets
-<ul>
-<li>Get a set</li>
-<li>Get all cards in a set</li>
-</ul>
-</li>
-<ul>
+This is not meant to be a full search api, but rather an api to copy and sync your own MTG database. However, basic 
+filtering is supported and will be expanded, but is not the main focus of the api</p>
+	<h1>Card</h1>
+	<pre>
+	Id                Integer     : multiverse Id
+	card_set_number     Integer     : card number in the set
+	name                String      : name of the card
+	description         String      : the cards actions
+	flavor              String      : flavor text adds story, does not effect game
+	colors              String Array: colors of card
+	manacost            String      : the description of mana to cast spell
+	convertedmanacost   Integer     : the amount of mana needed to cast spell
+	card_set_name       String      : the set or expansion the card belongs to
+	type                String      : the type of card
+	subtype             String      : subtype of card
+	power               Integer     : attack strength
+	toughness           Integer     : defense strength 
+	loyalty             Integer     : loyalty points usually on planeswalkers
+	rarity              String      : the rarity of the card
+	artist              String      : artist of the illustration
+	card_image          String      : the url of the card image
+	card_set_id         String      : the abbreviated name of the set
+	card_released_at    Date        : when the card was released
+	</pre>
+			<div style="border: solid black 1px;padding:5px;">
+				<h4>Get all cards</h4>
+				<code>
+				Get
+				http://api.mtgdb.info/cards/
+				</code>
+				<br />
+				<h4>Get a card</h4>
+				<code>
+				Get
+				http://api.mtgdb.info/cards/[id]
+				</code><br />
+				<h4>Filters</h4>
+			    <small><i>Filters can be applied on any field /?field_name=value. Multple fields can be used. Note that each field
+			    is "And" logic. "Or" logic has not yet been implmented.</i></small><br /><br />
+				<code>
+				Get
+				http://api.mtgdb.info/cards/?colors=white,black
+				</code>
+			</div>
+<h1>CardSet</h1>
+	<pre>
+	Id         String    : abbreviated name of set   
+	name        String    : name of set
+	block       String    : name of block the set is part of
+	description String    : information about the set
+	wikipedia   String    : link to wiki page
+	common      Integer   : amount of common cards in set
+	uncommon    Integer   : amount of uncommon cards in set
+	rare        Integer   : amount of rare cards in set
+	mythic_rare Integer   : amount of mythic rare cards in set
+	basic_land  Integer   : amount of basic land cards in set
+	released_at Date      : date set was released
+	card_ids    Int Array : multiverse ids of all the cards in the set
+	</pre>
+			<div style="border: solid black 1px;padding:5px;">
+				<h4>Get all sets</h4>
+				<code>
+				Get
+				http://api.mtgdb.info/sets/
+				</code>
+				<h4>Get a set</h4>
+				<code>
+				Get
+				http://api.mtgdb.info/sets/[id]
+				</code>
+				<h4>Get all cards in a set</h4>
+				<code>
+				Get
+				http://api.mtgdb.info/sets/[id]/cards/
+				</code>
+			</div>
+</div>
+</body>
+</html>

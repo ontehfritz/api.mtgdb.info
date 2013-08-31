@@ -31,20 +31,18 @@
 				var database = server.GetDatabase("mtg");
 				var collection = database.GetCollection<Card>("cards");
 
-				MongoCursor<Card> cursor = collection.FindAllAs<Card>()
-				.SetSortOrder("_id");
-
+				MongoCursor<Card> cursor = null;                
 				List<IMongoQuery> queries = new List<IMongoQuery>();
 
 
 				if(Request.Query.card_set_id != null){
 					queries.Add(Query<Card>.EQ(e => e.card_set_id, 
-					                           (int)Request.Query.card_set_id));
+					                           (string)Request.Query.card_set_id));
 				}
 
 				if(Request.Query.artist != null){
 					queries.Add(Query<Card>.EQ(e => e.artist, 
-					                           (int)Request.Query.artist));
+					                           (string)Request.Query.artist));
 				}
 
 				if(Request.Query.rarity != null){
@@ -77,6 +75,7 @@
 					                           (string)Request.Query.subtype));
 				}
 
+
 				if(Request.Query.card_set_name != null){
 					queries.Add(Query<Card>.EQ(e => e.card_set_name, 
 					                           (string)Request.Query.card_set_name));
@@ -90,7 +89,7 @@
 
 				if(Request.Query.card_set_number != null)
 				{
-					queries.Add(Query<Card>.EQ(e => e.card_set_number, 
+					queries.Add(Query<Card>.EQ(e => e.set_number, 
 					                           (int)Request.Query.card_set_number));
 				}
 
@@ -122,7 +121,13 @@
 					queries.Add(Query<Card>.GT(e => e.Id, (int)Request.Query.id));
 				}
 
-				cursor = collection.Find(Query.And(queries)).SetSortOrder("_id");
+				if(queries.Count > 0){
+					cursor = collection.Find(Query.And(queries)).SetSortOrder("_id");
+				}
+				else
+				{
+					cursor = collection.FindAllAs<Card>().SetSortOrder("_id");
+				}
 
 				if(Request.Query.limit != null)
 				{
@@ -142,7 +147,7 @@
 				var collection = database.GetCollection<Card>("cards");
 				var query = Query<Card>.EQ(e => e.Id, (int)parameters.id);
 				Card card = collection.FindOne(query);
-				card.card_image = string.Format(_imageUrl,(int)parameters.id);
+				//card.card_image = string.Format(_imageUrl,(int)parameters.id);
 				//IndexModel index = new IndexModel();
 				//index.Card = card;
 				//return View["index", index];
@@ -173,7 +178,7 @@
 				return Response.AsJson(cursor);
 			};
 
-			Get ["/ssets/{id}/cards/"] = parameters => {
+			Get ["/sets/{id}/cards/"] = parameters => {
 				var client = new MongoClient(connectionString);
 				var server = client.GetServer();
 				var database = server.GetDatabase("mtg");

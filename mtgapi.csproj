@@ -75,7 +75,7 @@
     <Compile Include="Modules\IndexModule.cs" />
     <Compile Include="Models\Card.cs" />
     <Compile Include="Models\IndexModel.cs" />
-    <Compile Include="Models\Set.cs" />
+    <Compile Include="Models\CardSet.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
