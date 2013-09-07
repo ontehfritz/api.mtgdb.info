@@ -6,15 +6,17 @@
 <div style="padding:0px 50px 10px 50px;">
 <h1>API mtgdb.info <small><i>beta</i></small></h1>
 <p>
-A card database API for "Magic: The Gathering". Ultra simple. Open source. JSON API to create your own magic:
-the gathering database. 
+A card database API for "Magic: The Gathering". Ultra simple. Open source. JSON API to create your own "Magic:
+the gathering database". 
 
 This is not meant to be a full search api, but rather an api to copy and sync your own MTG database. However, basic 
 filtering is supported and will be expanded, but is not the main focus of the api</p>
+<p>Please send feature request, comments, corrections or anything else to: 
+<a href="mailto:planeswalker@mtgdb.info">planeswalker@mtgdb.info</a></p>
 	<h1>Card</h1>
 	<pre>
-	Id                Integer     : multiverse Id
-	card_set_number     Integer     : card number in the set
+	Id                  Integer     : multiverse Id
+	set_number     Integer     : card number in the set
 	name                String      : name of the card
 	description         String      : the cards actions
 	flavor              String      : flavor text adds story, does not effect game
@@ -55,7 +57,7 @@ filtering is supported and will be expanded, but is not the main focus of the ap
 			</div>
 <h1>CardSet</h1>
 	<pre>
-	Id         String    : abbreviated name of set   
+	Id          String    : abbreviated name of set   
 	name        String    : name of set
 	block       String    : name of block the set is part of
 	description String    : information about the set
@@ -87,4 +89,7 @@ filtering is supported and will be expanded, but is not the main focus of the ap
 			</div>
 </div>
 </body>
+<p>
+All information provided is copyrighted by Wizards of the Coast. This api and/or web applications
+on this domain are not in anyway affiliated with Wizards of the Coast.</p>
 </html>

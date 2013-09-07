@@ -6,7 +6,7 @@ namespace Mtg.Model
 {
 	public class Card
 	{
-		private string _imageUrl = "http://localhost:8081/Content/card_images/{0}.jpeg";
+		private string _imageUrl = "http://api.mtgdb.info/Content/card_images/{0}.jpeg";
 		public int Id { get; set; }
 		public int set_number { get; set; }
 		public string name { get; set; }

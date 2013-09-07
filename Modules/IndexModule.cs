@@ -1,5 +1,6 @@
 ﻿namespace Mtg
 {
+	using System;
     using Nancy;
 	using MongoDB.Driver;
 	using MongoDB.Bson;
@@ -14,14 +15,11 @@
 
     public class IndexModule : NancyModule
     {
-		private string _imageUrl = "http://localhost:8080/Content/card_images/{0}.jpeg";
-
         public IndexModule()
         {
 			var connectionString = "mongodb://localhost";
 
 			Get ["/"] = parameters => {
-
 				return View ["index"];
 			};
 
@@ -147,11 +145,7 @@
 				var collection = database.GetCollection<Card>("cards");
 				var query = Query<Card>.EQ(e => e.Id, (int)parameters.id);
 				Card card = collection.FindOne(query);
-				//card.card_image = string.Format(_imageUrl,(int)parameters.id);
-				//IndexModel index = new IndexModel();
-				//index.Card = card;
-				//return View["index", index];
-				//Request.Headers.ContentType
+			
 				return Response.AsJson(card);
             };
 

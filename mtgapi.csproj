@@ -74,7 +74,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Modules\IndexModule.cs" />
     <Compile Include="Models\Card.cs" />
-    <Compile Include="Models\IndexModel.cs" />
     <Compile Include="Models\CardSet.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -20840,6 +20839,7 @@
     <None Include="Content\card_images\997.jpeg" />
     <None Include="Content\card_images\998.jpeg" />
     <None Include="Content\card_images\999.jpeg" />
+    <None Include="favicon.ico" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

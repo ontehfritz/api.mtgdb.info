@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mtgapi", "mtgapi.csproj", "{ED638DD5-E755-4B7A-940D-5C94AB425686}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mtgapi_test", "mtgapi_test\mtgapi_test.csproj", "{EEF9D73F-40F0-48B9-A345-4A08FFE615EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{ED638DD5-E755-4B7A-940D-5C94AB425686}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED638DD5-E755-4B7A-940D-5C94AB425686}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED638DD5-E755-4B7A-940D-5C94AB425686}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEF9D73F-40F0-48B9-A345-4A08FFE615EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEF9D73F-40F0-48B9-A345-4A08FFE615EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEF9D73F-40F0-48B9-A345-4A08FFE615EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEF9D73F-40F0-48B9-A345-4A08FFE615EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = mtgapi.csproj
