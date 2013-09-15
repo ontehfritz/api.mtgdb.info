@@ -8,11 +8,15 @@ namespace Mtg
 
     public interface IRepository
     {
-        Card[] GetCards(dynamic query);
-        Card[] GetCardsBySet(string setId);
-        Card GetCard(int id);
-        CardSet[] GetSets();
-        CardSet GetSet(string id);
+        Card[] GetCards (dynamic query);
+
+        Card[] GetCardsBySet (string setId);
+
+        Card GetCard (int id);
+
+        CardSet[] GetSets ();
+
+        CardSet GetSet (string id);
     }
 }
 

@@ -62,6 +62,9 @@
     <Reference Include="Nancy.ViewEngines.Razor">
       <HintPath>packages\Nancy.Viewengines.Razor.0.18.0\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="Nancy.LightningCache">
+      <HintPath>packages\Nancy.LightningCache.0.1.1\lib\net40\Nancy.LightningCache.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -86,7 +89,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <None Include="README.md" />
     <None Include="Content\card_images\.DS_Store" />
     <None Include="Content\card_images\1.jpeg" />
     <None Include="Content\card_images\10.jpeg" />
