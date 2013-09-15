@@ -75,6 +75,8 @@
     <Compile Include="Modules\IndexModule.cs" />
     <Compile Include="Models\Card.cs" />
     <Compile Include="Models\CardSet.cs" />
+    <Compile Include="Models\IRepository.cs" />
+    <Compile Include="Models\MongoRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
