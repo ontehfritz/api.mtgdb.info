@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mtgapi_wrapper", "mtgapi_wrapper.csproj", "{774C64D9-654A-4795-9DFB-25FA2B992393}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wrapper_test", "wrapper_test\wrapper_test.csproj", "{252825B2-0EE3-49B5-BD9C-46B47C7EA1A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{252825B2-0EE3-49B5-BD9C-46B47C7EA1A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{252825B2-0EE3-49B5-BD9C-46B47C7EA1A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{252825B2-0EE3-49B5-BD9C-46B47C7EA1A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{252825B2-0EE3-49B5-BD9C-46B47C7EA1A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{774C64D9-654A-4795-9DFB-25FA2B992393}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{774C64D9-654A-4795-9DFB-25FA2B992393}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{774C64D9-654A-4795-9DFB-25FA2B992393}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{774C64D9-654A-4795-9DFB-25FA2B992393}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = mtgapi_wrapper.csproj
+	EndGlobalSection
+EndGlobal
