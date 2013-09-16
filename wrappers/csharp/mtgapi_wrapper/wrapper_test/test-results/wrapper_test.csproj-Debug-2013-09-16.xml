@@ -429,6 +429,21 @@ Execution time: 9.55ms</Message>
 
 Execution time: 9.39ms</Message>
             </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-09-16T15:44:20</TestDate>
+              <Status />
+              <Passed>4</Passed>
+              <Errors>0</Errors>
+              <Failures>0</Failures>
+              <Inconclusive>0</Inconclusive>
+              <NotRunnable>0</NotRunnable>
+              <Skipped>0</Skipped>
+              <Ignored>0</Ignored>
+              <Time />
+              <Message>Test successful
+
+Execution time: 11.50ms</Message>
+            </UnitTestResult>
           </Results>
           <Tests>
             <TestRecord Name="Test_GetCard">
@@ -812,6 +827,24 @@ Execution time: 0.29ms</Message>
 </ConsoleOutput>
                   <ConsoleError />
                 </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-09-16T15:44:20</TestDate>
+                  <Status />
+                  <Passed>1</Passed>
+                  <Errors>0</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.30ms</Message>
+                  <ConsoleOutput>Friday, 13 July 2007
+</ConsoleOutput>
+                  <ConsoleError />
+                </UnitTestResult>
               </Results>
               <Tests />
             </TestRecord>
@@ -892,7 +925,26 @@ Execution time: 8.97ms</Message>
 </ConsoleOutput>
                   <ConsoleError />
                 </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-09-16T15:44:20</TestDate>
+                  <Status />
+                  <Passed>1</Passed>
+                  <Errors>0</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 10.22ms</Message>
+                  <ConsoleOutput>21372
+</ConsoleOutput>
+                  <ConsoleError />
+                </UnitTestResult>
               </Results>
+              <Tests />
             </TestRecord>
             <TestRecord Name="Test_GetSet">
               <Results>
@@ -911,6 +963,157 @@ Execution time: 8.97ms</Message>
 
 Execution time: 0.05ms</Message>
                   <ConsoleOutput>10E
+</ConsoleOutput>
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-09-16T15:44:20</TestDate>
+                  <Status />
+                  <Passed>1</Passed>
+                  <Errors>0</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.04ms</Message>
+                  <ConsoleOutput>10E
+</ConsoleOutput>
+                  <ConsoleError />
+                </UnitTestResult>
+              </Results>
+              <Tests />
+            </TestRecord>
+            <TestRecord Name="Test_GetSetCards">
+              <Results>
+                <UnitTestResult>
+                  <TestDate>2013-09-16T15:44:20</TestDate>
+                  <Status />
+                  <Passed>1</Passed>
+                  <Errors>0</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.80ms</Message>
+                  <ConsoleOutput>368
+</ConsoleOutput>
+                  <ConsoleError />
+                </UnitTestResult>
+              </Results>
+              <Tests />
+            </TestRecord>
+          </Tests>
+        </TestRecord>
+        <TestRecord Name="TestDb">
+          <Results>
+            <UnitTestResult>
+              <TestDate>2013-09-16T20:24:50</TestDate>
+              <Status />
+              <Passed>4</Passed>
+              <Errors>0</Errors>
+              <Failures>0</Failures>
+              <Inconclusive>0</Inconclusive>
+              <NotRunnable>0</NotRunnable>
+              <Skipped>0</Skipped>
+              <Ignored>0</Ignored>
+              <Time />
+              <Message>Test successful
+
+Execution time: 10.85ms</Message>
+            </UnitTestResult>
+          </Results>
+          <Tests>
+            <TestRecord Name="Test_GetCard">
+              <Results>
+                <UnitTestResult>
+                  <TestDate>2013-09-16T20:24:50</TestDate>
+                  <Status />
+                  <Passed>1</Passed>
+                  <Errors>0</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.44ms</Message>
+                  <ConsoleOutput>Friday, 13 July 2007
+</ConsoleOutput>
+                  <ConsoleError />
+                </UnitTestResult>
+              </Results>
+            </TestRecord>
+            <TestRecord Name="Test_GetCards">
+              <Results>
+                <UnitTestResult>
+                  <TestDate>2013-09-16T20:24:50</TestDate>
+                  <Status />
+                  <Passed>1</Passed>
+                  <Errors>0</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 9.73ms</Message>
+                  <ConsoleOutput>21372
+</ConsoleOutput>
+                  <ConsoleError />
+                </UnitTestResult>
+              </Results>
+            </TestRecord>
+            <TestRecord Name="Test_GetSet">
+              <Results>
+                <UnitTestResult>
+                  <TestDate>2013-09-16T20:24:50</TestDate>
+                  <Status />
+                  <Passed>1</Passed>
+                  <Errors>0</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.22ms</Message>
+                  <ConsoleOutput>10E
+</ConsoleOutput>
+                  <ConsoleError />
+                </UnitTestResult>
+              </Results>
+            </TestRecord>
+            <TestRecord Name="Test_GetSetCards">
+              <Results>
+                <UnitTestResult>
+                  <TestDate>2013-09-16T20:24:50</TestDate>
+                  <Status />
+                  <Passed>1</Passed>
+                  <Errors>0</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.33ms</Message>
+                  <ConsoleOutput>368
 </ConsoleOutput>
                   <ConsoleError />
                 </UnitTestResult>

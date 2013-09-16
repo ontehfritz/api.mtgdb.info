@@ -45,10 +45,10 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="Nancy">
-      <HintPath>packages\Nancy.0.18.0\lib\net40\Nancy.dll</HintPath>
+      <HintPath>packages\Nancy.0.20.0\lib\net40\Nancy.dll</HintPath>
     </Reference>
     <Reference Include="Nancy.Hosting.Aspnet">
-      <HintPath>packages\Nancy.Hosting.Aspnet.0.18.0\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
+      <HintPath>packages\Nancy.Hosting.Aspnet.0.20.0\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Bson">
       <HintPath>packages\mongocsharpdriver.1.8.2\lib\net35\MongoDB.Bson.dll</HintPath>
@@ -60,10 +60,13 @@
       <HintPath>packages\System.Web.Razor.Unofficial.2.0.2\lib\net40\System.Web.Razor.Unofficial.dll</HintPath>
     </Reference>
     <Reference Include="Nancy.ViewEngines.Razor">
-      <HintPath>packages\Nancy.Viewengines.Razor.0.18.0\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
+      <HintPath>packages\Nancy.Viewengines.Razor.0.20.0\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.LightningCache">
-      <HintPath>packages\Nancy.LightningCache.0.1.1\lib\net40\Nancy.LightningCache.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.5.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.Serialization.JsonNet">
+      <HintPath>packages\Nancy.Serialization.JsonNet.0.20.0\lib\net40\Nancy.Serialization.JsonNet.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -71,18 +74,18 @@
     <Content Include="Views\index.cshtml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bootstrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Modules\IndexModule.cs" />
     <Compile Include="Models\Card.cs" />
     <Compile Include="Models\CardSet.cs" />
     <Compile Include="Models\IRepository.cs" />
     <Compile Include="Models\MongoRepository.cs" />
+    <Compile Include="Bootstrapper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

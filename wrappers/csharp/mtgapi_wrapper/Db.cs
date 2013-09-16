@@ -50,6 +50,35 @@ namespace Mtgdb.Info.Wrapper
             }
         }
 
+        public Card[] FilterCards(string property, string value)
+        {
+            using (var client = new WebClient())
+            {
+                string url = string.Format ("{0}/cards/?{1}={2}", this.ApiUrl, property, value);
+                var json = client.DownloadString(url);
+
+                Card[] cards = JsonConvert.DeserializeObject<Card[]>(json);
+
+                return cards;
+            }
+        }
+
+        public Card[] GetSetCards(string setId)
+        {
+            using (var client = new WebClient())
+            {
+                string url = string.Format ("{0}/sets/{1}/cards/", this.ApiUrl, setId);
+                var json = client.DownloadString(url);
+
+                Card[] cards = JsonConvert.DeserializeObject<Card[]>(json);
+
+                return cards;
+            }
+        }
+
+
+
+
         public CardSet GetSet(string setId)
         {
             using (var client = new WebClient())

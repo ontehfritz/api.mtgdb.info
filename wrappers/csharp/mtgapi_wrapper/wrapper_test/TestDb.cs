@@ -6,7 +6,7 @@ using Mtgdb.Info.Wrapper;
 namespace wrapper_test
 {
     [TestFixture()]
-    public class Test
+    public class TestDb
     {
         [Test()]
         public void Test_GetCard ()
@@ -33,6 +33,15 @@ namespace wrapper_test
             CardSet set = mtginfo.GetSet ("10E");
             System.Console.WriteLine (set.Id);
             Assert.AreEqual ("10E", set.Id);
+        }
+
+        [Test()]
+        public void Test_GetSetCards ()
+        {
+            Db mtginfo = new Db ();
+            Card[] cards = mtginfo.GetSetCards ("10E");
+            System.Console.WriteLine (cards.Length.ToString());
+            Assert.GreaterOrEqual (cards.Length,1);
         }
     }
 }

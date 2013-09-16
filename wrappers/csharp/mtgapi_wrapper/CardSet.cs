@@ -1,8 +1,13 @@
-using System;
-using System.Runtime.Serialization;
+using Mtgdb.Info.Wrapper;
 
 namespace Mtgdb.Info
 {
+    using System;
+    using System.Net;
+    using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Mtgdb.Info;
+
     [DataContract]
     public class CardSet
     {
@@ -41,6 +46,12 @@ namespace Mtgdb.Info
 
         [DataMember(Name = "card_ids")]
         public int [] CardIds { get; set; }
+
+        public Card[] GetCards()
+        {
+            Db db = new Db ();
+            return db.GetSetCards (this.Id);
+        }
     }
 }
 
