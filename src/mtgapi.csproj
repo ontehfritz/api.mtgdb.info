@@ -68,6 +68,9 @@
     <Reference Include="Nancy.Serialization.JsonNet">
       <HintPath>packages\Nancy.Serialization.JsonNet.0.20.0\lib\net40\Nancy.Serialization.JsonNet.dll</HintPath>
     </Reference>
+    <Reference Include="GlynnTucker.Cache">
+      <HintPath>..\..\GT.Cache\src\bin\Debug\GlynnTucker.Cache.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />

@@ -1,4 +1,6 @@
-﻿namespace Mtg
+﻿using GlynnTucker.Cache;
+
+namespace Mtg
 {
     using System;
     using Nancy;
@@ -20,7 +22,20 @@
             };
 
             Get ["/cards"] = parameters => {
-                Card[] cards = repo.GetCards (Request.Query);
+                Cache.AddContext("mtgdb"); 
+                Card[] cards = null/*(Card[])Cache.Get("mtgdb", "all")*/;
+
+                if(Cache.Contains("mtgdb", "all") && 
+                   ((DynamicDictionary)Request.Query).Count == 0)
+                {
+                    cards = (Card[])Cache.Get("mtgdb", "all");
+                }
+                else
+                {
+                    cards = repo.GetCards (Request.Query);
+                    Cache.Add("mtgdb","all",cards);
+                }
+
                 JsonSettings.MaxJsonLength = 100000000;
                 return Response.AsJson (cards);
             };
