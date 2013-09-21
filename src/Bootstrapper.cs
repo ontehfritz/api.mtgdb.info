@@ -5,6 +5,9 @@ using Mtg;
 
 public class Bootstrapper : DefaultNancyBootstrapper
 {
-
+//    protected override byte[] FavIcon
+//    {
+//        get { return null; }
+//    }
 }
 

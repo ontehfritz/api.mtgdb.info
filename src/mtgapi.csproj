@@ -78,6 +78,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="packages.config" />
+    <Content Include="favicon.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -20849,7 +20850,6 @@
     <None Include="Content\card_images\997.jpeg" />
     <None Include="Content\card_images\998.jpeg" />
     <None Include="Content\card_images\999.jpeg" />
-    <None Include="favicon.ico" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
