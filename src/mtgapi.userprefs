@@ -1,6 +1,6 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Bootstrapper.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Models/Card.cs">
     <Files>
       <File FileName="Modules/IndexModule.cs" Line="1" Column="1" />
       <File FileName="../wrappers/csharp/mtgapi_wrapper/packages.config" Line="1" Column="1" />
@@ -8,14 +8,17 @@
       <File FileName="../wrappers/csharp/mtgapi_wrapper/wrapper_test/TestDb.cs" Line="1" Column="1" />
       <File FileName="Web.config" Line="1" Column="1" />
       <File FileName="packages.config" Line="1" Column="1" />
-      <File FileName="Models/MongoRepository.cs" Line="17" Column="1" />
-      <File FileName="Models/Card.cs" Line="1" Column="1" />
+      <File FileName="Models/MongoRepository.cs" Line="1" Column="1" />
+      <File FileName="Models/Card.cs" Line="9" Column="60" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="mtgapi" expanded="True">
-            <Node name="Bootstrapper.cs" selected="True" />
+            <Node name="Models" expanded="True">
+              <Node name="Card.cs" selected="True" />
+            </Node>
+            <Node name="Modules" expanded="True" />
           </Node>
         </State>
       </Pad>
