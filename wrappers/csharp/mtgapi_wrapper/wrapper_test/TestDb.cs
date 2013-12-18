@@ -9,7 +9,7 @@ namespace wrapper_test
     public class TestDb
     {
         [Test()]
-        public void Test_GetCard ()
+        public void Test_get_card ()
         {
             Db mtginfo = new Db ();
             Card card = mtginfo.GetCard (106368);
@@ -18,7 +18,7 @@ namespace wrapper_test
         }
 
         [Test()]
-        public void Test_GetCards ()
+        public void Test_get_cards ()
         {
             Db mtginfo = new Db ();
             Card [] cards = mtginfo.GetCards ();
@@ -27,7 +27,7 @@ namespace wrapper_test
         }
 
         [Test()]
-        public void Test_GetSet ()
+        public void Test_get_set ()
         {
             Db mtginfo = new Db ();
             CardSet set = mtginfo.GetSet ("10E");
@@ -36,12 +36,21 @@ namespace wrapper_test
         }
 
         [Test()]
-        public void Test_GetSetCards ()
+        public void Test_get_set_cards ()
         {
             Db mtginfo = new Db ();
             Card[] cards = mtginfo.GetSetCards ("10E");
             System.Console.WriteLine (cards.Length.ToString());
             Assert.GreaterOrEqual (cards.Length,1);
+        }
+
+        [Test()]
+        public void Test_get_sets ()
+        {
+            Db mtginfo = new Db ();
+            CardSet[] sets = mtginfo.GetSets();
+            System.Console.WriteLine (sets.Length.ToString());
+            Assert.GreaterOrEqual (sets.Length,1);
         }
     }
 }

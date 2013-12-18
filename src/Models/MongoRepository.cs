@@ -164,7 +164,7 @@ namespace Mtg
 
             var collection = database.GetCollection<CardSet> ("card_sets");
             MongoCursor<CardSet> cursor = collection.FindAllAs<CardSet> ()
-                .SetSortOrder ("_id");
+                .SetSortOrder ("name");
 
             foreach (CardSet set in cursor) {
                 cardset.Add (set);

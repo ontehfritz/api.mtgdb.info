@@ -76,9 +76,6 @@ namespace Mtgdb.Info.Wrapper
             }
         }
 
-
-
-
         public CardSet GetSet(string setId)
         {
             using (var client = new WebClient())
@@ -89,6 +86,19 @@ namespace Mtgdb.Info.Wrapper
                 CardSet set = JsonConvert.DeserializeObject<CardSet>(json);
 
                 return set;
+            }
+        }
+
+        public CardSet[] GetSets()
+        {
+            using (var client = new WebClient())
+            {
+                string url = string.Format ("{0}/sets/", this.ApiUrl);
+                var json = client.DownloadString(url);
+
+                CardSet[] sets = JsonConvert.DeserializeObject<CardSet[]>(json);
+
+                return sets;
             }
         }
     }
