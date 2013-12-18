@@ -134,7 +134,7 @@ namespace Mtg
 
             var collection = database.GetCollection<Card> ("cards");
             var query = Query<Card>.EQ (e => e.card_set_id, (setId).ToUpper ());
-            MongoCursor<Card> cursor = collection.Find (query);
+            MongoCursor<Card> cursor = collection.Find (query).SetSortOrder ("set_number");
 
             foreach (Card card in cursor) {
                 cards.Add (card);
