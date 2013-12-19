@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace Mtg
 {
     using System;
@@ -17,7 +19,7 @@ namespace Mtg
     {
         private string Connection { get; set; }
 
-        public Card[] GetCards (dynamic query)
+        public async Task<Card[]> GetCards (dynamic query)
         {
             var client = new MongoClient (Connection);
             var server = client.GetServer ();
@@ -125,7 +127,7 @@ namespace Mtg
             return cards.ToArray ();
         }
 
-        public Card[] GetCardsBySet (string setId)
+        public async Task<Card[]> GetCardsBySet (string setId)
         {
             List<Card> cards = new List<Card> ();
             var client = new MongoClient (Connection);
@@ -143,7 +145,7 @@ namespace Mtg
             return cards.ToArray ();
         }
 
-        public Card GetCard (int id)
+        public async Task<Card> GetCard (int id)
         {
             var client = new MongoClient (Connection);
             var server = client.GetServer ();
@@ -155,7 +157,7 @@ namespace Mtg
             return card;
         }
 
-        public CardSet[] GetSets ()
+        public async Task<CardSet[]> GetSets ()
         {
             List<CardSet> cardset = new List<CardSet> ();
             var client = new MongoClient (Connection);
@@ -173,7 +175,7 @@ namespace Mtg
             return cardset.ToArray ();
         }
 
-        public CardSet GetSet (string id)
+        public async Task<CardSet> GetSet (string id)
         {
             var client = new MongoClient (Connection);
             var server = client.GetServer ();

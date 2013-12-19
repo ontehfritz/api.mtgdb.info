@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Mtgdb.Info
+namespace MtgDb.Info
 {
     [DataContract]
     public class Card

@@ -1,7 +1,7 @@
 using System;
 using NUnit.Framework;
-using Mtgdb.Info;
-using Mtgdb.Info.Wrapper;
+using MtgDb.Info;
+using MtgDb.Info.Driver;
 
 namespace wrapper_test
 {

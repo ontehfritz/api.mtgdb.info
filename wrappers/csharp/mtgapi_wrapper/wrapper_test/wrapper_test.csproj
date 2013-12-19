@@ -39,9 +39,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\mtgapi_wrapper.csproj">
+    <ProjectReference Include="..\MtgDbWrapper.csproj">
       <Project>{774C64D9-654A-4795-9DFB-25FA2B992393}</Project>
-      <Name>mtgapi_wrapper</Name>
+      <Name>MtgDbWrapper</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

@@ -1,12 +1,12 @@
-using Mtgdb.Info.Wrapper;
+using MtgDb.Info.Driver;
 
-namespace Mtgdb.Info
+namespace MtgDb.Info
 {
     using System;
     using System.Net;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
-    using Mtgdb.Info;
+    using MtgDb.Info;
 
     [DataContract]
     public class CardSet

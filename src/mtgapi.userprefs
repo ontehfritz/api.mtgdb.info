@@ -1,18 +1,25 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Modules/IndexModule.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../wrappers/csharp/mtgapi_wrapper/Db.cs">
     <Files>
-      <File FileName="Modules/IndexModule.cs" Line="1" Column="1" />
+      <File FileName="Modules/IndexModule.cs" Line="64" Column="10" />
       <File FileName="../wrappers/csharp/mtgapi_wrapper/packages.config" Line="1" Column="1" />
-      <File FileName="Bootstrapper.cs" Line="1" Column="1" />
-      <File FileName="../wrappers/csharp/mtgapi_wrapper/wrapper_test/TestDb.cs" Line="1" Column="1" />
+      <File FileName="Bootstrapper.cs" Line="9" Column="82" />
+      <File FileName="../wrappers/csharp/mtgapi_wrapper/wrapper_test/TestDb.cs" Line="34" Column="47" />
       <File FileName="Web.config" Line="1" Column="1" />
       <File FileName="packages.config" Line="1" Column="1" />
-      <File FileName="Models/MongoRepository.cs" Line="137" Column="92" />
-      <File FileName="Models/Card.cs" Line="13" Column="30" />
-      <File FileName="Views/index.cshtml" Line="3" Column="17" />
-      <File FileName="../wrappers/csharp/mtgapi_wrapper/Db.cs" Line="1" Column="1" />
+      <File FileName="Models/MongoRepository.cs" Line="181" Column="22" />
+      <File FileName="Models/Card.cs" Line="1" Column="1" />
+      <File FileName="Views/index.cshtml" Line="1" Column="1" />
+      <File FileName="../wrappers/csharp/mtgapi_wrapper/Db.cs" Line="5" Column="27" />
+      <File FileName="Models/IRepository.cs" Line="16" Column="22" />
+      <File FileName="../wrappers/csharp/mtgapi_wrapper/Card.cs" Line="1" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

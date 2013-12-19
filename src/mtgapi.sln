@@ -8,7 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mtgapi_wrapper", "..\wrappers\csharp\mtgapi_wrapper\mtgapi_wrapper.csproj", "{774C64D9-654A-4795-9DFB-25FA2B992393}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MtgDbWrapper", "..\wrappers\csharp\mtgapi_wrapper\MtgDbWrapper.csproj", "{774C64D9-654A-4795-9DFB-25FA2B992393}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wrapper_test", "..\wrappers\csharp\mtgapi_wrapper\wrapper_test\wrapper_test.csproj", "{252825B2-0EE3-49B5-BD9C-46B47C7EA1A4}"
 EndProject

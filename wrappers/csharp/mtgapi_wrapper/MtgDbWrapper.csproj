@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{774C64D9-654A-4795-9DFB-25FA2B992393}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>mtgapi_wrapper</RootNamespace>
+    <RootNamespace>MtgDb.Info</RootNamespace>
     <AssemblyName>mtgapi_wrapper</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

@@ -1,9 +1,9 @@
-namespace Mtgdb.Info.Wrapper
+namespace MtgDb.Info.Driver
 {
     using System;
     using System.Net;
     using Newtonsoft.Json;
-    using Mtgdb.Info;
+    using MtgDb.Info;
 
 
     public class Db
