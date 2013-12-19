@@ -31,78 +31,78 @@ namespace Mtg
 
 
             if (query.card_set_id != null) {
-                queries.Add (Query<Card>.EQ (e => e.card_set_id, 
+                queries.Add (Query<Card>.EQ (e => e.CardSetId, 
                                            (string)query.card_set_id));
             }
 
             if (query.artist != null) {
-                queries.Add (Query<Card>.EQ (e => e.artist, 
+                queries.Add (Query<Card>.EQ (e => e.Artist, 
                                            (string)query.artist));
             }
 
             if (query.rarity != null) {
-                queries.Add (Query<Card>.EQ (e => e.rarity, 
+                queries.Add (Query<Card>.EQ (e => e.Rarity, 
                                            (string)query.rarity));
             }
 
             if (query.loyalty != null) {
-                queries.Add (Query<Card>.EQ (e => e.loyalty, 
+                queries.Add (Query<Card>.EQ (e => e.Loyalty, 
                                            (int)query.loyalty));
             }
 
             if (query.loyalty != null) {
-                queries.Add (Query<Card>.EQ (e => e.loyalty, 
+                queries.Add (Query<Card>.EQ (e => e.Loyalty, 
                                            (int)query.loyalty));
             }
 
             if (query.toughness != null) {
-                queries.Add (Query<Card>.EQ (e => e.toughness, 
+                queries.Add (Query<Card>.EQ (e => e.Toughness, 
                                            (int)query.toughness));
             }
 
             if (query.power != null) {
-                queries.Add (Query<Card>.EQ (e => e.power, 
+                queries.Add (Query<Card>.EQ (e => e.Power, 
                                            (int)query.power));
             }
 
             if (query.subtype != null) {
-                queries.Add (Query<Card>.EQ (e => e.subtype, 
+                queries.Add (Query<Card>.EQ (e => e.SubType, 
                                            (string)query.subtype));
             }
 
 
             if (query.card_set_name != null) {
-                queries.Add (Query<Card>.EQ (e => e.card_set_name, 
+                queries.Add (Query<Card>.EQ (e => e.CardSetName, 
                                            (string)query.card_set_name));
             }
 
             if (query.convertedmanacost != null) {
-                queries.Add (Query<Card>.EQ (e => e.convertedmanacost, 
+                queries.Add (Query<Card>.EQ (e => e.ConvertedManaCost, 
                                            (int)query.convertedmanacost));
             }
 
             if (query.card_set_number != null) {
-                queries.Add (Query<Card>.EQ (e => e.set_number, 
+                queries.Add (Query<Card>.EQ (e => e.SetNumber, 
                                            (int)query.card_set_number));
             }
 
             if (query.manacost != null) {
-                queries.Add (Query<Card>.EQ (e => e.manacost, 
+                queries.Add (Query<Card>.EQ (e => e.ManaCost, 
                                            (string)query.manacost));
             }
 
             if (query.colors != null) {
                 foreach (string color in ((string)query.colors).ToString().Split(',')) {
-                    queries.Add (Query<Card>.EQ (e => e.colors, color));
+                    queries.Add (Query<Card>.EQ (e => e.Colors, color));
                 }
             }
 
             if (query.name != null) {
-                queries.Add (Query<Card>.EQ (e => e.name, (string)query.name));
+                queries.Add (Query<Card>.EQ (e => e.Name, (string)query.name));
             }
 
             if (query.type != null) {
-                queries.Add (Query<Card>.EQ (e => e.type, (string)query.type));
+                queries.Add (Query<Card>.EQ (e => e.Type, (string)query.type));
             }
             if (query.id != null) {
                 queries.Add (Query<Card>.GT (e => e.Id, (int)query.id));
@@ -135,8 +135,8 @@ namespace Mtg
             var database = server.GetDatabase ("mtg");
 
             var collection = database.GetCollection<Card> ("cards");
-            var query = Query<Card>.EQ (e => e.card_set_id, (setId).ToUpper ());
-            MongoCursor<Card> cursor = collection.Find (query).SetSortOrder ("set_number");
+            var query = Query<Card>.EQ (e => e.CardSetId, (setId).ToUpper ());
+            MongoCursor<Card> cursor = collection.Find (query).SetSortOrder ("setNumber");
 
             foreach (Card card in cursor) {
                 cards.Add (card);

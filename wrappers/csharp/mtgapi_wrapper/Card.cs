@@ -6,10 +6,10 @@ namespace MtgDb.Info
     [DataContract]
     public class Card
     {
-        [DataMember]
+        [DataMember(Name = "id")]
         public int Id { get; set; }
 
-        [DataMember(Name = "set_number")]
+        [DataMember(Name = "setNumber")]
         public int SetNumber { get; set; }
 
         [DataMember(Name = "name")]
@@ -24,19 +24,19 @@ namespace MtgDb.Info
         [DataMember(Name = "colors")]
         public string [] Colors { get; set; }
 
-        [DataMember(Name = "manacost")]
+        [DataMember(Name = "manaCost")]
         public string ManaCost { get; set; }
 
-        [DataMember(Name = "convertedmanacost")]
+        [DataMember(Name = "convertedManaCost")]
         public int ConvertedManaCost { get; set; }
 
-        [DataMember(Name = "card_set_name")]
+        [DataMember(Name = "cardSetName")]
         public string CardSetName { get; set; }
 
         [DataMember(Name = "type")]
         public string Type { get; set; }
 
-        [DataMember(Name = "subtype")]
+        [DataMember(Name = "subType")]
         public string SubType { get; set; }
 
         [DataMember(Name = "power")]
@@ -54,13 +54,13 @@ namespace MtgDb.Info
         [DataMember(Name = "artist")]
         public string Artist { get; set; }
 
-        [DataMember(Name = "card_image")]
+        [DataMember(Name = "cardImage")]
         public string CardImage { get; set; }
        
-        [DataMember(Name = "card_set_id")]
+        [DataMember(Name = "cardSetId")]
         public string CardSetId { get; set; }
 
-        [DataMember(Name = "released_at")]
+        [DataMember(Name = "releasedAt")]
         public DateTime ReleasedAt { get; set; }
     }
 }

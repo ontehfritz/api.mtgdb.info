@@ -1,17 +1,17 @@
+using System;
+using System.Net;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+using MtgDb.Info;
+
 using MtgDb.Info.Driver;
 
 namespace MtgDb.Info
 {
-    using System;
-    using System.Net;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-    using MtgDb.Info;
-
     [DataContract]
     public class CardSet
     {
-        [DataMember]
+        [DataMember(Name = "id")]
         public string Id { get; set; }
 
         [DataMember(Name = "name")]
@@ -35,16 +35,16 @@ namespace MtgDb.Info
         [DataMember(Name = "rare")]
         public int Rare { get; set; }
 
-        [DataMember(Name = "mythic_rare")]
+        [DataMember(Name = "mythicRare")]
         public int MythicRare { get; set; }
 
-        [DataMember(Name = "basic_land")]
+        [DataMember(Name = "basicLand")]
         public int BasicLand { get; set; }
 
-        [DataMember(Name = "released_at")]
+        [DataMember(Name = "releasedAt")]
         public DateTime ReleasedAt { get; set; }
 
-        [DataMember(Name = "card_ids")]
+        [DataMember(Name = "cardIds")]
         public int [] CardIds { get; set; }
 
         public Card[] GetCards()

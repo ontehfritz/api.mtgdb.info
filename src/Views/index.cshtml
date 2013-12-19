@@ -1,62 +1,84 @@
 ﻿<html>
 <head>
 <title>M:tg DB API Beta</title>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css" />
 </head>
-<body style='font-family:"Lucida Console", Monaco, monospace'>
+<body>
 <div style="padding:0px 50px 10px 50px;">
-<h1>API mtgdb.info <small><i>beta</i></small></h1>
-<p>
-A card database API for "Magic: The Gathering". Ultra simple. Open source. JSON API to create your own "Magic:
-the gathering database". 
-</p>
+
+<h1>api.mtgdb.info <small><i>beta</i></small>
+</h1>
+<a href='https://pledgie.com/campaigns/23315'><img style="position: absolute; top: 0; right: 0; border: 0;" 
+src="~/content/images/donate.png" alt="Support the project and donate." /></a>
+<h2>
+<small>A card database API for "Magic: The Gathering". Ultra simple. Open source. JSON API to create your own "Magic:
+the gathering database". </small>
+</h2>
+<div style="border: 4px solid red;padding: 5px;">
+<b>New release coming in Feb. 2014.</b> There are some changes in the JSON formatting. It will 
+follow the google guildlines for JSON. 
+<a href="http://google-styleguide.googlecode.com/svn/trunk/jsoncstyleguide.xml?showone=Property_Name_Format#Property_Name_Format">
+Guidelines here
+</a>
+<b>This is going to break code using the old format. The new format is available now. We will be locking 
+this format, and there will be no field format changes in the future. Yes fields will be added, but the naming and 
+format will not change.</b> 
+</div>
+<br />
+
 <p>Please send feature request, comments, corrections or anything else to: 
 <a href="mailto:planeswalker@mtgdb.info">planeswalker@mtgdb.info</a></p>
-<p>For server status and updates follow: <a href="https://twitter.com/mtgdb">mtgdb</a></p>
+<p>
+For server status and updates:
+</p>
+<a href="https://twitter.com/mtgdb" class="twitter-follow-button" data-show-count="false">Follow</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 	<h1>Card</h1>
 	<pre>
-	Id                  Integer     : multiverse Id
-	set_number          Integer     : card number in the set
+	id                  Integer     : multiverse Id
+	setNumber           Integer     : card number in the set
 	name                String      : name of the card
 	description         String      : the cards actions
 	flavor              String      : flavor text adds story, does not effect game
-	colors              String Array: colors of card
+	colors              String[]    : colors of card
 	manacost            String      : the description of mana to cast spell
-	convertedmanacost   Integer     : the amount of mana needed to cast spell
-	card_set_name       String      : the set or expansion the card belongs to
+	convertedManaCost   Integer     : the amount of mana needed to cast spell
+	cardSetName         String      : the set or expansion the card belongs to
 	type                String      : the type of card
-	subtype             String      : subtype of card
+	subType             String      : subtype of card
 	power               Integer     : attack strength
 	toughness           Integer     : defense strength 
 	loyalty             Integer     : loyalty points usually on planeswalkers
 	rarity              String      : the rarity of the card
 	artist              String      : artist of the illustration
-	card_image          String      : the url of the card image
-	card_set_id         String      : the abbreviated name of the set
-	card_released_at    Date        : when the card was released
+	cardImage           String      : the url of the card image
+	cardSetId           String      : the abbreviated name of the set
+	releasedAt          Date        : when the card was released
 	</pre>
-			<div style="border: solid black 1px;padding:5px;">
-				<h4>Get all cards</h4>
-				<code>
-				Get
-				http://api.mtgdb.info/cards/
-				</code>
-				<br />
-				<h4>Get a card</h4>
-				<code>
-				Get
-				http://api.mtgdb.info/cards/[id]
-				</code><br />
-				<h4>Filters</h4>
-			    <small><i>Filters can be applied on any field /?field_name=value. Multple fields can be used. Note that each field
-			    is "And" logic. "Or" logic has not yet been implmented.</i></small><br /><br />
-				<code>
-				Get
-				http://api.mtgdb.info/cards/?colors=white,black
-				</code>
-			</div>
-<h1>CardSet</h1>
+	<div style="border: solid black 1px;padding:5px;">
+		<h4>Get all cards</h4>
+		<code>
+		Get
+		http://api.mtgdb.info/cards/
+		</code>
+		<br />
+		<h4>Get a card</h4>
+		<code>
+		Get
+		http://api.mtgdb.info/cards/[id]
+		</code><br />
+		<h4>Filters</h4>
+	    <small><i>Filters can be applied on any field /?field_name=value. Multple fields can be used. Note that each field
+	    is "And" logic. "Or" logic has not yet been implmented.</i></small><br /><br />
+		<code>
+		Get
+		http://api.mtgdb.info/cards/?colors=white,black
+		</code>
+	</div>
+    <h1>CardSet</h1>
 	<pre>
-	Id          String    : abbreviated name of set   
+	id          String    : abbreviated name of set   
 	name        String    : name of set
 	block       String    : name of block the set is part of
 	description String    : information about the set
@@ -64,31 +86,34 @@ the gathering database".
 	common      Integer   : amount of common cards in set
 	uncommon    Integer   : amount of uncommon cards in set
 	rare        Integer   : amount of rare cards in set
-	mythic_rare Integer   : amount of mythic rare cards in set
-	basic_land  Integer   : amount of basic land cards in set
-	released_at Date      : date set was released
-	card_ids    Int Array : multiverse ids of all the cards in the set
+	mythicRare  Integer   : amount of mythic rare cards in set
+	basicLand   Integer   : amount of basic land cards in set
+	releasedAt  Date      : date set was released
+	cardIds     Integer[] : multiverse ids of all the cards in the set
 	</pre>
-			<div style="border: solid black 1px;padding:5px;">
-				<h4>Get all sets</h4>
-				<code>
-				Get
-				http://api.mtgdb.info/sets/
-				</code>
-				<h4>Get a set</h4>
-				<code>
-				Get
-				http://api.mtgdb.info/sets/[id]
-				</code>
-				<h4>Get all cards in a set</h4>
-				<code>
-				Get
-				http://api.mtgdb.info/sets/[id]/cards/
-				</code>
-			</div>
-</div>
-</body>
+	<div style="border: solid black 1px;padding:5px;">
+    	<h4>Get all sets</h4>
+    	<code>
+    	Get
+    	http://api.mtgdb.info/sets/
+        </code>
+    	<h4>Get a set</h4>
+    	<code>
+    	Get
+    	http://api.mtgdb.info/sets/[id]
+    	</code>
+    	<h4>Get all cards in a set</h4>
+    	<code>
+    	Get
+    	http://api.mtgdb.info/sets/[id]/cards/
+    	</code>
+	</div>
+
 <p>
 All information provided is copyrighted by Wizards of the Coast. This api and/or web applications
 on this domain are not in anyway affiliated with Wizards of the Coast.</p>
+<p>&copy; SuperSimpleSuperRad (Triple S Rad) 2013</p>
+</div>
+
+</body>
 </html>
