@@ -8,7 +8,7 @@
     <ProjectGuid>{774C64D9-654A-4795-9DFB-25FA2B992393}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>MtgDb.Info</RootNamespace>
-    <AssemblyName>mtgapi_wrapper</AssemblyName>
+    <AssemblyName>MtgDb.Info.Driver</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

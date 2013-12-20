@@ -98,7 +98,8 @@ namespace Mtg
             }
 
             if (query.name != null) {
-                queries.Add (Query<Card>.EQ (e => e.Name, (string)query.name));
+                queries.Add (Query<Card>.EQ (e => e.Name, 
+                    (string)query.name));
             }
 
             if (query.type != null) {

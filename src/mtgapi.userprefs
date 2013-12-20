@@ -1,25 +1,31 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Views/index.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../wrappers/csharp/mtgapi_wrapper/Db.cs">
     <Files>
-      <File FileName="Modules/IndexModule.cs" Line="64" Column="10" />
+      <File FileName="Modules/IndexModule.cs" Line="1" Column="1" />
       <File FileName="../wrappers/csharp/mtgapi_wrapper/packages.config" Line="1" Column="1" />
-      <File FileName="Bootstrapper.cs" Line="9" Column="82" />
-      <File FileName="../wrappers/csharp/mtgapi_wrapper/wrapper_test/TestDb.cs" Line="8" Column="20" />
+      <File FileName="Bootstrapper.cs" Line="1" Column="1" />
+      <File FileName="../wrappers/csharp/mtgapi_wrapper/wrapper_test/TestDb.cs" Line="1" Column="1" />
       <File FileName="Web.config" Line="1" Column="1" />
       <File FileName="packages.config" Line="1" Column="1" />
-      <File FileName="Models/MongoRepository.cs" Line="139" Column="83" />
-      <File FileName="Models/Card.cs" Line="18" Column="35" />
-      <File FileName="Views/index.cshtml" Line="115" Column="54" />
-      <File FileName="../wrappers/csharp/mtgapi_wrapper/Db.cs" Line="6" Column="15" />
-      <File FileName="Models/IRepository.cs" Line="16" Column="22" />
-      <File FileName="../wrappers/csharp/mtgapi_wrapper/Card.cs" Line="9" Column="31" />
-      <File FileName="../wrappers/csharp/mtgapi_wrapper/CardSet.cs" Line="14" Column="31" />
-      <File FileName="Models/CardSet.cs" Line="44" Column="30" />
+      <File FileName="Models/MongoRepository.cs" Line="1" Column="1" />
+      <File FileName="Models/Card.cs" Line="1" Column="1" />
+      <File FileName="Views/index.cshtml" Line="1" Column="1" />
+      <File FileName="../wrappers/csharp/mtgapi_wrapper/Db.cs" Line="5" Column="1" />
+      <File FileName="Models/IRepository.cs" Line="1" Column="1" />
+      <File FileName="../wrappers/csharp/mtgapi_wrapper/Card.cs" Line="1" Column="1" />
+      <File FileName="../wrappers/csharp/mtgapi_wrapper/CardSet.cs" Line="1" Column="1" />
+      <File FileName="Models/CardSet.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True" />
+        <State expanded="True">
+          <Node name="wrapper_test" expanded="True">
+            <Node name="wrapper_test" expanded="True">
+              <Node name="TestDb" expanded="True" selected="True" />
+            </Node>
+          </Node>
+        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
