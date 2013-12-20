@@ -1,11 +1,10 @@
+using System;
+using System.Net;
+using Newtonsoft.Json;
+using MtgDb.Info;
+
 namespace MtgDb.Info.Driver
 {
-    using System;
-    using System.Net;
-    using Newtonsoft.Json;
-    using MtgDb.Info;
-
-
     public class Db
     {
         public string ApiUrl { get; set; }
