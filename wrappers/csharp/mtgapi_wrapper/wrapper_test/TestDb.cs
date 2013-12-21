@@ -6,7 +6,7 @@ using MtgDb.Info.Driver;
 namespace wrapper_test
 {
     [TestFixture()]
-    public class TestDb
+    public class TestMtgDriver
     {
         [Test()]
         public void Test_get_card ()
@@ -15,6 +15,15 @@ namespace wrapper_test
             Card card = mtginfo.GetCard (106368);
             System.Console.WriteLine (card.ReleasedAt.ToLongDateString ());
             Assert.AreEqual (106368, card.Id);
+        }
+       
+        [Test()]
+        public void Test_get_cards_by_name ()
+        {
+            Db mtginfo = new Db ();
+            Card [] cards = mtginfo.GetCards ("ankh of mishra");
+            System.Console.WriteLine (cards.Length.ToString());
+            Assert.GreaterOrEqual (cards.Length,1);
         }
 
         [Test()]

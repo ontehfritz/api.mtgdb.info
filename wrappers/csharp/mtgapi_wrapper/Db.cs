@@ -36,6 +36,19 @@ namespace MtgDb.Info.Driver
             }
         }
 
+        public Card[] GetCards(string name)
+        {
+            using (var client = new WebClient())
+            {
+                string url = string.Format ("{0}/cards/{1}", this.ApiUrl, name);
+                var json = client.DownloadString(url);
+
+                Card[] cards = JsonConvert.DeserializeObject<Card[]>(json);
+
+                return cards;
+            }
+        }
+
         public Card[] GetCards()
         {
             using (var client = new WebClient())

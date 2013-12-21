@@ -12,6 +12,7 @@ namespace Mtg
         Task<Card[]> GetCards (dynamic query);
         Task<Card[]> GetCardsBySet (string setId);
         Task<Card> GetCard (int id);
+        Task<Card[]> GetCards (string name);
         Task<CardSet[]> GetSets ();
         Task<CardSet> GetSet (string id);
     }

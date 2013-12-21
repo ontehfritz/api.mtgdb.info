@@ -3,12 +3,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>12.0.0</ProductVersion>
+    <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{252825B2-0EE3-49B5-BD9C-46B47C7EA1A4}</ProjectGuid>
+    <ProjectGuid>{C905AC07-9849-4489-AD2A-ADA0237B54D5}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>wrapper_test</RootNamespace>
-    <AssemblyName>wrapper_test</AssemblyName>
+    <RootNamespace>TestMtgDbApi</RootNamespace>
+    <AssemblyName>testapi</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,15 +34,21 @@
     <Reference Include="nunit.framework">
       <Private>False</Private>
     </Reference>
+    <Reference Include="Nancy">
+      <HintPath>..\packages\Nancy.0.21.1\lib\net40\Nancy.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestDb.cs" />
+    <Compile Include="TestApi.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\MtgDbWrapper.csproj">
-      <Project>{774C64D9-654A-4795-9DFB-25FA2B992393}</Project>
-      <Name>MtgDbWrapper</Name>
+    <ProjectReference Include="..\api.mtgdb.info.csproj">
+      <Project>{ED638DD5-E755-4B7A-940D-5C94AB425686}</Project>
+      <Name>api.mtgdb.info</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

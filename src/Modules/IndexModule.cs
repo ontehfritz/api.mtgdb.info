@@ -41,8 +41,18 @@ namespace Mtg
             };
 
             Get ["/cards/{id}", true] = async (parameters, ct) => {
-                Card card = await repo.GetCard ((int)parameters.id);
-                return Response.AsJson (card);
+                int id = 0; 
+
+                if(int.TryParse((string)parameters.id, out id))
+                {
+                    Card card = await repo.GetCard ((int)parameters.id);
+                    return Response.AsJson (card);
+                }
+                else
+                {
+                    Card [] cards = await repo.GetCards ((string)parameters.id);
+                    return Response.AsJson (cards);
+                }
             };
 
             Get ["/sets/{id}", true] = async (parameters, ct) =>  {

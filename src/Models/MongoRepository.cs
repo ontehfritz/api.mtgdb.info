@@ -98,8 +98,8 @@ namespace Mtg
             }
 
             if (query.name != null) {
-                queries.Add (Query<Card>.EQ (e => e.Name, 
-                    (string)query.name));
+                queries.Add (Query<Card>.EQ (e => e.SearchName, 
+                    ((string)query.name).ToLower().Replace(" ", "")));
             }
 
             if (query.type != null) {
@@ -156,6 +156,25 @@ namespace Mtg
             var query = Query<Card>.EQ (e => e.Id, id);
             Card card = collection.FindOne (query);
             return card;
+        }
+
+        public async Task<Card[]> GetCards (string name)
+        {
+            var client = new MongoClient (Connection);
+            var server = client.GetServer ();
+            var database = server.GetDatabase ("mtg");
+
+            var collection = database.GetCollection<Card> ("cards");
+            var query = Query<Card>.EQ (e => e.SearchName, name.ToLower().Replace(" ", ""));
+            MongoCursor<Card> cursor = collection.Find (query);
+
+            List<Card> cards = new List<Card> ();
+
+            foreach (Card card in cursor) {
+                cards.Add (card);
+            }
+
+            return cards.ToArray ();
         }
 
         public async Task<CardSet[]> GetSets ()

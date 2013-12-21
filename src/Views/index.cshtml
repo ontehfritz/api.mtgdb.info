@@ -28,7 +28,8 @@ format will not change.</b>
 <br />
 
 <p>Please send feature request, comments, corrections or anything else to: 
-<a href="mailto:planeswalker@mtgdb.info">planeswalker@mtgdb.info</a></p>
+<a href="mailto:planeswalker@mtgdb.info">planeswalker@mtgdb.info</a>
+or at <a href="https://github.com/planeswalkers/api.mtgdb.info/issues">GitHub</a></p>
 <p>
 For server status and updates:
 </p>
@@ -69,6 +70,16 @@ For server status and updates:
 		Get
 		http://api.mtgdb.info/cards/[id]
 		</code><br />
+
+        <h4>Get cards by name</h4>
+        <code>
+        Get
+        http://api.mtgdb.info/cards/[name]
+        </code>
+        <br />
+        <small>This method returns an array of cards not a single card</small>
+        <br />
+
 		<h4>Filters</h4>
 	    <small><i>Filters can be applied on any field /?field_name=value. Multple fields can be used. Note that each field
 	    is "And" logic. "Or" logic has not yet been implmented.</i></small><br /><br />
@@ -109,7 +120,6 @@ For server status and updates:
     	http://api.mtgdb.info/sets/[id]/cards/
     	</code>
 	</div>
-
 <p>
 All information provided is copyrighted by Wizards of the Coast. This api and/or web applications
 on this domain are not in anyway affiliated with Wizards of the Coast.</p>
