@@ -91,12 +91,6 @@
     <Compile Include="Bootstrapper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
     <None Include="Content\card_images\.DS_Store" />
     <None Include="Content\card_images\1.jpeg" />
     <None Include="Content\card_images\10.jpeg" />

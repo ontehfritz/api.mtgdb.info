@@ -3,3 +3,5 @@ Content
 Packages
 obj
 test-results
+packages.config
+.DS_Store
