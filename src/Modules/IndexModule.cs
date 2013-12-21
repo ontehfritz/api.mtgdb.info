@@ -67,7 +67,29 @@ namespace Mtg
             };
 
             Get ["/sets/{id}/cards/", true] = async (parameters, ct) => {
-                Card[] cards = await repo.GetCardsBySet ((string)parameters.id);
+                int start = 0; 
+                int end = 0; 
+
+                if(Request.Query.start != null )
+                {
+                    int.TryParse((string)Request.Query.start, out start);
+                }
+
+                if(Request.Query.end != null )
+                {
+                    int.TryParse((string)Request.Query.end, out end);
+                }
+
+                Card[] cards = null;
+                if(start > 0 || end > 0)
+                {
+                    cards =  await repo.GetCardsBySet ((string)parameters.id, start, end);
+                }
+                else
+                {
+                    cards = await repo.GetCardsBySet ((string)parameters.id);
+                }
+
                 JsonSettings.MaxJsonLength = 100000000;
                 return Response.AsJson (cards);
             };

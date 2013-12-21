@@ -6,6 +6,8 @@ using Nancy;
 
 namespace testapi
 {
+    //// xsp4 --port 8082
+    /// run the above command in api.mtgdb.info
     [TestFixture ()]
     public class TestApi
     {
@@ -29,6 +31,14 @@ namespace testapi
             Card[] cards = repository.GetCardsBySet ("10E").Result;
             Assert.Greater (cards.Length,1);
         }
+
+        [Test ()]
+        public void Test_get_cards_by_set_with_range ()
+        {
+            Card[] cards = repository.GetCardsBySet ("10E",11,20).Result;
+            Assert.AreEqual (10, cards.Length);
+        }
+
 
         [Test ()]
         public void Test_get_card()

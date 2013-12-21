@@ -128,7 +128,7 @@ namespace Mtg
             return cards.ToArray ();
         }
 
-        public async Task<Card[]> GetCardsBySet (string setId)
+        public async Task<Card[]> GetCardsBySet (string setId, int start = 0, int end = 0)
         {
             List<Card> cards = new List<Card> ();
             var client = new MongoClient (Connection);
@@ -136,8 +136,22 @@ namespace Mtg
             var database = server.GetDatabase ("mtg");
 
             var collection = database.GetCollection<Card> ("cards");
-            var query = Query<Card>.EQ (e => e.CardSetId, (setId).ToUpper ());
-            MongoCursor<Card> cursor = collection.Find (query).SetSortOrder ("setNumber");
+
+            List<IMongoQuery> queries = new List<IMongoQuery> ();
+
+            if (start > 0) 
+            {
+                queries.Add (Query<Card>.GTE (c => c.SetNumber, start));
+            }
+
+            if(end > 0)
+            {
+                queries.Add (Query<Card>.LTE (c => c.SetNumber, end));
+            }
+    
+            queries.Add (Query<Card>.EQ (e => e.CardSetId, (setId).ToUpper ()));
+            //var query = Query<Card>.EQ (e => e.CardSetId, (setId).ToUpper ());
+            MongoCursor<Card> cursor = collection.Find (Query.And(queries)).SetSortOrder ("setNumber");
 
             foreach (Card card in cursor) {
                 cards.Add (card);

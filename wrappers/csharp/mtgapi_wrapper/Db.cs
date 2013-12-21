@@ -75,11 +75,21 @@ namespace MtgDb.Info.Driver
             }
         }
 
-        public Card[] GetSetCards(string setId)
+        public Card[] GetSetCards(string setId, int start = 0, int end = 0)
         {
             using (var client = new WebClient())
             {
-                string url = string.Format ("{0}/sets/{1}/cards/", this.ApiUrl, setId);
+                string url = null;
+                if(start > 0 || end > 0)
+                {
+                    url = string.Format ("{0}/sets/{1}/cards/?start={2}&end={3}", 
+                        this.ApiUrl, setId, start, end);
+                }
+                else
+                {
+                    url = string.Format ("{0}/sets/{1}/cards/", this.ApiUrl, setId);
+                }
+                 
                 var json = client.DownloadString(url);
 
                 Card[] cards = JsonConvert.DeserializeObject<Card[]>(json);
