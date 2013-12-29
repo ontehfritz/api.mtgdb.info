@@ -1,27 +1,39 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Web.Debug.config">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../wrappers/csharp/mtgapi_wrapper/wrapper_test/TestDb.cs">
     <Files>
-      <File FileName="Modules/IndexModule.cs" Line="16" Column="75" />
+      <File FileName="Modules/IndexModule.cs" Line="92" Column="17" />
       <File FileName="../wrappers/csharp/mtgapi_wrapper/packages.config" Line="1" Column="1" />
       <File FileName="Bootstrapper.cs" Line="1" Column="1" />
-      <File FileName="../wrappers/csharp/mtgapi_wrapper/wrapper_test/TestDb.cs" Line="11" Column="17" />
+      <File FileName="../wrappers/csharp/mtgapi_wrapper/wrapper_test/TestDb.cs" Line="14" Column="10" />
       <File FileName="Web.config" Line="1" Column="1" />
       <File FileName="packages.config" Line="1" Column="1" />
-      <File FileName="Models/MongoRepository.cs" Line="35" Column="63" />
-      <File FileName="Models/Card.cs" Line="24" Column="31" />
-      <File FileName="Views/index.cshtml" Line="32" Column="81" />
-      <File FileName="../wrappers/csharp/mtgapi_wrapper/Db.cs" Line="43" Column="75" />
+      <File FileName="Models/MongoRepository.cs" Line="33" Column="17" />
+      <File FileName="Models/Card.cs" Line="1" Column="1" />
+      <File FileName="Views/index.cshtml" Line="1" Column="1" />
+      <File FileName="../wrappers/csharp/mtgapi_wrapper/Db.cs" Line="88" Column="21" />
       <File FileName="Models/IRepository.cs" Line="17" Column="42" />
-      <File FileName="../wrappers/csharp/mtgapi_wrapper/Card.cs" Line="9" Column="31" />
-      <File FileName="../wrappers/csharp/mtgapi_wrapper/CardSet.cs" Line="14" Column="31" />
+      <File FileName="../wrappers/csharp/mtgapi_wrapper/Card.cs" Line="1" Column="1" />
+      <File FileName="../wrappers/csharp/mtgapi_wrapper/CardSet.cs" Line="1" Column="1" />
       <File FileName="Models/CardSet.cs" Line="1" Column="1" />
-      <File FileName="testapi/TestApi.cs" Line="58" Column="34" />
-      <File FileName="Web.Debug.config" Line="1" Column="1" />
+      <File FileName="testapi/TestApi.cs" Line="9" Column="26" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True" />
+        <State expanded="True">
+          <Node name="TestMtgDbApi" expanded="True">
+            <Node name="testapi" expanded="True">
+              <Node name="TestApi" expanded="True">
+                <Node name="Test_get_cards_by_set_with_range" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+          <Node name="TestMtgDbDriver" expanded="True">
+            <Node name="wrapper_test" expanded="True">
+              <Node name="TestMtgDriver" expanded="True" />
+            </Node>
+          </Node>
+        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

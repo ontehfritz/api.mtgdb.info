@@ -9,6 +9,7 @@ namespace wrapper_test
     public class TestMtgDriver
     {
         Db mtginfo = new Db("http://127.0.0.1:8082");
+
         [Test()]
         public void Test_get_card ()
         {
