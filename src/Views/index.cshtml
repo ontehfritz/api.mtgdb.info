@@ -64,6 +64,14 @@ For server status and updates:
 		Get
 		http://api.mtgdb.info/cards/
 		</code>
+        <br />
+        <b>Field select</b><br />
+        When calling /cards/ a field select can be applied to return only the fields specified. Separate with
+        a comma. This can be combined with filters. <br />
+        <code>
+        Get
+        http://api.mtgdb.info/cards/?fields=id,name,cardsetid
+        </code>
 		<br />
 		<h4>Get a card</h4>
 		<code>
@@ -118,7 +126,15 @@ For server status and updates:
     	<code>
     	Get
     	http://api.mtgdb.info/sets/[id]/cards/
-    	</code>
+    	</code><br />
+         <b>Field select</b><br />
+        When calling sets/[id]/cards/ a field select can be applied to return only the fields specified. Separate with
+        a comma. 
+        <code>
+        Get
+        http://api.mtgdb.info/sets/[id]/cards/?fields=setnumber,id,name
+        </code>
+
         <h4>Get a range of cards in a set</h4>
         <code>
         Get

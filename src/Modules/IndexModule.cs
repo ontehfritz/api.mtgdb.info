@@ -1,4 +1,6 @@
 ﻿using GlynnTucker.Cache;
+using System.Linq;
+using System.Linq.Dynamic;
 
 namespace Mtg
 {
@@ -22,6 +24,8 @@ namespace Mtg
             };
 
             Get ["/cards", true] = async (parameters, ct) => {
+                JsonSettings.MaxJsonLength = 100000000;
+
                 Cache.AddContext("mtgdb"); 
                 Card[] cards = null/*(Card[])Cache.Get("mtgdb", "all")*/;
 
@@ -36,12 +40,20 @@ namespace Mtg
                     Cache.Add("mtgdb","all",cards);
                 }
 
-                JsonSettings.MaxJsonLength = 100000000;
+
+                if(Request.Query.Fields != null)
+                {
+                    var c = cards.AsQueryable().Select(string.Format("new ({0})",(string)Request.Query.Fields));
+                    return Response.AsJson(c);
+                }
+
+
                 return Response.AsJson (cards);
             };
 
             Get ["/cards/{id}", true] = async (parameters, ct) => {
                 int id = 0; 
+
 
                 if(int.TryParse((string)parameters.id, out id))
                 {
@@ -67,6 +79,7 @@ namespace Mtg
             };
 
             Get ["/sets/{id}/cards/", true] = async (parameters, ct) => {
+                JsonSettings.MaxJsonLength = 100000000;
                 int start = 0; 
                 int end = 0; 
 
@@ -90,7 +103,12 @@ namespace Mtg
                     cards = await repo.GetCardsBySet ((string)parameters.id);
                 }
 
-                JsonSettings.MaxJsonLength = 100000000;
+                if(Request.Query.Fields != null)
+                {
+                    var c = cards.AsQueryable().Select(string.Format("new ({0})",(string)Request.Query.Fields));
+                    return Response.AsJson(c);
+                }
+
                 return Response.AsJson (cards);
             };
         }
