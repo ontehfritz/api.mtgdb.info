@@ -37,27 +37,34 @@ For server status and updates:
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 	<h1>Card</h1>
 	<pre>
-	id                  Integer     : multiverse Id
-	setNumber           Integer     : card number in the set
-	name                String      : name of the card
-        searchName          String      : easy to search card name
-	description         String      : the cards actions
-	flavor              String      : flavor text adds story, does not effect game
-	colors              String[]    : colors of card
-	manacost            String      : the description of mana to cast spell
-	convertedManaCost   Integer     : the amount of mana needed to cast spell
-	cardSetName         String      : the set or expansion the card belongs to
-	type                String      : the type of card
-	subType             String      : subtype of card
-	power               Integer     : attack strength
-	toughness           Integer     : defense strength 
-	loyalty             Integer     : loyalty points usually on planeswalkers
-	rarity              String      : the rarity of the card
-	artist              String      : artist of the illustration
-	cardImage           String      : the url of the card image
-	cardSetId           String      : the abbreviated name of the set
-	releasedAt          Date        : when the card was released
+    id                  Integer     : multiverse Id
+    setNumber           Integer     : card number in the set
+    name                String      : name of the card
+    searchName          String      : easy to search card name
+    description         String      : the cards actions
+    flavor              String      : flavor text adds story, does not effect game
+    colors              String[]    : colors of card
+    manacost            String      : the description of mana to cast spell
+    convertedManaCost   Integer     : the amount of mana needed to cast spell
+    cardSetName         String      : the set or expansion the card belongs to
+    type                String      : the type of card
+    subType             String      : subtype of card
+    power               Integer     : attack strength
+    toughness           Integer     : defense strength 
+    loyalty             Integer     : loyalty points usually on planeswalkers
+    rarity              String      : the rarity of the card
+    artist              String      : artist of the illustration
+    cardImage           String      : the url of the card image
+    cardSetId           String      : the abbreviated name of the set
+    rulings             Ruling[]    : list of rulings for this card
+    releasedAt          Date        : when the card was released
 	</pre>
+    <h1>Ruling</h1>
+    <i>This is the ruling format. The list of rulings is returned in the card object</i>
+    <pre>
+    releasedAt          Date        : when the rule was released
+    rule                String      : the rule
+    </pre>
 	<div style="border: solid black 1px;padding:5px;">
 		<h4>Get all cards</h4>
 		<code>

@@ -85,6 +85,8 @@ namespace Mtg.Model
 
     public class Ruling 
     {
+        [BsonId]
+        int Id { get; set;}
         [BsonElement("releasedAt")]
         [JsonProperty("releasedAt")]
         public DateTime ReleasedAt { get; set; }

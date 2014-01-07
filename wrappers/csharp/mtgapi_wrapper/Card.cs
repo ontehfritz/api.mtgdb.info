@@ -60,8 +60,20 @@ namespace MtgDb.Info
         [DataMember(Name = "cardSetId")]
         public string CardSetId { get; set; }
 
+        [DataMember(Name = "rulings")]
+        public Ruling[] Rulings { get; set; }
+
         [DataMember(Name = "releasedAt")]
         public DateTime ReleasedAt { get; set; }
+    }
+
+    [DataContract]
+    public class Ruling 
+    {
+        [DataMember(Name = "releasedAt")]
+        public DateTime ReleasedAt { get; set; }
+        [DataMember(Name = "rule")]
+        public string Rule { get; set; }
     }
 }
 
