@@ -63,6 +63,9 @@ namespace MtgDb.Info
         [DataMember(Name = "rulings")]
         public Ruling[] Rulings { get; set; }
 
+        [DataMember(Name ="formats")]
+        public string [] Formats { get; set; }
+
         [DataMember(Name = "releasedAt")]
         public DateTime ReleasedAt { get; set; }
     }

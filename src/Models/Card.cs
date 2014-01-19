@@ -77,7 +77,7 @@ namespace Mtg.Model
         public List<Ruling> Rulings { get; set; }
         [BsonElement("formats")]
         [JsonProperty("formats")]
-        public List<Format> Formats { get; set; }
+        public string [] Formats { get; set; }
         [BsonElement("releasedAt")]
         [JsonProperty("releasedAt")]
         public DateTime ReleasedAt { get; set; }
@@ -93,16 +93,6 @@ namespace Mtg.Model
         [BsonElement("rule")]
         [JsonProperty("rule")]
         public string Rule { get; set; }
-    }
-
-    public class Format
-    {
-        [BsonElement("name")]
-        [JsonProperty("name")]
-        public string Name { get; set; }
-        [BsonElement("legal")]
-        [JsonProperty("legal")]
-        public bool Legal { get; set; }
     }
 }
 
