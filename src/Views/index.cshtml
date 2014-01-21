@@ -15,7 +15,7 @@ src="~/content/images/donate.png" alt="Support the project and donate." /></a>
 <small>A card database API for "Magic: The Gathering". Ultra simple. Open source. JSON API to create your own "Magic:
 the gathering database". </small>
 </h2>
-<div style="border: 4px solid red;padding: 5px;">
+<div class="alert alert-danger">
 <b>New release coming in Feb. 2014.</b> There are some changes in the JSON formatting. It will 
 follow the google guildlines for JSON. 
 <a href="http://google-styleguide.googlecode.com/svn/trunk/jsoncstyleguide.xml?showone=Property_Name_Format#Property_Name_Format">
@@ -93,7 +93,11 @@ For server status and updates:
         http://api.mtgdb.info/cards/[name]
         </code>
         <br />
-        <small>This method returns an array of cards not a single card</small>
+        <small>
+        This method returns an array of cards not a single card. When calling by name, strip all non alphanumeric 
+        characters in the name. For example:  "Circle of Protection: Red" will cause an error because of the colon. 
+        "Circle of Protection Red" is the proper format. 
+        </small>
         <br />
 
 		<h4>Filters</h4>

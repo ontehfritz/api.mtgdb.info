@@ -2,6 +2,7 @@ using System;
 using System.Net;
 using Newtonsoft.Json;
 using MtgDb.Info;
+using System.Text.RegularExpressions;
 
 namespace MtgDb.Info.Driver
 {
@@ -40,6 +41,8 @@ namespace MtgDb.Info.Driver
         {
             using (var client = new WebClient())
             {
+                Regex rgx = new Regex("[^a-zA-Z0-9 -]");
+                name = rgx.Replace(name, "");
                 string url = string.Format ("{0}/cards/{1}", this.ApiUrl, name);
                 var json = client.DownloadString(url);
 

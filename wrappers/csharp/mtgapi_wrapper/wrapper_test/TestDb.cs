@@ -8,14 +8,14 @@ namespace wrapper_test
     [TestFixture()]
     public class TestMtgDriver
     {
-        Db mtginfo = new Db("http://127.0.0.1:8082");
+        Db mtginfo = new Db();
 
         [Test()]
         public void Test_get_card ()
         {
-            Card card = mtginfo.GetCard (106368);
+            Card card = mtginfo.GetCard (14456);
             System.Console.WriteLine (card.ReleasedAt.ToLongDateString ());
-            Assert.AreEqual (106368, card.Id);
+            Assert.AreEqual (14456, card.Id);
         }
        
         [Test()]
