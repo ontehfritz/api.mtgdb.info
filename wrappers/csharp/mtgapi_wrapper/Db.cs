@@ -126,6 +126,21 @@ namespace MtgDb.Info.Driver
                 return sets;
             }
         }
+
+        public Card[] Search(string text)
+        {
+            using (var client = new WebClient())
+            {
+                Regex rgx = new Regex("[^a-zA-Z0-9 -]");
+                text = rgx.Replace(text, "");
+                string url = string.Format ("{0}/search/{1}", this.ApiUrl, text);
+                var json = client.DownloadString(url);
+
+                Card[] cards = JsonConvert.DeserializeObject<Card[]>(json);
+
+                return cards;
+            }
+        }
     }
 }
 

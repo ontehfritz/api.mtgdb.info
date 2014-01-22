@@ -101,12 +101,27 @@ For server status and updates:
         <br />
 
 		<h4>Filters</h4>
+        <code>
+        Get
+        http://api.mtgdb.info/cards/?colors=white,black
+        </code>
+        <br />
 	    <small><i>Filters can be applied on any field /?field_name=value. Multple fields can be used. Note that each field
 	    is "And" logic. "Or" logic has not yet been implmented.</i></small><br /><br />
-		<code>
-		Get
-		http://api.mtgdb.info/cards/?colors=white,black
-		</code>
+		
+        <h4>Search Cards <small>[Alpha feature]</small></h4>
+        <code>
+        Get
+        http://api.mtgdb.info/search/[text]
+        </code>
+        <br />
+        <small>
+        A very basic match search. It will match text in the "searchName" field. <br />
+        <b>
+        This will get more advanced in future versions and will eventually have "full text search" functionality.
+        </b>
+        </small>
+        <br />
 	</div>
     <h1>CardSet</h1>
 	<pre>

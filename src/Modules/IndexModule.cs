@@ -23,11 +23,16 @@ namespace Mtg
                 return View ["index"];
             };
 
+            Get ["/search/{text}", true] = async (parameters, ct) => {
+                Card [] cards = await repo.Search ((string)parameters.text);
+                return Response.AsJson (cards);
+            };
+
             Get ["/cards", true] = async (parameters, ct) => {
                 JsonSettings.MaxJsonLength = 100000000;
 
                 Cache.AddContext("mtgdb"); 
-                Card[] cards = null/*(Card[])Cache.Get("mtgdb", "all")*/;
+                Card[] cards = null;
 
                 if(Cache.Contains("mtgdb", "all") && 
                    ((DynamicDictionary)Request.Query).Count == 0)

@@ -16,6 +16,13 @@ namespace testapi
         IRepository repository = new MongoRepository (connectionString);
 
         [Test ()]
+        public void Test_search_cards ()
+        {
+            Card[] cards = repository.Search ("giant").Result;
+            Assert.Greater (cards.Length,1);
+        }
+
+        [Test ()]
         public void Test_get_cards_by_filter ()
         {
             DynamicDictionary query = new DynamicDictionary(); 

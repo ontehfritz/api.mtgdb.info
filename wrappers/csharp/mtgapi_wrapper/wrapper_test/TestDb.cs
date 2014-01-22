@@ -11,6 +11,14 @@ namespace wrapper_test
         Db mtginfo = new Db();
 
         [Test()]
+        public void Test_search_cards ()
+        {
+            Card [] cards = mtginfo.Search ("giant");
+            System.Console.WriteLine (cards.Length.ToString());
+            Assert.GreaterOrEqual (cards.Length,1);
+        }
+
+        [Test()]
         public void Test_get_card ()
         {
             Card card = mtginfo.GetCard (14456);

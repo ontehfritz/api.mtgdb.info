@@ -15,6 +15,7 @@ namespace Mtg
         Task<Card[]> GetCards (string name);
         Task<CardSet[]> GetSets ();
         Task<CardSet> GetSet (string id);
+        Task<Card[]> Search (string text);
     }
 }
 
