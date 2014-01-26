@@ -57,9 +57,26 @@ namespace Mtg
             };
 
             Get ["/cards/{id}", true] = async (parameters, ct) => {
+              
+                try
+                {
+                    int[] multiverseIds = 
+                        Array.ConvertAll(((string)parameters.id).Split(','), int.Parse);
+
+                    if(multiverseIds.Length > 1)
+                    {
+                        Card [] cards = await repo.GetCards(multiverseIds);
+
+                        return Response.AsJson(cards);
+                    }
+                }
+                catch(Exception e)
+                {
+                    //swallo it, cannot convert parameter to int array 
+                }
+
+
                 int id = 0; 
-
-
                 if(int.TryParse((string)parameters.id, out id))
                 {
                     Card card = await repo.GetCard ((int)parameters.id);

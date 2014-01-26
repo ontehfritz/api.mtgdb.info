@@ -16,6 +16,13 @@ namespace testapi
         IRepository repository = new MongoRepository (connectionString);
 
         [Test ()]
+        public void Test_get_multiple_cards ()
+        {
+            Card[] cards = repository.GetCards(new int[]{1,2,3,4,5}).Result;
+            Assert.Greater (cards.Length,1);
+        }
+
+        [Test ()]
         public void Test_search_cards ()
         {
             Card[] cards = repository.Search ("giant").Result;

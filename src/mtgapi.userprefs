@@ -1,19 +1,21 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../wrappers/csharp/mtgapi_wrapper/wrapper_test/TestDb.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/index.cshtml">
     <Files>
-      <File FileName="Modules/IndexModule.cs" Line="12" Column="26" />
-      <File FileName="Views/index.cshtml" Line="108" Column="14" />
-      <File FileName="../wrappers/csharp/mtgapi_wrapper/Db.cs" Line="130" Column="22" />
-      <File FileName="testapi/TestApi.cs" Line="21" Column="63" />
-      <File FileName="../wrappers/csharp/mtgapi_wrapper/wrapper_test/TestDb.cs" Line="16" Column="51" />
+      <File FileName="Views/index.cshtml" Line="87" Column="15" />
+      <File FileName="Models/IRepository.cs" Line="16" Column="53" />
+      <File FileName="testapi/TestApi.cs" Line="28" Column="39" />
+      <File FileName="Models/MongoRepository.cs" Line="30" Column="70" />
+      <File FileName="Modules/IndexModule.cs" Line="62" Column="12" />
+      <File FileName="../wrappers/csharp/mtgapi_wrapper/Db.cs" Line="36" Column="29" />
+      <File FileName="../wrappers/csharp/mtgapi_wrapper/wrapper_test/TestDb.cs" Line="19" Column="10" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.NUnit.TestPad">
         <State expanded="True">
           <Node name="TestMtgDbApi" expanded="True">
             <Node name="testapi" expanded="True">
-              <Node name="TestApi" expanded="True" />
+              <Node name="TestApi" expanded="True" selected="True" />
             </Node>
           </Node>
           <Node name="TestMtgDbDriver" expanded="True">

@@ -19,6 +19,26 @@ namespace Mtg
     {
         private string Connection { get; set; }
 
+        public async Task<Card[]> GetCards (int [] multiverseIds)
+        {
+            var client = new MongoClient (Connection);
+            var server = client.GetServer ();
+            var database = server.GetDatabase ("mtg");
+
+            var collection = database.GetCollection<Card> ("cards");
+
+            var query = Query.In ("_id", new BsonArray(multiverseIds));
+            var dbcards = collection.Find (query);
+            List<Card> cards = new List<Card> ();
+
+            foreach(Card c in dbcards)
+            {
+                cards.Add (c);
+            }
+
+            return cards.ToArray ();
+        }
+
         public async Task<Card[]> Search (string text)
         {
             var client = new MongoClient (Connection);

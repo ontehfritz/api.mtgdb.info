@@ -1,12 +1,13 @@
 ﻿<html>
 <head>
-<title>M:tg DB API Beta</title>
+<title>MtgDb.info API - Magic: the gathering open database Web API</title>
+<meta name="description" content="MtgDb.info API provides developers the ability to access Magic: the gathering card database
+through an easy to use JSON API." />
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css" />
 </head>
 <body>
 <div style="padding:0px 50px 10px 50px;">
-
 <h1>api.mtgdb.info <small><i>beta</i></small>
 </h1>
 <a href='https://pledgie.com/campaigns/23315'><img style="position: absolute; top: 0; right: 0; border: 0;" 
@@ -81,11 +82,34 @@ For server status and updates:
         http://api.mtgdb.info/cards/?fields=id,name,cardsetid
         </code>
 		<br />
+
+        <b>Filters</b><br />
+        <code>
+        Get
+        http://api.mtgdb.info/cards/?colors=white,black
+        </code>
+        <br />
+        <small><i>Filters can be applied on any field /?field_name=value. Multple fields can be used. Note that each field
+        is "And" logic. "Or" logic has not yet been implmented.</i></small><br /><br />
+
 		<h4>Get a card</h4>
 		<code>
 		Get
 		http://api.mtgdb.info/cards/[id]
 		</code><br />
+
+        <h4>Get cards by multiple Ids</h4>
+        <code>
+        Get
+        http://api.mtgdb.info/cards/[int,int,int,int,...]
+        </code>
+        <br />
+        <small>
+        This method returns an array of cards by multiverseIds. This is useful for making one call for multiple cards
+        instead of individual calls for multiple cards. 
+        example:  http://api.mtgdb.info/cards/1,2,3,4,5
+        </small>
+        <br />
 
         <h4>Get cards by name</h4>
         <code>
@@ -100,14 +124,9 @@ For server status and updates:
         </small>
         <br />
 
-		<h4>Filters</h4>
-        <code>
-        Get
-        http://api.mtgdb.info/cards/?colors=white,black
-        </code>
-        <br />
-	    <small><i>Filters can be applied on any field /?field_name=value. Multple fields can be used. Note that each field
-	    is "And" logic. "Or" logic has not yet been implmented.</i></small><br /><br />
+		
+
+
 		
         <h4>Search Cards <small>[Alpha feature]</small></h4>
         <code>
