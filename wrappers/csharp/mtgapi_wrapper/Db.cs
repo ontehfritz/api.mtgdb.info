@@ -3,6 +3,7 @@ using System.Net;
 using Newtonsoft.Json;
 using MtgDb.Info;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace MtgDb.Info.Driver
 {
@@ -45,10 +46,18 @@ namespace MtgDb.Info.Driver
                     string.Join(",", multiverseIds));
 
                 var json = client.DownloadString(url);
+                List<Card> cards = new List<Card>();
 
-                Card[] cards = JsonConvert.DeserializeObject<Card[]>(json);
+                if(multiverseIds.Length == 1)
+                {
+                    cards.Add (JsonConvert.DeserializeObject<Card>(json));
+                }
+                else
+                {
+                    cards.AddRange (JsonConvert.DeserializeObject<Card[]>(json));
+                }
 
-                return cards;
+                return cards.ToArray();
             }
         }
 

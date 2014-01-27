@@ -37,7 +37,9 @@ namespace wrapper_test
         [Test()]
         public void Test_get_cards_by_multiverseIds ()
         {
-            Card [] cards = mtginfo.GetCards (new int[]{1,2,3,4,5});
+            int[] multiverseIds = new int[]{1,2};
+
+            Card [] cards = mtginfo.GetCards (multiverseIds);
             System.Console.WriteLine (cards.Length.ToString());
             Assert.GreaterOrEqual (cards.Length,1);
         }
