@@ -68,6 +68,8 @@ namespace wrapper_test
             Assert.GreaterOrEqual (cards.Length,1);
         }
 
+
+
         [Test()]
         public void Test_get_set_cards_with_range ()
         {
@@ -82,6 +84,14 @@ namespace wrapper_test
             CardSet[] sets = mtginfo.GetSets();
             System.Console.WriteLine (sets.Length.ToString());
             Assert.GreaterOrEqual (sets.Length,1);
+        }
+
+        [Test()]
+        public void Test_get_multiple_sets ()
+        {
+            CardSet[] sets = mtginfo.GetSets(new string[]{"10e","all","ths"});
+            System.Console.WriteLine (sets.Length.ToString());
+            Assert.AreEqual(3,sets.Length);
         }
     }
 }

@@ -1,24 +1,29 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../wrappers/csharp/mtgapi_wrapper/wrapper_test/TestDb.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../wrappers/csharp/mtgapi_wrapper/Db.cs">
     <Files>
-      <File FileName="Views/index.cshtml" Line="1" Column="1" />
-      <File FileName="Models/IRepository.cs" Line="1" Column="1" />
-      <File FileName="testapi/TestApi.cs" Line="1" Column="1" />
-      <File FileName="Models/MongoRepository.cs" Line="1" Column="1" />
-      <File FileName="Modules/IndexModule.cs" Line="1" Column="1" />
-      <File FileName="../wrappers/csharp/mtgapi_wrapper/Db.cs" Line="52" Column="18" />
-      <File FileName="../wrappers/csharp/mtgapi_wrapper/wrapper_test/TestDb.cs" Line="46" Column="9" />
+      <File FileName="Views/index.cshtml" Line="169" Column="9" />
+      <File FileName="Models/IRepository.cs" Line="24" Column="1" />
+      <File FileName="testapi/TestApi.cs" Line="11" Column="21" />
+      <File FileName="Models/MongoRepository.cs" Line="31" Column="65" />
+      <File FileName="Modules/IndexModule.cs" Line="122" Column="47" />
+      <File FileName="../wrappers/csharp/mtgapi_wrapper/Db.cs" Line="18" Column="10" />
+      <File FileName="../wrappers/csharp/mtgapi_wrapper/wrapper_test/TestDb.cs" Line="80" Column="9" />
       <File FileName="Web.config" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.NUnit.TestPad">
         <State expanded="True">
+          <Node name="TestMtgDbApi" expanded="True">
+            <Node name="testapi" expanded="True">
+              <Node name="TestApi" expanded="True">
+                <Node name="Test_get_set" selected="True" />
+              </Node>
+            </Node>
+          </Node>
           <Node name="TestMtgDbDriver" expanded="True">
             <Node name="wrapper_test" expanded="True">
-              <Node name="TestMtgDriver" expanded="True">
-                <Node name="Test_get_cards_by_multiverseIds" selected="True" />
-              </Node>
+              <Node name="TestMtgDriver" expanded="True" />
             </Node>
           </Node>
         </State>

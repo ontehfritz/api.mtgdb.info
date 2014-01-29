@@ -90,6 +90,15 @@ namespace Mtg
             };
 
             Get ["/sets/{id}", true] = async (parameters, ct) =>  {
+
+                string [] ids = ((string)parameters.id).Split(',');
+
+                if(ids.Length > 1)
+                {
+                    CardSet[] cardSets = await repo.GetSets (ids);
+                    return Response.AsJson (cardSets);
+                }
+
                 CardSet cardSet = await repo.GetSet ((string)parameters.id);
                 return Response.AsJson (cardSet);
             };

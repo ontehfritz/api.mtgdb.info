@@ -1,23 +1,46 @@
+using System;
+using Mtg.Model;
+using Nancy;
+using MongoDB.Driver;
+using MongoDB.Bson;
+using MongoDB;
+using MongoDB.Driver.Builders;
+using MongoDB.Driver.Linq;
+using Nancy.ModelBinding;
+using Nancy.Json;
+using System.Dynamic;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Mtg
 {
-    using System;
-    using Mtg.Model;
-    using Nancy;
-    using MongoDB.Driver;
-    using MongoDB.Bson;
-    using MongoDB;
-    using MongoDB.Driver.Builders;
-    using MongoDB.Driver.Linq;
-    using Nancy.ModelBinding;
-    using Nancy.Json;
-    using System.Dynamic;
-    using System.Collections.Generic;
+   
 
     public class MongoRepository : IRepository
     {
         private string Connection { get; set; }
+
+        public async Task<CardSet[]> GetSets (string [] setIds)
+        {
+            List<CardSet> cardset = new List<CardSet> ();
+            var client = new MongoClient (Connection);
+            var server = client.GetServer ();
+            var database = server.GetDatabase ("mtg");
+
+            setIds = setIds.Select (x => x.ToUpper ()).ToArray();
+
+            var collection = database.GetCollection<CardSet> ("card_sets");
+
+            var query = Query.In ("_id", new BsonArray(setIds));
+            var sets = collection.Find (query);
+
+            foreach (CardSet set in sets) {
+                cardset.Add (set);
+            }
+
+            return cardset.ToArray ();
+        }
 
         public async Task<Card[]> GetCards (int [] multiverseIds)
         {

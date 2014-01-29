@@ -15,6 +15,14 @@ namespace testapi
 
         IRepository repository = new MongoRepository (connectionString);
 
+
+        [Test ()]
+        public void Test_get_multiple_sets ()
+        {
+            CardSet[] sets = repository.GetSets(new string[]{"all","arb"}).Result;
+            Assert.Greater (sets.Length,1);
+        }
+
         [Test ()]
         public void Test_get_multiple_cards ()
         {
