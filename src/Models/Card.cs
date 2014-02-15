@@ -10,7 +10,7 @@ namespace Mtg.Model
 {
     public class Card
     {
-        private string _imageUrl = "http://api.mtgdb.info/content/card_images/{0}.jpeg";
+        public static string _imageUrl = "http://api.mtgdb.info/content/card_images/{0}.jpeg";
         [BsonId]
         [JsonProperty("id")]
         public int Id { get; set; }

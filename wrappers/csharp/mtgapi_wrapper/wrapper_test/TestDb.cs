@@ -68,8 +68,6 @@ namespace wrapper_test
             Assert.GreaterOrEqual (cards.Length,1);
         }
 
-
-
         [Test()]
         public void Test_get_set_cards_with_range ()
         {

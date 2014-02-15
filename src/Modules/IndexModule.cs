@@ -24,12 +24,30 @@ namespace Mtg
             };
 
             Get ["/search/{text}", true] = async (parameters, ct) => {
+                if(Request.Url.IsSecure)
+                {
+                    Card._imageUrl = "https://api.mtgdb.info/content/card_images/{0}.jpeg";
+                }
+                else
+                {
+                    Card._imageUrl = "http://api.mtgdb.info/content/card_images/{0}.jpeg";
+                }
+
                 Card [] cards = await repo.Search ((string)parameters.text);
                 return Response.AsJson (cards);
             };
 
             Get ["/cards", true] = async (parameters, ct) => {
                 JsonSettings.MaxJsonLength = 100000000;
+
+                if(Request.Url.IsSecure)
+                {
+                    Card._imageUrl = "https://api.mtgdb.info/content/card_images/{0}.jpeg";
+                }
+                else
+                {
+                    Card._imageUrl = "http://api.mtgdb.info/content/card_images/{0}.jpeg";
+                }
 
                 Cache.AddContext("mtgdb"); 
                 Card[] cards = null;
@@ -57,7 +75,15 @@ namespace Mtg
             };
 
             Get ["/cards/{id}", true] = async (parameters, ct) => {
-              
+                if(Request.Url.IsSecure)
+                {
+                    Card._imageUrl = "https://api.mtgdb.info/content/card_images/{0}.jpeg";
+                }
+                else
+                {
+                    Card._imageUrl = "http://api.mtgdb.info/content/card_images/{0}.jpeg";
+                }
+
                 try
                 {
                     int[] multiverseIds = 
@@ -110,6 +136,15 @@ namespace Mtg
             };
 
             Get ["/sets/{id}/cards/", true] = async (parameters, ct) => {
+                if(Request.Url.IsSecure)
+                {
+                    Card._imageUrl = "https://api.mtgdb.info/content/card_images/{0}.jpeg";
+                }
+                else
+                {
+                    Card._imageUrl = "http://api.mtgdb.info/content/card_images/{0}.jpeg";
+                }
+
                 JsonSettings.MaxJsonLength = 100000000;
                 int start = 0; 
                 int end = 0; 

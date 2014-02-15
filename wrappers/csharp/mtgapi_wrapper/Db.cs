@@ -20,6 +20,22 @@ namespace MtgDb.Info.Driver
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="MtgDb.Info.Driver.Db"/> class.
+        /// </summary>
+        /// <param name="ssl">If set to <c>true</c> ssl.</param>
+        public Db(bool ssl)
+        {
+            if(ssl)
+            {
+                ApiUrl = "https://api.mtgdb.info";
+            }
+            else
+            {
+                ApiUrl = "http://api.mtgdb.info";
+            }
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Mtgdb.Info.Wrapper.Db"/> class.
         /// Only use this method if you running a local version MtgDB api. 
         /// </summary>
