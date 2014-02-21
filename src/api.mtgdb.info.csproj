@@ -60,20 +60,20 @@
     <Reference Include="System.Linq.Dynamic">
       <HintPath>packages\System.Linq.Dynamic.1.0.0\lib\net40\System.Linq.Dynamic.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy">
-      <HintPath>packages\Nancy.0.22.1\lib\net40\Nancy.dll</HintPath>
-    </Reference>
-    <Reference Include="Nancy.Hosting.Aspnet">
-      <HintPath>packages\Nancy.Hosting.Aspnet.0.22.1\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
-    </Reference>
-    <Reference Include="Nancy.Serialization.JsonNet">
-      <HintPath>packages\Nancy.Serialization.JsonNet.0.22.1\lib\net40\Nancy.Serialization.JsonNet.dll</HintPath>
-    </Reference>
-    <Reference Include="Nancy.ViewEngines.Razor">
-      <HintPath>packages\Nancy.Viewengines.Razor.0.22.1\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy">
+      <HintPath>packages\Nancy.0.22.2\lib\net40\Nancy.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.Hosting.Aspnet">
+      <HintPath>packages\Nancy.Hosting.Aspnet.0.22.2\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.Serialization.JsonNet">
+      <HintPath>packages\Nancy.Serialization.JsonNet.0.22.2\lib\net40\Nancy.Serialization.JsonNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.ViewEngines.Razor">
+      <HintPath>packages\Nancy.Viewengines.Razor.0.22.2\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -20892,5 +20892,6 @@
     <Folder Include="Modules\" />
     <Folder Include="Models\" />
     <Folder Include="Content\card_images\" />
+    <Folder Include="Content\download\" />
   </ItemGroup>
 </Project>
