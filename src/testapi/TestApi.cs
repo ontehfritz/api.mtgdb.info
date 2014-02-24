@@ -15,7 +15,16 @@ namespace testapi
 
         IRepository repository = new MongoRepository (connectionString);
 
+        [Test ()]
+        public void Test_update_card ()
+        {
+            Card before = repository.GetCard (1).Result;
 
+            Card after = repository.UpdateCard<string[]>(1, "colors", new string[]{"blue","green"}).Result;
+
+            Assert.AreEqual (after.SetNumber, 1);
+        }
+            
         [Test ()]
         public void Test_get_multiple_sets ()
         {

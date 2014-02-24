@@ -47,9 +47,6 @@
     <Reference Include="System.Web.Razor.Unofficial">
       <HintPath>packages\System.Web.Razor.Unofficial.2.0.2\lib\net40\System.Web.Razor.Unofficial.dll</HintPath>
     </Reference>
-    <Reference Include="GlynnTucker.Cache">
-      <HintPath>..\..\GT.Cache\src\bin\Debug\GlynnTucker.Cache.dll</HintPath>
-    </Reference>
     <Reference Include="MongoDB.Bson">
       <HintPath>packages\mongocsharpdriver.1.8.3\lib\net35\MongoDB.Bson.dll</HintPath>
     </Reference>
@@ -75,6 +72,9 @@
     <Reference Include="Nancy.ViewEngines.Razor">
       <HintPath>packages\Nancy.Viewengines.Razor.0.22.2\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="Nancy.LightningCache">
+      <HintPath>packages\Nancy.LightningCache.0.1.3\lib\net40\Nancy.LightningCache.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -92,6 +92,7 @@
     <Compile Include="Models\IRepository.cs" />
     <Compile Include="Models\MongoRepository.cs" />
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Modules\WriteModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\card_images\.DS_Store" />

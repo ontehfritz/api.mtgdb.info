@@ -1,12 +1,11 @@
 using System.Dynamic;
 using System.Threading.Tasks;
+using System;
+using Nancy;
+using Mtg.Model;
 
 namespace Mtg
 {
-    using System;
-    using Nancy;
-    using Mtg.Model;
-
     public interface IRepository
     {
         Task<Card[]> GetCards (dynamic query);
@@ -18,6 +17,9 @@ namespace Mtg
         Task<CardSet[]> GetSets (string [] setIds);
         Task<CardSet> GetSet (string id);
         Task<Card[]> Search (string text);
+
+        //Write methods for open db functions
+        Task<Card> UpdateCard<T> (int mvid, string field, T value);
     }
 }
 

@@ -1,17 +1,16 @@
-﻿using GlynnTucker.Cache;
+﻿using System;
+using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Linq.Dynamic;
+using Nancy;
+using Nancy.Json;
+using Nancy.ModelBinding;
+using Nancy.LightningCache.Extensions;
+using Mtg.Model;
 
 namespace Mtg
 {
-    using System;
-    using Nancy;
-    using Nancy.ModelBinding;
-    using Nancy.Json;
-    using Mtg.Model;
-    using System.Dynamic;
-    using System.Collections.Generic;
-
     public class IndexModule : NancyModule
     {
         private const string connectionString = "mongodb://localhost";
@@ -49,29 +48,17 @@ namespace Mtg
                     Card._imageUrl = "http://api.mtgdb.info/content/card_images/{0}.jpeg";
                 }
 
-                Cache.AddContext("mtgdb"); 
+               
                 Card[] cards = null;
-
-                if(Cache.Contains("mtgdb", "all") && 
-                   ((DynamicDictionary)Request.Query).Count == 0)
-                {
-                    cards = (Card[])Cache.Get("mtgdb", "all");
-                }
-                else
-                {
-                    cards = await repo.GetCards (Request.Query);
-                    Cache.Add("mtgdb","all",cards);
-                }
-
-
+                cards = await repo.GetCards (Request.Query);
+                  
                 if(Request.Query.Fields != null)
                 {
                     var c = cards.AsQueryable().Select(string.Format("new ({0})",(string)Request.Query.Fields));
-                    return Response.AsJson(c);
+                    return Response.AsJson(c).AsCacheable(DateTime.Now.AddHours(1));
                 }
-
-
-                return Response.AsJson (cards);
+                    
+                return Response.AsJson (cards).AsCacheable(DateTime.Now.AddHours(1));
             };
 
             Get ["/cards/{id}", true] = async (parameters, ct) => {
