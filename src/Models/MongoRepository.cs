@@ -320,7 +320,16 @@ namespace Mtg
             return cardset;
         }
 
-        public async Task<Card> UpdateCard<T>(int mvid, string field, T value)
+
+        /// <summary>
+        /// Updates the card fields do not use to update card Rulings.
+        /// </summary>
+        /// <returns>The card.</returns>
+        /// <param name="mvid">Mvid.</param>
+        /// <param name="field">the mongodb field name</param>
+        /// <param name="value">Value.</param>
+        /// <typeparam name="T">The 1st type parameter.</typeparam>
+        public async Task<Card> UpdateCardField<T>(int mvid, string field, T value)
         {
             var client = new MongoClient (Connection);
             var server = client.GetServer ();
@@ -333,15 +342,65 @@ namespace Mtg
 
             var sortBy = SortBy.Descending("_id");
                
-            var update = Update
+            UpdateBuilder update = new UpdateBuilder ();
+          
+            update = Update
                 .Set(field, BsonValue.Create (value));
-
+                
             var result = collection.FindAndModify(
                 query,
                 sortBy,
                 update
             );
            
+            return GetCard (mvid).Result;
+        }
+
+        /// <summary>
+        /// Updates the card rulings. This method will replace the card rulings with the new card rulings.
+        /// Make sure all rulings are included. 
+        /// </summary>
+        /// <returns>The card rulings.</returns>
+        /// <param name="mvid">Mvid.</param>
+        /// <param name="rulings">Rulings.</param>
+        public async Task<Card> UpdateCardRulings (int mvid, Ruling[] rulings)
+        {
+            rulings = rulings.OrderBy (x => x.ReleasedAt).ToArray();
+
+            BsonArray newRulings = new BsonArray ();
+
+            int id = 1; 
+            foreach(Ruling rule in rulings)
+            {
+                newRulings.Add (new BsonDocument{
+                    {"_id", id},
+                    {"releasedAt", rule.ReleasedAt},
+                    {"rule", rule.Rule}
+                });
+
+                ++id;
+            }
+
+            var client = new MongoClient (Connection);
+            var server = client.GetServer ();
+            var database = server.GetDatabase ("mtg");
+
+            var collection = database.GetCollection<Card> ("cards");
+
+            var query = 
+                Query.EQ ("_id", mvid);
+
+            var sortBy = SortBy.Descending("_id");
+
+            var update = Update
+                .Set("rulings", newRulings);
+
+            var result = collection.FindAndModify(
+                query,
+                sortBy,
+                update
+            );
+
             return GetCard (mvid).Result;
         }
 

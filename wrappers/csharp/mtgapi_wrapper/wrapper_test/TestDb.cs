@@ -8,7 +8,7 @@ namespace wrapper_test
     [TestFixture()]
     public class TestMtgDriver
     {
-        Db mtginfo = new Db();
+        Db mtginfo = new Db("http://127.0.0.1:8082");
 
         [Test()]
         public void Test_search_cards ()

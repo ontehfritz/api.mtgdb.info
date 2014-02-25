@@ -3,6 +3,7 @@ using System;
 using Mtg;
 using Mtg.Model;
 using Nancy;
+using System.Collections.Generic;
 
 namespace testapi
 {
@@ -16,11 +17,21 @@ namespace testapi
         IRepository repository = new MongoRepository (connectionString);
 
         [Test ()]
+        public void Test_update_card_rulings ()
+        {
+            List<Ruling> rulings = new List<Ruling> ();
+            rulings.Add(new Ruling {ReleasedAt = DateTime.Now, Rule = "test ruling 1"});
+            rulings.Add(new Ruling {ReleasedAt = DateTime.Now, Rule = "test ruling 2"});
+
+            Card after = repository.UpdateCardRulings(1,rulings.ToArray()).Result;
+           
+            Assert.AreEqual (after.SetNumber, 1);
+        }
+
+        [Test ()]
         public void Test_update_card ()
         {
-            Card before = repository.GetCard (1).Result;
-
-            Card after = repository.UpdateCard<string[]>(1, "colors", new string[]{"blue","green"}).Result;
+            Card after = repository.UpdateCardField<string[]>(1, "colors", new string[]{"blue","green"}).Result;
 
             Assert.AreEqual (after.SetNumber, 1);
         }

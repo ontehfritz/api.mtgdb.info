@@ -19,7 +19,8 @@ namespace Mtg
         Task<Card[]> Search (string text);
 
         //Write methods for open db functions
-        Task<Card> UpdateCard<T> (int mvid, string field, T value);
+        Task<Card> UpdateCardField<T> (int mvid, string field, T value);
+        Task<Card> UpdateCardRulings (int mvid, Ruling[] rulings);
     }
 }
 

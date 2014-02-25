@@ -93,6 +93,7 @@
     <Compile Include="Models\MongoRepository.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Modules\WriteModule.cs" />
+    <Compile Include="Models\UpdateCardModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\card_images\.DS_Store" />
