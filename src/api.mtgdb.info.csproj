@@ -94,6 +94,7 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Modules\WriteModule.cs" />
     <Compile Include="Models\UpdateCardModel.cs" />
+    <Compile Include="Models\Helper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\card_images\.DS_Store" />

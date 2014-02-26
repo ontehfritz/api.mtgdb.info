@@ -5,12 +5,15 @@ using MongoDB.Bson.Serialization.Attributes;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using System.Configuration;
 
 namespace Mtg.Model
 {
     public class Card
     {
-        public static string _imageUrl = "http://api.mtgdb.info/content/card_images/{0}.jpeg";
+        public static string _imageUrl = 
+            ConfigurationManager.AppSettings.Get("imgUrl");
+
         [BsonId]
         [JsonProperty("id")]
         public int Id { get; set; }

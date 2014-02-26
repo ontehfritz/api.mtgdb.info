@@ -17,7 +17,7 @@ namespace Mtg
                 }
                 catch(Exception e)
                 {
-
+                    return HttpStatusCode.ProxyAuthenticationRequired;
                 }
 
                 return null;
@@ -25,6 +25,8 @@ namespace Mtg
 
             Put ["/cards/{id}"] = parameters => {
                 UpdateCardModel model = new UpdateCardModel();
+
+
 
 
 
