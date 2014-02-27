@@ -19,14 +19,30 @@ the gathering database". <b>Supports http and https.</b></small>
 
 <p>
 <h4>Download drivers/wrappers:</h4>
-<a href="~/content/download/MtgDb.Info.Driver.zip"><span class="label label-default">C#</span></a> 
-<br /> More to come ...
+<a href="~/content/download/MtgDb.Info.Driver.zip"><span class="label label-default">C#</span></a> More to come ...
 </p>
 <p>
 For server status and updates:
 </p>
 <a href="https://twitter.com/mtgdb" class="twitter-follow-button" data-show-count="false">Follow</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<br />
+<br />
+<div class="alert alert-danger">
+<b>IMPORTANT: On March 9th 2014</b>, the cardImage field will be removed. This field is not benefiting the API. It is 
+easy to include the url manually instead of providing it in the JSON ouput. The image urls will be available in the official
+api driver/wrappers.      
+</div>
+    <h1>Card Images</h1>
+    <pre>
+    http://api.mtgdb.info/content/card_images/{multiverseid}.jpeg
+    https://api.mtgdb.info/content/card_images/{multiverseid}.jpeg
+
+    Large Hi-Res Images
+    http://api.mtgdb.info/content/hi_res_card_images/{multiverseid}.jpg
+    https://api.mtgdb.info/content/hi_res_card_images/{multiverseid}.jpg
+    </pre>
+
 	<h1>Card</h1>
 	<pre>
     id                  Integer     : multiverse Id
@@ -46,7 +62,7 @@ For server status and updates:
     loyalty             Integer     : loyalty points usually on planeswalkers
     rarity              String      : the rarity of the card
     artist              String      : artist of the illustration
-    cardImage           String      : the url of the card image
+    cardImage           String      : *** Note: This field will be removed on March 9, 2014 ***
     cardSetId           String      : the abbreviated name of the set
     rulings             Ruling[]    : list of rulings for this card
     formats             String[]    : list of legal formats this card is in

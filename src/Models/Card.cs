@@ -11,9 +11,6 @@ namespace Mtg.Model
 {
     public class Card
     {
-        public static string _imageUrl = 
-            ConfigurationManager.AppSettings.Get("imgUrl");
-
         [BsonId]
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -65,13 +62,6 @@ namespace Mtg.Model
         [BsonElement("artist")]
         [JsonProperty("artist")]
         public string Artist { get; set; }
-
-        [JsonProperty("cardImage")]
-        public string CardImage { 
-            get {
-                return string.Format (_imageUrl, Id.ToString ());
-            }
-        }
         [BsonElement("cardSetId")]
         [JsonProperty("cardSetId")]
         public string CardSetId { get; set; }

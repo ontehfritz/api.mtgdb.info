@@ -72,9 +72,6 @@
     <Reference Include="Nancy.ViewEngines.Razor">
       <HintPath>packages\Nancy.Viewengines.Razor.0.22.2\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.LightningCache">
-      <HintPath>packages\Nancy.LightningCache.0.1.3\lib\net40\Nancy.LightningCache.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />

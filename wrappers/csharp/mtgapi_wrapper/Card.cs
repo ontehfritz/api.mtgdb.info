@@ -54,8 +54,17 @@ namespace MtgDb.Info
         [DataMember(Name = "artist")]
         public string Artist { get; set; }
 
-        [DataMember(Name = "cardImage")]
-        public string CardImage { get; set; }
+        public string CardImage { 
+            get {
+                return string.Format("//api.mtgdb.info/content/card_images/{0}.jpeg", this.Id);
+            }
+        }
+
+        public string ImageHiRes { 
+            get {
+                return string.Format("//api.mtgdb.info/content/hi_res_card_images/{0}.jpg", this.Id);
+            }
+        }
        
         [DataMember(Name = "cardSetId")]
         public string CardSetId { get; set; }
