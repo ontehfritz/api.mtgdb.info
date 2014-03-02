@@ -5,11 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{450FBB69-E870-4D97-8EA9-E4A532F8D5BE}</ProjectGuid>
+    <ProjectGuid>{5D0523D6-BE19-45F2-9492-8B93B88115F2}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>MtgDbAdminDriver</RootNamespace>
-    <AssemblyName>MtgDbAdminDriver</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>TestAdminDriver</RootNamespace>
+    <AssemblyName>TestAdminDriver</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,22 +30,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
+    <Reference Include="nunit.framework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Admin.cs" />
+    <Compile Include="TestAdmin.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\..\wrappers\csharp\mtgapi_wrapper\MtgDbDriver.csproj">
-      <Project>{774C64D9-654A-4795-9DFB-25FA2B992393}</Project>
-      <Name>MtgDbDriver</Name>
+    <ProjectReference Include="..\MtgDbAdminDriver\MtgDbAdminDriver.csproj">
+      <Project>{450FBB69-E870-4D97-8EA9-E4A532F8D5BE}</Project>
+      <Name>MtgDbAdminDriver</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
 </Project>

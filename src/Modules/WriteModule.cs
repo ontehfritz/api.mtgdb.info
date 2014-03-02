@@ -1,6 +1,7 @@
 ﻿using System;
 using Nancy;
 using Nancy.Security;
+using Nancy.ModelBinding;
 
 namespace Mtg
 {
@@ -10,7 +11,7 @@ namespace Mtg
 
         public WriteModule (IRepository repository)
         {
-            this.RequiresHttps();
+            //this.RequiresHttps();
 
             this.repository = repository;
 
@@ -27,8 +28,8 @@ namespace Mtg
                 return null;
             };
 
-            Put ["/cards/{id}"] = parameters => {
-                UpdateCardModel model = new UpdateCardModel();
+            Post ["/cards/{id}"] = parameters => {
+                UpdateCardModel model = this.Bind<UpdateCardModel>();
                 int mvid = (int)parameters.id;
 
                 try
@@ -47,16 +48,21 @@ namespace Mtg
                     case "DateTime":
                         repository.UpdateCardField<DateTime>(mvid,model.Field, DateTime.Parse(model.Value));
                         break;
+                    default:
+                        return Response.AsJson("false",
+                            Nancy.HttpStatusCode.UnprocessableEntity);
+
                     }
                 }
                 catch(Exception e)
                 {
-                    return Response.AsJson(false,
-                        Nancy.HttpStatusCode.UnprocessableEntity);
+                    throw e;
+                    //return Response.AsJson(false,
+                    //Nancy.HttpStatusCode.UnprocessableEntity);
                 }
                     
                 return Response.AsJson(true,
-                    Nancy.HttpStatusCode.UnprocessableEntity);
+                    Nancy.HttpStatusCode.OK);
             };
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Text;
+using Newtonsoft.Json;
 
 
 namespace MtgDb.Info
@@ -13,6 +14,11 @@ namespace MtgDb.Info
         {
             _apiUrl = "https://api.mtgdb.info";
         }
+
+        public Admin(string url)
+        {
+            _apiUrl = url;
+        }
             
         public bool UpdateCardField(Guid authToken, int mvid, string field, string value)
         {
@@ -22,8 +28,7 @@ namespace MtgDb.Info
             {
                 System.Collections.Specialized.NameValueCollection reqparm = 
                     new System.Collections.Specialized.NameValueCollection();
-
-               
+                    
                 reqparm.Add("AuthToken", authToken.ToString());
                 reqparm.Add("Field", field);
                 reqparm.Add("Value", value);
@@ -36,17 +41,17 @@ namespace MtgDb.Info
 
                     byte[] responsebytes = 
                         client.UploadValues(string.Format("{0}/cards/{1}",_apiUrl, mvid), 
-                            "Put", reqparm);
+                            "Post", reqparm);
 
                     responsebody = Encoding.UTF8.GetString(responsebytes);
 
                 }
                 catch(WebException e) 
                 {
-                    return false;
+                    throw e;
                 }
 
-                //end = JsonConvert.DeserializeObject<bool>(responsebody);
+                end = JsonConvert.DeserializeObject<bool>(responsebody);
             }
 
             return end;

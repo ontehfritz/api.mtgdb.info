@@ -25,7 +25,7 @@ namespace testapi
 
             Card after = repository.UpdateCardRulings(1,rulings.ToArray()).Result;
            
-            Assert.AreEqual (after.SetNumber, 1);
+            Assert.AreEqual (after.Rulings.Count, 2);
         }
 
         [Test ()]
@@ -33,7 +33,7 @@ namespace testapi
         {
             Card after = repository.UpdateCardField<string[]>(1, "colors", new string[]{"blue","green"}).Result;
 
-            Assert.AreEqual (after.SetNumber, 1);
+            Assert.AreEqual (after.Colors[0], "blue");
         }
             
         [Test ()]

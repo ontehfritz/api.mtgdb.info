@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMtgDbApi", "testapi\Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MtgDbAdminDriver", "MtgDbAdminDriver\MtgDbAdminDriver.csproj", "{450FBB69-E870-4D97-8EA9-E4A532F8D5BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAdminDriver", "TestAdminDriver\TestAdminDriver.csproj", "{5D0523D6-BE19-45F2-9492-8B93B88115F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{450FBB69-E870-4D97-8EA9-E4A532F8D5BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{450FBB69-E870-4D97-8EA9-E4A532F8D5BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{450FBB69-E870-4D97-8EA9-E4A532F8D5BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D0523D6-BE19-45F2-9492-8B93B88115F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D0523D6-BE19-45F2-9492-8B93B88115F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D0523D6-BE19-45F2-9492-8B93B88115F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D0523D6-BE19-45F2-9492-8B93B88115F2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{774C64D9-654A-4795-9DFB-25FA2B992393}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{774C64D9-654A-4795-9DFB-25FA2B992393}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{774C64D9-654A-4795-9DFB-25FA2B992393}.Release|Any CPU.ActiveCfg = Release|Any CPU
