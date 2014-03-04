@@ -2,6 +2,8 @@
 using Nancy;
 using Nancy.Security;
 using Nancy.ModelBinding;
+using System.Collections.Generic;
+using Mtg.Model;
 
 namespace Mtg
 {
@@ -57,12 +59,28 @@ namespace Mtg
                 catch(Exception e)
                 {
                     throw e;
-                    //return Response.AsJson(false,
-                    //Nancy.HttpStatusCode.UnprocessableEntity);
+//                    return Response.AsJson(false,
+//                        Nancy.HttpStatusCode.UnprocessableEntity);
                 }
                     
                 return Response.AsJson(true,
                     Nancy.HttpStatusCode.OK);
+            };
+
+            Post ["/cards/{id}/rulings"] = parameters => {
+                List<Ruling> rulings = this.Bind<List<Ruling>>();
+                int mvid = (int)parameters.id;
+
+                try
+                {
+                    repository.UpdateCardRulings(mvid,rulings.ToArray());
+                }
+                catch(Exception e)
+                {
+                    throw e;
+                }
+
+                return Response.AsJson("true");
             };
         }
     }

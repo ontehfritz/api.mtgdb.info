@@ -56,13 +56,15 @@ namespace MtgDb.Info
 
         public string CardImage { 
             get {
-                return string.Format("//api.mtgdb.info/content/card_images/{0}.jpeg", this.Id);
+                return 
+                    string.Format("https://api.mtgdb.info/content/card_images/{0}.jpeg", this.Id);
             }
         }
 
         public string ImageHiRes { 
             get {
-                return string.Format("//api.mtgdb.info/content/hi_res_card_images/{0}.jpg", this.Id);
+                return 
+                    string.Format("https://api.mtgdb.info/content/hi_res_card_images/{0}.jpg", this.Id);
             }
         }
        

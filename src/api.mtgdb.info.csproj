@@ -92,6 +92,7 @@
     <Compile Include="Modules\WriteModule.cs" />
     <Compile Include="Models\UpdateCardModel.cs" />
     <Compile Include="Models\Helper.cs" />
+    <Compile Include="Models\UpdateCardRulingModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\card_images\.DS_Store" />

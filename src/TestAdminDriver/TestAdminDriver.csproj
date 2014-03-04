@@ -9,6 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>TestAdminDriver</RootNamespace>
     <AssemblyName>TestAdminDriver</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,6 +41,14 @@
     <ProjectReference Include="..\MtgDbAdminDriver\MtgDbAdminDriver.csproj">
       <Project>{450FBB69-E870-4D97-8EA9-E4A532F8D5BE}</Project>
       <Name>MtgDbAdminDriver</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\api.mtgdb.info.csproj">
+      <Project>{ED638DD5-E755-4B7A-940D-5C94AB425686}</Project>
+      <Name>api.mtgdb.info</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\wrappers\csharp\mtgapi_wrapper\MtgDbDriver.csproj">
+      <Project>{774C64D9-654A-4795-9DFB-25FA2B992393}</Project>
+      <Name>MtgDbDriver</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

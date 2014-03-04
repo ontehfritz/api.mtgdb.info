@@ -1,6 +1,9 @@
 ﻿using NUnit.Framework;
 using System;
 using MtgDb.Info;
+using System.Collections.Generic;
+using Mtg;
+
 
 namespace TestAdminDriver
 {
@@ -161,6 +164,18 @@ namespace TestAdminDriver
         public void TestUpdateReleasedAt  ()
         {
             bool updated = admin.UpdateCardField(Guid.NewGuid(),1,"releasedAt", DateTime.Now.ToString());
+            Assert.IsTrue (updated);
+        }
+
+        [Test ()]
+        public void TestUpdateRulings  ()
+        {
+            List<MtgDb.Info.Ruling> rulings = new List<Ruling> ();
+            rulings.Add (new Ruling(){ ReleasedAt = DateTime.Now, Rule = "Rule 1"});
+            rulings.Add (new Ruling(){ ReleasedAt = DateTime.Now, Rule = "Rule 2"});
+            rulings.Add (new Ruling(){ ReleasedAt = DateTime.Now, Rule = "Rule 3"});
+
+            bool updated = admin.UpdateCardRulings(Guid.NewGuid(),1,rulings.ToArray());
             Assert.IsTrue (updated);
         }
     }

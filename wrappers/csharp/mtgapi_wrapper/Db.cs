@@ -16,25 +16,9 @@ namespace MtgDb.Info.Driver
         /// </summary>
         public Db ()
         {
-            ApiUrl = "http://api.mtgdb.info";
+            ApiUrl = "https://api.mtgdb.info";
         }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MtgDb.Info.Driver.Db"/> class.
-        /// </summary>
-        /// <param name="ssl">If set to <c>true</c> ssl.</param>
-        public Db(bool ssl)
-        {
-            if(ssl)
-            {
-                ApiUrl = "https://api.mtgdb.info";
-            }
-            else
-            {
-                ApiUrl = "http://api.mtgdb.info";
-            }
-        }
-
+            
         /// <summary>
         /// Initializes a new instance of the <see cref="Mtgdb.Info.Wrapper.Db"/> class.
         /// Only use this method if you running a local version MtgDB api. 
@@ -127,6 +111,11 @@ namespace MtgDb.Info.Driver
         /// <param name="name">Name.</param>
         public Card[] GetCards(string name)
         {
+            if(name == null || name == "")
+            {
+                throw new ArgumentException("cannot be null or blank", "name");
+            }
+
             using (var client = new WebClient())
             {
                 Regex rgx = new Regex("[^a-zA-Z0-9 -]");
@@ -134,8 +123,17 @@ namespace MtgDb.Info.Driver
                 string url = string.Format ("{0}/cards/{1}", this.ApiUrl, name);
                 var json = client.DownloadString(url);
 
-                Card[] cards = JsonConvert.DeserializeObject<Card[]>(json);
+                Card[] cards = null;
 
+                try
+                {
+                    cards = JsonConvert.DeserializeObject<Card[]>(json);
+                }
+                catch(Exception e)
+                {
+                    cards = null;
+                }
+                    
                 return cards;
             }
         }

@@ -27,12 +27,6 @@ For server status and updates:
 <a href="https://twitter.com/mtgdb" class="twitter-follow-button" data-show-count="false">Follow</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 <br />
-<br />
-<div class="alert alert-danger">
-<b>IMPORTANT: On March 9th 2014</b>, the cardImage field will be removed. This field is not benefiting the API. It is 
-easy to include the url manually instead of providing it in the JSON ouput. The image urls will be available in the official
-api driver/wrappers.      
-</div>
     <h1>Card Images</h1>
     <pre>
     http://api.mtgdb.info/content/card_images/{multiverseid}.jpeg
@@ -61,8 +55,7 @@ api driver/wrappers.
     toughness           Integer     : defense strength 
     loyalty             Integer     : loyalty points usually on planeswalkers
     rarity              String      : the rarity of the card
-    artist              String      : artist of the illustration
-    cardImage           String      : *** Note: This field will be removed on March 9, 2014 ***
+    artist              String      : artist of the illustrations
     cardSetId           String      : the abbreviated name of the set
     rulings             Ruling[]    : list of rulings for this card
     formats             String[]    : list of legal formats this card is in

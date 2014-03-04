@@ -10,6 +10,9 @@ namespace wrapper_test
     {
         Db mtginfo = new Db("http://127.0.0.1:8082");
 
+        //Db mtginfo = new Db();
+
+
         [Test()]
         public void Test_search_cards ()
         {
@@ -33,6 +36,16 @@ namespace wrapper_test
             System.Console.WriteLine (cards.Length.ToString());
             Assert.GreaterOrEqual (cards.Length,1);
         }
+
+        [Test()]
+        public void Test_get_cards_by_name_no_match ()
+        {
+            Card [] cards = mtginfo.GetCards ("");
+           
+            Assert.IsNull (cards);
+        }
+
+
 
         [Test()]
         public void Test_get_cards_by_multiverseIds ()

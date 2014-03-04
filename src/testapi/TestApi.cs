@@ -93,7 +93,14 @@ namespace testapi
         public void Test_get_cards_by_name ()
         {
             Card[] cards = repository.GetCards ("ankh of mishra").Result;
-            Assert.Greater (cards.Length,1);
+            Assert.Greater (cards.Length, 1);
+        }
+
+        [Test ()]
+        public void Test_get_cards_by_name_without_match ()
+        {
+            Card[] cards = repository.GetCards ("").Result;
+            Assert.Greater (cards.Length, 0);
         }
 
         [Test ()]
