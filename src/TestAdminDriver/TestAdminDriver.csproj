@@ -32,6 +32,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="nunit.framework" />
+    <Reference Include="MtgDb.Info.Driver">
+      <HintPath>..\..\..\CSharpMtgDb.Info\bin\Release\MtgDb.Info.Driver.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestAdmin.cs" />
@@ -45,10 +48,6 @@
     <ProjectReference Include="..\api.mtgdb.info.csproj">
       <Project>{ED638DD5-E755-4B7A-940D-5C94AB425686}</Project>
       <Name>api.mtgdb.info</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\wrappers\csharp\mtgapi_wrapper\MtgDbDriver.csproj">
-      <Project>{774C64D9-654A-4795-9DFB-25FA2B992393}</Project>
-      <Name>MtgDbDriver</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

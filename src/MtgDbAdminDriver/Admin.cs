@@ -6,20 +6,40 @@ using Newtonsoft.Json;
 
 namespace MtgDb.Info
 {
+    /// <summary>
+    /// This class is not intended to be used by the community. It is for admins to verify update to the Mtgdb.info 
+    /// card database. You will need to be authenticated and be in the admin group to use these anyway. 
+    /// </summary>
     public class Admin
     {
         private string _apiUrl;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MtgDb.Info.Admin"/> class.
+        /// </summary>
         public Admin ()
         {
             _apiUrl = "https://api.mtgdb.info";
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MtgDb.Info.Admin"/> class.
+        /// </summary>
+        /// <param name="url">custom url</param>
         public Admin(string url)
         {
             _apiUrl = url;
         }
-            
+       
+
+        /// <summary>
+        /// Updates the card field specified.
+        /// </summary>
+        /// <returns><c>true</c>, if card field was updated, <c>false</c> otherwise.</returns>
+        /// <param name="authToken">Auth token, from SSA passed from mtgdb.info</param>
+        /// <param name="mvid">Mvid.</param>
+        /// <param name="field">Field.</param>
+        /// <param name="value">Value.</param>
         public bool UpdateCardField(Guid authToken, int mvid, string field, string value)
         {
             bool end = false;
