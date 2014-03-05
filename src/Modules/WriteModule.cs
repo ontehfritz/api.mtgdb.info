@@ -4,12 +4,18 @@ using Nancy.Security;
 using Nancy.ModelBinding;
 using System.Collections.Generic;
 using Mtg.Model;
+using SuperSimple.Auth;
+using System.Configuration;
 
 namespace Mtg
 {
     public class WriteModule : NancyModule
     {
         private IRepository repository;
+
+        private SuperSimpleAuth ssa = 
+            new SuperSimpleAuth (ConfigurationManager.AppSettings.Get ("domain"),
+                ConfigurationManager.AppSettings.Get ("key"));
 
         public WriteModule (IRepository repository)
         {
@@ -20,7 +26,14 @@ namespace Mtg
             Before += ctx => {
                 try
                 {
-                    Guid.Parse(Request.Form["AuthToken"]);
+                    Guid authKey = Guid.Parse(Request.Form["AuthToken"]);
+                    User user = ssa.Validate(authKey,this.Context.Request.UserHostAddress);
+
+                    if(user == null || 
+                        !user.HasClaim("admin"))
+                    {
+                        return HttpStatusCode.Forbidden;
+                    }
                 }
                 catch(Exception e)
                 {

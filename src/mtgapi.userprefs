@@ -1,6 +1,32 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="testapi/TestApi.cs">
+    <Files>
+      <File FileName="TestAdminDriver/TestAdmin.cs" Line="159" Column="95" />
+      <File FileName="testapi/TestApi.cs" Line="30" Column="9" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True">
+          <Node name="TestAdminDriver" expanded="True">
+            <Node name="TestAdminDriver" expanded="True">
+              <Node name="Test" expanded="True">
+                <Node name="TestUpdateManaCost" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+          <Node name="TestMtgDbApi" expanded="True">
+            <Node name="testapi" expanded="True">
+              <Node name="TestApi" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
