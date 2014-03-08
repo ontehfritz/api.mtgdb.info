@@ -14,6 +14,9 @@ namespace Mtg.Model
         [BsonId]
         [JsonProperty("id")]
         public int Id { get; set; }
+        [JsonProperty("relatedCardId")]
+        [BsonElement("relatedCardId")]
+        public int RelatedCardId { get; set; }
         [JsonProperty("setNumber")]
         [BsonElement("setNumber")]
         public int SetNumber { get; set; }
