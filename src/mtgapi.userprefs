@@ -1,17 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Views/index.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Web.config">
     <Files>
       <File FileName="Modules/IndexModule.cs" Line="1" Column="1" />
-      <File FileName="Views/index.cshtml" Line="43" Column="61" />
-      <File FileName="Models/Card.cs" Line="19" Column="33" />
+      <File FileName="Views/index.cshtml" Line="19" Column="8" />
+      <File FileName="Models/Card.cs" Line="1" Column="1" />
+      <File FileName="Web.config" Line="23" Column="84" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True">
+        <State expanded="True">
+          <Node name="TestAdminDriver" expanded="True" />
           <Node name="TestMtgDbApi" expanded="True">
             <Node name="testapi" expanded="True">
-              <Node name="TestApi" expanded="True" />
+              <Node name="TestApi" expanded="True" selected="True" />
             </Node>
           </Node>
         </State>
