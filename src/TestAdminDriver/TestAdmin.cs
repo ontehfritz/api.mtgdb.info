@@ -156,7 +156,12 @@ namespace TestAdminDriver
         [Test ()]
         public void TestUpdateFormats  ()
         {
-            bool updated = admin.UpdateCardField(Guid.NewGuid(),1,"formats","update,update2");
+            List<MtgDb.Info.Format> formats = new List<Format> ();
+            formats.Add (new Format(){ Name = "test 1", Legality = "Legal"});
+            formats.Add (new Format(){ Name = "test 2", Legality = "Legal"});
+            formats.Add (new Format(){ Name = "test 3", Legality = "Legal"});
+
+            bool updated = admin.UpdateCardFormats(Guid.NewGuid(),1,formats.ToArray());
             Assert.IsTrue (updated);
         }
 

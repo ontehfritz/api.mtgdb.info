@@ -122,6 +122,52 @@ namespace MtgDb.Info
 
             return end;
         }
+
+        public bool UpdateCardFormats(Guid authToken, int mvid, Format[] formats)
+        {
+            bool end = false;
+
+            System.Collections.Specialized.NameValueCollection reqparm = 
+                new System.Collections.Specialized.NameValueCollection();
+
+
+            reqparm.Add("AuthToken", authToken.ToString());
+
+            int i = 0; 
+            foreach(Format format in formats)
+            {
+                reqparm.Add (string.Format ("Name[{0}]", i), format.Name);
+                reqparm.Add (string.Format ("Legality[{0}]", i), format.Legality);
+                ++i;
+            }
+
+            string responsebody = "";
+
+            using (WebClient client = new WebClient ()) 
+            {
+                try 
+                {
+                    ServicePointManager.ServerCertificateValidationCallback = delegate {
+                        return true;
+                    };
+
+                    byte[] responsebytes = 
+                        client.UploadValues (string.Format ("{0}/cards/{1}/formats", _apiUrl, mvid), 
+                            "Post", reqparm);
+
+                    responsebody = Encoding.UTF8.GetString (responsebytes);
+
+                } 
+                catch (WebException e) 
+                {
+                    throw e;
+                }
+
+                end = JsonConvert.DeserializeObject<bool>(responsebody);
+            }
+
+            return end;
+        }
     }
 }
 

@@ -24,21 +24,21 @@ namespace Mtg
             this.repository = repository;
 
             Before += ctx => {
-                try
-                {
-                    Guid authKey = Guid.Parse(Request.Form["AuthToken"]);
-                    User user = ssa.Validate(authKey,this.Context.Request.UserHostAddress);
-
-                    if(user == null || 
-                        !user.HasClaim("admin"))
-                    {
-                        return HttpStatusCode.Forbidden;
-                    }
-                }
-                catch(Exception e)
-                {
-                    return HttpStatusCode.ProxyAuthenticationRequired;
-                }
+                //                try
+//                {
+//                    Guid authKey = Guid.Parse(Request.Form["AuthToken"]);
+//                    User user = ssa.Validate(authKey,this.Context.Request.UserHostAddress);
+//
+//                    if(user == null || 
+//                        !user.HasClaim("admin"))
+//                    {
+//                        return HttpStatusCode.Forbidden;
+//                    }
+//                }
+//                catch(Exception e)
+//                {
+//                    return HttpStatusCode.ProxyAuthenticationRequired;
+//                }
 
                 return null;
             };
@@ -87,6 +87,22 @@ namespace Mtg
                 try
                 {
                     repository.UpdateCardRulings(mvid,rulings.ToArray());
+                }
+                catch(Exception e)
+                {
+                    throw e;
+                }
+
+                return Response.AsJson("true");
+            };
+
+            Post ["/cards/{id}/formats"] = parameters => {
+                List<Format> formats = this.Bind<List<Format>>();
+                int mvid = (int)parameters.id;
+
+                try
+                {
+                    repository.UpdateCardFormats(mvid,formats.ToArray());
                 }
                 catch(Exception e)
                 {

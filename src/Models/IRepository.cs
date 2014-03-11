@@ -21,6 +21,7 @@ namespace Mtg
         //Write methods for open db functions
         Task<Card> UpdateCardField<T> (int mvid, string field, T value);
         Task<Card> UpdateCardRulings (int mvid, Ruling[] rulings);
+        Task<Card> UpdateCardFormats (int mvid, Format[] formats);
     }
 }
 

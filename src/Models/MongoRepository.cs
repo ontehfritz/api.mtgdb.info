@@ -20,6 +20,15 @@ namespace Mtg
         private string Connection { get; set; }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Mtg.MongoRepository"/> class.
+        /// </summary>
+        /// <param name="connection">Connection.</param>
+        public MongoRepository (string connection)
+        {
+            Connection = connection;
+        }
+
+        /// <summary>
         /// Gets the sets.
         /// </summary>
         /// <returns>The sets.</returns>
@@ -404,14 +413,47 @@ namespace Mtg
             return GetCard (mvid).Result;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Mtg.MongoRepository"/> class.
-        /// </summary>
-        /// <param name="connection">Connection.</param>
-        public MongoRepository (string connection)
+        public async Task<Card> UpdateCardFormats (int mvid, Format[] formats)
         {
-            Connection = connection;
+            formats = formats.OrderBy (x => x.Name).ToArray();
+
+            BsonArray newFormats = new BsonArray ();
+
+            int id = 1; 
+            foreach(Format format in formats)
+            {
+                newFormats.Add (new BsonDocument{
+                    {"_id", id},
+                    {"name", format.Name},
+                    {"legality", format.Legality}
+                });
+                ++id;
+            }
+
+            var client = new MongoClient (Connection);
+            var server = client.GetServer ();
+            var database = server.GetDatabase ("mtg");
+
+            var collection = database.GetCollection<Card> ("cards");
+
+            var query = 
+                Query.EQ ("_id", mvid);
+
+            var sortBy = SortBy.Descending("_id");
+
+            var update = Update
+                .Set("formats", newFormats);
+
+            var result = collection.FindAndModify(
+                query,
+                sortBy,
+                update
+            );
+
+            return GetCard (mvid).Result;
         }
+
+
     }
 }
 
