@@ -64,7 +64,7 @@ For server status and updates:
     artist              String      : artist of the illustrations
     cardSetId           String      : the abbreviated name of the set
     rulings             Ruling[]    : list of rulings for this card
-    formats             String[]    : list of legal formats this card is in
+    formats             Format[]    : list of legal formats this card is in
     releasedAt          Date        : when the card was released
 	</pre>
     <h1>Ruling</h1>
@@ -73,6 +73,14 @@ For server status and updates:
     releasedAt          Date        : when the rule was released
     rule                String      : the rule
     </pre>
+
+    <h1>Format</h1>
+    <i>This lists the formats a card can be used in and the legality of the card</i>
+    <pre>
+    name                String      : name of format
+    legality            String      : the legality 
+    </pre>
+
 	<div style="border: solid black 1px;padding:5px;">
 		<h4>Get all cards</h4>
 		<code>
