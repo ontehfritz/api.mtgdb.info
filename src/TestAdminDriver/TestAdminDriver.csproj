@@ -35,6 +35,9 @@
     <Reference Include="MtgDb.Info.Driver">
       <HintPath>..\..\..\CSharpMtgDb.Info\bin\Release\MtgDb.Info.Driver.dll</HintPath>
     </Reference>
+    <Reference Include="SuperSimpleAuthCSharp">
+      <HintPath>..\..\dependencies\SuperSimpleAuthCSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestAdmin.cs" />

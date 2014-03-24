@@ -19,32 +19,38 @@ namespace Mtg
         {
             repo = repository;
 
-            Get ["/"] = parameters => {
+            Get ["/"] = parameters => 
+            {
                 return View ["index"];
             };
 
-            Get ["/search/{text}", true] = async (parameters, ct) => {
+            Get ["/search/{text}", true] = async (parameters, ct) => 
+            {
                 Card [] cards = await repo.Search ((string)parameters.text);
+
                 return Response.AsJson (cards);
             };
 
-            Get ["/cards", true] = async (parameters, ct) => {
-                JsonSettings.MaxJsonLength = 100000000;
-               
-                Card[] cards = null;
-                cards = await repo.GetCards (Request.Query);
+            Get ["/cards", true] = async (parameters, ct) => 
+            {
+                JsonSettings.MaxJsonLength =    100000000;
+                Card[] cards =                  null;
+                cards =                         await repo.GetCards (Request.Query);
                   
                 if(Request.Query.Fields != null)
                 {
-                    var c = cards.AsQueryable().Select(string.Format("new ({0})",(string)Request.Query.Fields));
+                    var c = cards.AsQueryable()
+                        .Select(string.Format("new ({0})",
+                            (string)Request.Query.Fields));
+
                     return Response.AsJson(c);
                 }
                     
                 return Response.AsJson (cards);
             };
 
-            Get ["/cards/{id}", true] = async (parameters, ct) => {
-   
+            Get ["/cards/{id}", true] = async (parameters, ct) => 
+            {
                 try
                 {
                     int[] multiverseIds = 
@@ -76,8 +82,8 @@ namespace Mtg
                 }
             };
 
-            Get ["/sets/{id}", true] = async (parameters, ct) =>  {
-
+            Get ["/sets/{id}", true] = async (parameters, ct) =>  
+            {
                 string [] ids = ((string)parameters.id).Split(',');
 
                 if(ids.Length > 1)
@@ -90,17 +96,19 @@ namespace Mtg
                 return Response.AsJson (cardSet);
             };
 
-            Get ["/sets/", true] = async (parameters, ct) => {
-                CardSet[] cardset = await repo.GetSets ();
-                JsonSettings.MaxJsonLength = 1000000;
+            Get ["/sets/", true] = async (parameters, ct) => 
+            {
+                CardSet[] cardset =             await repo.GetSets ();
+                JsonSettings.MaxJsonLength =    1000000;
+
                 return Response.AsJson (cardset);
             };
 
-            Get ["/sets/{id}/cards/", true] = async (parameters, ct) => {
-           
-                JsonSettings.MaxJsonLength = 100000000;
-                int start = 0; 
-                int end = 0; 
+            Get ["/sets/{id}/cards/", true] = async (parameters, ct) => 
+            {
+                JsonSettings.MaxJsonLength =    100000000;
+                int start =                     0; 
+                int end =                       0; 
 
                 if(Request.Query.start != null )
                 {
@@ -115,7 +123,7 @@ namespace Mtg
                 Card[] cards = null;
                 if(start > 0 || end > 0)
                 {
-                    cards =  await repo.GetCardsBySet ((string)parameters.id, start, end);
+                    cards = await repo.GetCardsBySet ((string)parameters.id, start, end);
                 }
                 else
                 {
@@ -124,7 +132,9 @@ namespace Mtg
 
                 if(Request.Query.Fields != null)
                 {
-                    var c = cards.AsQueryable().Select(string.Format("new ({0})",(string)Request.Query.Fields));
+                    var c = cards.AsQueryable()
+                        .Select(string.Format("new ({0})",(string)Request.Query.Fields));
+
                     return Response.AsJson(c);
                 }
 

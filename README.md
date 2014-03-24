@@ -9,4 +9,4 @@ http://api.mtgdb.info
 for server status and updates: 
 https://twitter.com/mtgdb
 
-© SuperSimpleSuperRad (Triple S Rad) 2013
+© 3xS-Rad 2014

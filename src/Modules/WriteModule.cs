@@ -12,33 +12,32 @@ namespace Mtg
     public class WriteModule : NancyModule
     {
         private IRepository repository;
-
-        private SuperSimpleAuth ssa = 
-            new SuperSimpleAuth (ConfigurationManager.AppSettings.Get ("domain"),
-                ConfigurationManager.AppSettings.Get ("key"));
-
+        private SuperSimpleAuth ssa; 
+       
         public WriteModule (IRepository repository)
         {
             //this.RequiresHttps();
 
             this.repository = repository;
+            ssa = new SuperSimpleAuth (ConfigurationManager.AppSettings.Get ("domain"),
+                ConfigurationManager.AppSettings.Get ("key"));
 
             Before += ctx => {
-                //                try
-//                {
-//                    Guid authKey = Guid.Parse(Request.Form["AuthToken"]);
-//                    User user = ssa.Validate(authKey,this.Context.Request.UserHostAddress);
-//
-//                    if(user == null || 
-//                        !user.HasClaim("admin"))
-//                    {
-//                        return HttpStatusCode.Forbidden;
-//                    }
-//                }
-//                catch(Exception e)
-//                {
-//                    return HttpStatusCode.ProxyAuthenticationRequired;
-//                }
+                try
+                {
+                    Guid authKey = Guid.Parse(Request.Form["AuthToken"]);
+                    User user = ssa.Validate(authKey,this.Context.Request.UserHostAddress);
+
+                    if(user == null || 
+                        !user.InRole("admin"))
+                    {
+                        return HttpStatusCode.Forbidden;
+                    }
+                }
+                catch(Exception e)
+                {
+                    return HttpStatusCode.ProxyAuthenticationRequired;
+                }
 
                 return null;
             };

@@ -3,6 +3,7 @@ using System;
 using MtgDb.Info;
 using System.Collections.Generic;
 using Mtg;
+using SuperSimple.Auth;
 
 
 namespace TestAdminDriver
@@ -32,124 +33,140 @@ namespace TestAdminDriver
     [TestFixture ()]
     public class Test
     {
-        Admin admin = new Admin("http://127.0.0.1:8082");
+        Admin admin;
+        SuperSimpleAuth ssa;
+        User ssaUser;
+
+        [SetUp()]
+        public void Init()
+        {
+            admin =     new Admin("http://127.0.0.1:8082");
+            ssa =       new SuperSimpleAuth ("testing_mtgdb.info", 
+                "ae132e62-570f-4ffb-87cc-b9c087b09dfb");
+            ssaUser =   ssa.Authenticate ("mtgdb_tester", 
+                "test123", "127.0.0.1");
+        }
 
         [Test ()]
         public void TestUpdateSetNumber ()
         {
-            bool updated = admin.UpdateCardField(Guid.NewGuid(),1,"setNumber","6");
+            bool updated = admin.UpdateCardField(ssaUser.AuthToken,
+                1,"setNumber","6");
+//
             Assert.IsTrue (updated);
         }
 
         [Test ()]
         public void TestUpdateName ()
         {
-            bool updated = admin.UpdateCardField(Guid.NewGuid(),1,"name","Ankh of Mishra");
+            bool updated = admin.UpdateCardField(ssaUser.AuthToken,
+                1,"name","Ankh of Mishra");
             Assert.IsTrue (updated);
         }
 
         [Test ()]
         public void TestUpdateSearchName ()
         {
-            bool updated = admin.UpdateCardField(Guid.NewGuid(),1,"searchName","ankhofmishra");
+            bool updated = admin.UpdateCardField(ssaUser.AuthToken,
+                1,"searchName","ankhofmishra");
             Assert.IsTrue (updated);
         }
 
         [Test ()]
         public void TestUpdateDescription ()
         {
-            bool updated = admin.UpdateCardField(Guid.NewGuid(),1,"description","this is a test");
+            bool updated = admin.UpdateCardField(ssaUser.AuthToken,1,"description","this is a test");
             Assert.IsTrue (updated);
         }
 
         [Test ()]
         public void TestUpdateFlavor ()
         {
-            bool updated = admin.UpdateCardField (Guid.NewGuid (), 1, "flavor", "update");
+            bool updated = admin.UpdateCardField (ssaUser.AuthToken, 1, "flavor", "update");
             Assert.IsTrue (updated);
         }
           
         [Test ()]
         public void TestUpdateColors ()
         {
-            bool updated = admin.UpdateCardField(Guid.NewGuid(),1,"colors","blue, red");
+            bool updated = admin.UpdateCardField(ssaUser.AuthToken,1,"colors","blue, red");
             Assert.IsTrue (updated);
         }
 
         [Test ()]
         public void TestUpdateManaCost ()
         {
-            bool updated = admin.UpdateCardField(Guid.NewGuid(),1,"manaCost","2");
+            bool updated = admin.UpdateCardField(ssaUser.AuthToken,1,"manaCost","2");
             Assert.IsTrue (updated);
         }
 
         [Test ()]
         public void TestUpdateConvertedManaCost ()
         {
-            bool updated = admin.UpdateCardField(Guid.NewGuid(),1,"convertedManaCost","2");
+            bool updated = admin.UpdateCardField(ssaUser.AuthToken,1,"convertedManaCost","2");
             Assert.IsTrue (updated);
         }
 
         [Test ()]
         public void TestUpdateCardSetName  ()
         {
-            bool updated = admin.UpdateCardField(Guid.NewGuid(),1,"cardSetName","update");
+            bool updated = admin.UpdateCardField(ssaUser.AuthToken,1,"cardSetName","update");
             Assert.IsTrue (updated);
         }
 
         [Test ()]
         public void TestUpdateCardType  ()
         {
-            bool updated = admin.UpdateCardField(Guid.NewGuid(),1,"type","update");
+            bool updated = admin.UpdateCardField(ssaUser.AuthToken,1,"type","update");
             Assert.IsTrue (updated);
         }
 
         [Test ()]
         public void TestUpdateSubType  ()
         {
-            bool updated = admin.UpdateCardField(Guid.NewGuid(),1,"subType","update");
+            bool updated = admin.UpdateCardField(ssaUser.AuthToken,1,"subType","update");
             Assert.IsTrue (updated);
         }
 
         [Test ()]
         public void TestUpdatePower  ()
         {
-            bool updated = admin.UpdateCardField(Guid.NewGuid(),1,"power","1");
+            bool updated = admin.UpdateCardField(ssaUser.AuthToken,1,"power","1");
             Assert.IsTrue (updated);
         }
 
         [Test ()]
         public void TestUpdateToughness  ()
         {
-            bool updated = admin.UpdateCardField(Guid.NewGuid(),1,"toughness","1");
+            bool updated = admin.UpdateCardField(ssaUser.AuthToken,1,"toughness","1");
             Assert.IsTrue (updated);
         }
 
         [Test ()]
         public void TestUpdateLoyalty  ()
         {
-            bool updated = admin.UpdateCardField(Guid.NewGuid(),1,"loyalty","1");
+            bool updated = admin.UpdateCardField(ssaUser.AuthToken,1,"loyalty","1");
             Assert.IsTrue (updated);
         }
 
         [Test ()]
         public void TestUpdateRarity  ()
         {
-            bool updated = admin.UpdateCardField(Guid.NewGuid(),1,"rarity","update");
+            bool updated = admin.UpdateCardField(ssaUser.AuthToken,1,"rarity","update");
             Assert.IsTrue (updated);
         }
 
         [Test ()]
         public void TestUpdateArtist  ()
         {
-            bool updated = admin.UpdateCardField(Guid.NewGuid(),1,"artist","update");
+            bool updated = admin.UpdateCardField(ssaUser.AuthToken,1,"artist","update");
             Assert.IsTrue (updated);
         }
 
         [Test ()]
         public void TestUpdateCardSetId  ()
         {
-            bool updated = admin.UpdateCardField(Guid.NewGuid(),1,"cardSetId","update");
+            bool updated = admin.UpdateCardField(ssaUser.AuthToken,1,"cardSetId","update");
             Assert.IsTrue (updated);
         }
 
@@ -161,14 +178,14 @@ namespace TestAdminDriver
             formats.Add (new Format(){ Name = "test 2", Legality = "Legal"});
             formats.Add (new Format(){ Name = "test 3", Legality = "Legal"});
 
-            bool updated = admin.UpdateCardFormats(Guid.NewGuid(),1,formats.ToArray());
+            bool updated = admin.UpdateCardFormats(ssaUser.AuthToken,1,formats.ToArray());
             Assert.IsTrue (updated);
         }
 
         [Test ()]
         public void TestUpdateReleasedAt  ()
         {
-            bool updated = admin.UpdateCardField(Guid.NewGuid(),1,"releasedAt", DateTime.Now.ToString());
+            bool updated = admin.UpdateCardField(ssaUser.AuthToken,1,"releasedAt", DateTime.Now.ToString());
             Assert.IsTrue (updated);
         }
 
@@ -180,7 +197,7 @@ namespace TestAdminDriver
             rulings.Add (new Ruling(){ ReleasedAt = DateTime.Now, Rule = "Rule 2"});
             rulings.Add (new Ruling(){ ReleasedAt = DateTime.Now, Rule = "Rule 3"});
 
-            bool updated = admin.UpdateCardRulings(Guid.NewGuid(),1,rulings.ToArray());
+            bool updated = admin.UpdateCardRulings(ssaUser.AuthToken,1,rulings.ToArray());
             Assert.IsTrue (updated);
         }
     }

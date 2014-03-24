@@ -21,7 +21,9 @@ public class Bootstrapper : DefaultNancyBootstrapper
     protected override void ConfigureApplicationContainer(TinyIoCContainer container)
     {
         base.ConfigureApplicationContainer(container);
-        IRepository repository = new MongoRepository (ConfigurationManager.AppSettings.Get("db"));
+        IRepository repository = 
+            new MongoRepository (ConfigurationManager.AppSettings.Get("db"));
+
         container.Register<IRepository>(repository);
     }
 }

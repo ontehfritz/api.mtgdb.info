@@ -30,7 +30,9 @@ namespace Mtg
 
         public static string GetCardFieldType(string field)
         {
-            if (FieldType.ContainsKey (field)) {
+            field = field.ToLower();
+            if (FieldType.ContainsKey (field)) 
+            {
                 return FieldType [field];
             }
 

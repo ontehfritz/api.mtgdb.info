@@ -36,16 +36,14 @@ namespace Mtg
         public async Task<CardSet[]> GetSets (string [] setIds)
         {
             List<CardSet> cardset = new List<CardSet> ();
-            var client = new MongoClient (Connection);
-            var server = client.GetServer ();
-            var database = server.GetDatabase ("mtg");
+            var client =            new MongoClient (Connection);
+            var server =            client.GetServer ();
+            var database =          server.GetDatabase ("mtg");
+            setIds =                setIds.Select (x => x.ToUpper ()).ToArray();
+            var collection =        database.GetCollection<CardSet> ("card_sets");
 
-            setIds = setIds.Select (x => x.ToUpper ()).ToArray();
-
-            var collection = database.GetCollection<CardSet> ("card_sets");
-
-            var query = Query.In ("_id", new BsonArray(setIds));
-            var sets = collection.Find (query);
+            var query =             Query.In ("_id", new BsonArray(setIds));
+            var sets =              collection.Find (query);
 
             foreach (CardSet set in sets) 
             {
@@ -61,15 +59,15 @@ namespace Mtg
         /// <param name="multiverseIds">Multiverse identifiers.</param>
         public async Task<Card[]> GetCards (int [] multiverseIds)
         {
-            var client = new MongoClient (Connection);
-            var server = client.GetServer ();
-            var database = server.GetDatabase ("mtg");
+            var client =        new MongoClient (Connection);
+            var server =        client.GetServer ();
+            var database =      server.GetDatabase ("mtg");
 
-            var collection = database.GetCollection<Card> ("cards");
+            var collection =    database.GetCollection<Card> ("cards");
 
-            var query = Query.In ("_id", new BsonArray(multiverseIds));
-            var dbcards = collection.Find (query);
-            List<Card> cards = new List<Card> ();
+            var query =         Query.In ("_id", new BsonArray(multiverseIds));
+            var dbcards =       collection.Find (query);
+            List<Card> cards =  new List<Card> ();
 
             foreach(Card c in dbcards)
             {
@@ -84,17 +82,18 @@ namespace Mtg
         /// <param name="text">Text.</param>
         public async Task<Card[]> Search (string text)
         {
-            var client = new MongoClient (Connection);
-            var server = client.GetServer ();
-            var database = server.GetDatabase ("mtg");
+            var client =        new MongoClient (Connection);
+            var server =        client.GetServer ();
+            var database =      server.GetDatabase ("mtg");
 
-            var collection = database.GetCollection<Card> ("cards");
+            var collection =    database.GetCollection<Card> ("cards");
             var query = Query<Card>.Matches (e => e.SearchName, text.ToLower().Replace(" ", ""));
             MongoCursor<Card> cursor = collection.Find (query);
 
-            List<Card> cards = new List<Card> ();
+            List<Card> cards =  new List<Card> ();
 
-            foreach (Card card in cursor) {
+            foreach (Card card in cursor) 
+            {
                 cards.Add (card);
             }
 
@@ -108,107 +107,130 @@ namespace Mtg
         /// <param name="query">Query.</param>
         public async Task<Card[]> GetCards (dynamic query)
         {
-            var client = new MongoClient (Connection);
-            var server = client.GetServer ();
-            var database = server.GetDatabase ("mtg");
-            var collection = database.GetCollection<Card> ("cards");
+            var client =                new MongoClient (Connection);
+            var server =                client.GetServer ();
+            var database =              server.GetDatabase ("mtg");
+            var collection =            database.GetCollection<Card> ("cards");
 
-            MongoCursor<Card> cursor = null;                
+            MongoCursor<Card> cursor =  null;                
             List<IMongoQuery> queries = new List<IMongoQuery> ();
 
 
-            if (query.cardsetid != null) {
+            if (query.cardsetid != null) 
+            {
                 queries.Add (Query<Card>.EQ (e => e.CardSetId, 
                                            (string)query.cardsetid));
             }
 
-            if (query.artist != null) {
+            if (query.artist != null) 
+            {
                 queries.Add (Query<Card>.EQ (e => e.Artist, 
                                            (string)query.artist));
             }
 
-            if (query.rarity != null) {
+            if (query.rarity != null) 
+            {
                 queries.Add (Query<Card>.EQ (e => e.Rarity, 
                                            (string)query.rarity));
             }
 
-            if (query.loyalty != null) {
+            if (query.loyalty != null) 
+            {
                 queries.Add (Query<Card>.EQ (e => e.Loyalty, 
                                            (int)query.loyalty));
             }
 
-            if (query.loyalty != null) {
+            if (query.loyalty != null) 
+            {
                 queries.Add (Query<Card>.EQ (e => e.Loyalty, 
                                            (int)query.loyalty));
             }
 
-            if (query.toughness != null) {
+            if (query.toughness != null) 
+            {
                 queries.Add (Query<Card>.EQ (e => e.Toughness, 
                                            (int)query.toughness));
             }
 
-            if (query.power != null) {
+            if (query.power != null) 
+            {
                 queries.Add (Query<Card>.EQ (e => e.Power, 
                                            (int)query.power));
             }
 
-            if (query.subtype != null) {
+            if (query.subtype != null) 
+            {
                 queries.Add (Query<Card>.EQ (e => e.SubType, 
                                            (string)query.subtype));
             }
 
 
-            if (query.cardsetname != null) {
+            if (query.cardsetname != null) 
+            {
                 queries.Add (Query<Card>.EQ (e => e.CardSetName, 
                                            (string)query.cardsetname));
             }
 
-            if (query.convertedmanacost != null) {
+            if (query.convertedmanacost != null) 
+            {
                 queries.Add (Query<Card>.EQ (e => e.ConvertedManaCost, 
                                            (int)query.convertedmanacost));
             }
 
-            if (query.setnumber != null) {
+            if (query.setnumber != null) 
+            {
                 queries.Add (Query<Card>.EQ (e => e.SetNumber, 
                                            (int)query.setnumber));
             }
 
-            if (query.manacost != null) {
+            if (query.manacost != null) 
+            {
                 queries.Add (Query<Card>.EQ (e => e.ManaCost, 
                                            (string)query.manacost));
             }
 
-            if (query.colors != null) {
-                foreach (string color in ((string)query.colors).ToString().Split(',')) {
+            if (query.colors != null) 
+            {
+                foreach (string color in ((string)query.colors).ToString().Split(',')) 
+                {
                     queries.Add (Query<Card>.EQ (e => e.Colors, color));
                 }
             }
 
-            if (query.name != null) {
+            if (query.name != null) 
+            {
                 queries.Add (Query<Card>.EQ (e => e.SearchName, 
                     ((string)query.name).ToLower().Replace(" ", "")));
             }
 
-            if (query.type != null) {
+            if (query.type != null) 
+            {
                 queries.Add (Query<Card>.EQ (e => e.Type, (string)query.type));
             }
-            if (query.id != null) {
+
+            if (query.id != null) 
+            {
                 queries.Add (Query<Card>.EQ (e => e.Id, (int)query.id));
             }
 
-            if (queries.Count > 0) {
+            if (queries.Count > 0) 
+            {
                 cursor = collection.Find (Query.And (queries)).SetSortOrder ("_id");
-            } else {
+            } 
+            else 
+            {
                 cursor = collection.FindAllAs<Card> ().SetSortOrder ("_id");
             }
 
-            if (query.limit != null) {
+            if (query.limit != null) 
+            {
                 cursor.SetLimit ((int)query.limit);
             }
 
             List<Card> cards = new List<Card> ();
 
-            foreach (Card card in cursor) {
+            foreach (Card card in cursor) 
+            {
                 cards.Add (card);
             }
 
@@ -223,12 +245,12 @@ namespace Mtg
         /// <param name="end">End.</param>
         public async Task<Card[]> GetCardsBySet (string setId, int start = 0, int end = 0)
         {
-            List<Card> cards = new List<Card> ();
-            var client = new MongoClient (Connection);
-            var server = client.GetServer ();
-            var database = server.GetDatabase ("mtg");
+            List<Card> cards =          new List<Card> ();
+            var client =                new MongoClient (Connection);
+            var server =                client.GetServer ();
+            var database =              server.GetDatabase ("mtg");
 
-            var collection = database.GetCollection<Card> ("cards");
+            var collection =            database.GetCollection<Card> ("cards");
 
             List<IMongoQuery> queries = new List<IMongoQuery> ();
 
@@ -244,9 +266,11 @@ namespace Mtg
     
             queries.Add (Query<Card>.EQ (e => e.CardSetId, (setId).ToUpper ()));
             //var query = Query<Card>.EQ (e => e.CardSetId, (setId).ToUpper ());
-            MongoCursor<Card> cursor = collection.Find (Query.And(queries)).SetSortOrder ("setNumber");
+            MongoCursor<Card> cursor = 
+                collection.Find (Query.And(queries)).SetSortOrder ("setNumber");
 
-            foreach (Card card in cursor) {
+            foreach (Card card in cursor) 
+            {
                 cards.Add (card);
             }
 
@@ -260,13 +284,14 @@ namespace Mtg
         /// <param name="id">Identifier.</param>
         public async Task<Card> GetCard (int id)
         {
-            var client = new MongoClient (Connection);
-            var server = client.GetServer ();
-            var database = server.GetDatabase ("mtg");
+            var client =        new MongoClient (Connection);
+            var server =        client.GetServer ();
+            var database =      server.GetDatabase ("mtg");
 
-            var collection = database.GetCollection<Card> ("cards");
-            var query = Query<Card>.EQ (e => e.Id, id);
-            Card card = collection.FindOne (query);
+            var collection =    database.GetCollection<Card> ("cards");
+            var query =         Query<Card>.EQ (e => e.Id, id);
+            Card card =         collection.FindOne (query);
+
             return card;
         }
         /// <summary>
@@ -286,7 +311,8 @@ namespace Mtg
 
             List<Card> cards = new List<Card> ();
 
-            foreach (Card card in cursor) {
+            foreach (Card card in cursor) 
+            {
                 cards.Add (card);
             }
 
@@ -299,15 +325,17 @@ namespace Mtg
         public async Task<CardSet[]> GetSets ()
         {
             List<CardSet> cardset = new List<CardSet> ();
-            var client = new MongoClient (Connection);
-            var server = client.GetServer ();
-            var database = server.GetDatabase ("mtg");
+            var client =            new MongoClient (Connection);
+            var server =            client.GetServer ();
+            var database =          server.GetDatabase ("mtg");
 
-            var collection = database.GetCollection<CardSet> ("card_sets");
+            var collection =        database.GetCollection<CardSet> ("card_sets");
+
             MongoCursor<CardSet> cursor = collection.FindAllAs<CardSet> ()
                 .SetSortOrder ("name");
 
-            foreach (CardSet set in cursor) {
+            foreach (CardSet set in cursor) 
+            {
                 cardset.Add (set);
             }
 
@@ -320,12 +348,13 @@ namespace Mtg
         /// <param name="id">Identifier.</param>
         public async Task<CardSet> GetSet (string id)
         {
-            var client = new MongoClient (Connection);
-            var server = client.GetServer ();
-            var database = server.GetDatabase ("mtg");
-            var collection = database.GetCollection<CardSet> ("card_sets");
-            var query = Query<CardSet>.EQ (e => e.Id, id.ToUpper ());
-            CardSet cardset = collection.FindOne (query);
+            var client =        new MongoClient (Connection);
+            var server =        client.GetServer ();
+            var database =      server.GetDatabase ("mtg");
+            var collection =    database.GetCollection<CardSet> ("card_sets");
+            var query =         Query<CardSet>.EQ (e => e.Id, id.ToUpper ());
+            CardSet cardset =   collection.FindOne (query);
+
             return cardset;
         }
 
@@ -340,18 +369,14 @@ namespace Mtg
         /// <typeparam name="T">The 1st type parameter.</typeparam>
         public async Task<Card> UpdateCardField<T>(int mvid, string field, T value)
         {
-            var client = new MongoClient (Connection);
-            var server = client.GetServer ();
-            var database = server.GetDatabase ("mtg");
-
-            var collection = database.GetCollection<Card> ("cards");
-
-            var query = 
-                Query.EQ ("_id", mvid);
-
-            var sortBy = SortBy.Descending("_id");
+            var client =            new MongoClient (Connection);
+            var server =            client.GetServer ();
+            var database =          server.GetDatabase ("mtg");
+            var collection =        database.GetCollection<Card> ("cards");
+            var query =             Query.EQ ("_id", mvid);
+            var sortBy =            SortBy.Descending("_id");
                
-            UpdateBuilder update = new UpdateBuilder ();
+            UpdateBuilder update =  new UpdateBuilder ();
           
             update = Update
                 .Set(field, BsonValue.Create (value));
@@ -375,13 +400,13 @@ namespace Mtg
         public async Task<Card> UpdateCardRulings (int mvid, Ruling[] rulings)
         {
             rulings = rulings.OrderBy (x => x.ReleasedAt).ToArray();
-
             BsonArray newRulings = new BsonArray ();
 
             int id = 1; 
             foreach(Ruling rule in rulings)
             {
-                newRulings.Add (new BsonDocument{
+                newRulings.Add (new BsonDocument
+                {
                     {"_id", id},
                     {"releasedAt", rule.ReleasedAt},
                     {"rule", rule.Rule}
@@ -390,16 +415,12 @@ namespace Mtg
                 ++id;
             }
 
-            var client = new MongoClient (Connection);
-            var server = client.GetServer ();
-            var database = server.GetDatabase ("mtg");
-
-            var collection = database.GetCollection<Card> ("cards");
-
-            var query = 
-                Query.EQ ("_id", mvid);
-
-            var sortBy = SortBy.Descending("_id");
+            var client =        new MongoClient (Connection);
+            var server =        client.GetServer ();
+            var database =      server.GetDatabase ("mtg");
+            var collection =    database.GetCollection<Card> ("cards");
+            var query =         Query.EQ ("_id", mvid);
+            var sortBy =        SortBy.Descending("_id");
 
             var update = Update
                 .Set("rulings", newRulings);
@@ -415,31 +436,28 @@ namespace Mtg
 
         public async Task<Card> UpdateCardFormats (int mvid, Format[] formats)
         {
-            formats = formats.OrderBy (x => x.Name).ToArray();
-
+            formats =               formats.OrderBy (x => x.Name).ToArray();
             BsonArray newFormats = new BsonArray ();
 
             int id = 1; 
             foreach(Format format in formats)
             {
-                newFormats.Add (new BsonDocument{
+                newFormats.Add (new BsonDocument
+                {
                     {"_id", id},
                     {"name", format.Name},
                     {"legality", format.Legality}
                 });
+
                 ++id;
             }
 
-            var client = new MongoClient (Connection);
-            var server = client.GetServer ();
-            var database = server.GetDatabase ("mtg");
-
-            var collection = database.GetCollection<Card> ("cards");
-
-            var query = 
-                Query.EQ ("_id", mvid);
-
-            var sortBy = SortBy.Descending("_id");
+            var client =        new MongoClient (Connection);
+            var server =        client.GetServer ();
+            var database =      server.GetDatabase ("mtg");
+            var collection =    database.GetCollection<Card> ("cards");
+            var query =         Query.EQ ("_id", mvid);
+            var sortBy =        SortBy.Descending("_id");
 
             var update = Update
                 .Set("formats", newFormats);
@@ -452,8 +470,6 @@ namespace Mtg
 
             return GetCard (mvid).Result;
         }
-
-
     }
 }
 

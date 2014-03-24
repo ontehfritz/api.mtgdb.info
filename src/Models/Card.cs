@@ -13,94 +13,94 @@ namespace Mtg.Model
     {
         [BsonId]
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public int Id                   { get; set; }
         [JsonProperty("relatedCardId")]
         [BsonElement("relatedCardId")]
-        public int RelatedCardId { get; set; }
+        public int RelatedCardId        { get; set; }
         [JsonProperty("setNumber")]
         [BsonElement("setNumber")]
-        public int SetNumber { get; set; }
+        public int SetNumber            { get; set; }
         [BsonElement("name")]
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string Name              { get; set; }
         [BsonElement("searchName")]
         [JsonProperty("searchName")]
-        public string SearchName { get; set; }
+        public string SearchName        { get; set; }
         [BsonElement("description")]
         [JsonProperty("description")]
-        public string Description { get; set; }
+        public string Description       { get; set; }
         [BsonElement("flavor")]
         [JsonProperty("flavor")]
-        public string Flavor { get; set; }
+        public string Flavor            { get; set; }
         [BsonElement("colors")]
         [JsonProperty("colors")]
-        public string [] Colors { get; set; }
+        public string [] Colors         { get; set; }
         [BsonElement("manaCost")]
         [JsonProperty("manaCost")]
-        public string ManaCost { get; set; }
+        public string ManaCost          { get; set; }
         [BsonElement("convertedManaCost")]
         [JsonProperty("convertedManaCost")]
-        public int ConvertedManaCost { get; set; }
+        public int ConvertedManaCost    { get; set; }
         [BsonElement("cardSetName")]
         [JsonProperty("cardSetName")]
-        public string CardSetName { get; set; }
+        public string CardSetName       { get; set; }
         [BsonElement("type")]
         [JsonProperty("type")]
-        public string Type { get; set; }
+        public string Type              { get; set; }
         [BsonElement("subType")]
         [JsonProperty("subType")]
-        public string SubType { get; set; }
+        public string SubType           { get; set; }
         [BsonElement("power")]
         [JsonProperty("power")]
-        public int Power { get; set; }
+        public int Power                { get; set; }
         [BsonElement("toughness")]
         [JsonProperty("toughness")]
-        public int Toughness { get; set; }
+        public int Toughness            { get; set; }
         [BsonElement("loyalty")]
         [JsonProperty("loyalty")]
-        public int Loyalty { get; set; }
+        public int Loyalty              { get; set; }
         [BsonElement("rarity")]
         [JsonProperty("rarity")]
-        public string Rarity { get; set; }
+        public string Rarity            { get; set; }
         [BsonElement("artist")]
         [JsonProperty("artist")]
-        public string Artist { get; set; }
+        public string Artist            { get; set; }
         [BsonElement("cardSetId")]
         [JsonProperty("cardSetId")]
-        public string CardSetId { get; set; }
+        public string CardSetId         { get; set; }
         [BsonElement("rulings")]
         [JsonProperty("rulings")]
-        public List<Ruling> Rulings { get; set; }
+        public List<Ruling> Rulings     { get; set; }
         [BsonElement("formats")]
         [JsonProperty("formats")]
-        public List<Format> Formats { get; set; }
+        public List<Format> Formats     { get; set; }
         [BsonElement("releasedAt")]
         [JsonProperty("releasedAt")]
-        public DateTime ReleasedAt { get; set; }
+        public DateTime ReleasedAt      { get; set; }
     }
 
     public class Ruling 
     {
         [BsonId]
-        int Id { get; set;}
+        int Id                          { get; set;}
         [BsonElement("releasedAt")]
         [JsonProperty("releasedAt")]
-        public DateTime ReleasedAt { get; set; }
+        public DateTime ReleasedAt      { get; set; }
         [BsonElement("rule")]
         [JsonProperty("rule")]
-        public string Rule { get; set; }
+        public string Rule              { get; set; }
     }
 
     public class Format
     {
         [BsonId]
-        int Id { get; set;}
+        int Id                          { get; set;}
         [BsonElement("name")]
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string Name              { get; set; }
         [BsonElement("legality")]
         [JsonProperty("legality")]
-        public string Legality { get; set; }
+        public string Legality          { get; set; }
     }
 }
 
