@@ -1,10 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Models/Helper.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Modules/WriteModule.cs">
     <Files>
+      <File FileName="TestAdminDriver/TestAdmin.cs" Line="96" Column="18" />
+      <File FileName="MtgDbAdminDriver/Admin.cs" Line="1" Column="1" />
       <File FileName="Modules/WriteModule.cs" Line="1" Column="1" />
-      <File FileName="Views/index.cshtml" Line="11" Column="38" />
-      <File FileName="Models/Helper.cs" Line="14" Column="34" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.NUnit.TestPad">
@@ -12,13 +12,8 @@
           <Node name="TestAdminDriver" expanded="True">
             <Node name="TestAdminDriver" expanded="True">
               <Node name="Test" expanded="True">
-                <Node name="TestUpdateSetNumber" selected="True" />
+                <Node name="TestUpdateColors" selected="True" />
               </Node>
-            </Node>
-          </Node>
-          <Node name="TestMtgDbApi" expanded="True">
-            <Node name="testapi" expanded="True">
-              <Node name="TestApi" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -28,5 +23,7 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../www.mtgdb.info/src/www.mtgdb.info/www.mtgdb.info/Models/CardChange.cs" line="98" offsetX="361" offsetY="1455" expression="change.Rulings[1].Rule" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
 </Properties>

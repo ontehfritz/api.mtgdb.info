@@ -5,7 +5,9 @@ namespace Mtg
 {
     public class Helper
     {
-        private static Dictionary<string,string> FieldType = new Dictionary<string,string> () {
+        private static Dictionary<string,string> FieldType = 
+            new Dictionary<string,string> () 
+        {
             {"id","int"},
             {"setNumber", "int"},
             {"name", "string"},
@@ -30,7 +32,6 @@ namespace Mtg
 
         public static string GetCardFieldType(string field)
         {
-            field = field.ToLower();
             if (FieldType.ContainsKey (field)) 
             {
                 return FieldType [field];
