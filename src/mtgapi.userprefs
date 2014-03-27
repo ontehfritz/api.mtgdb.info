@@ -1,10 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Modules/WriteModule.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TestAdminDriver/TestAdmin.cs">
     <Files>
-      <File FileName="TestAdminDriver/TestAdmin.cs" Line="96" Column="18" />
+      <File FileName="TestAdminDriver/TestAdmin.cs" Line="59" Column="18" />
       <File FileName="MtgDbAdminDriver/Admin.cs" Line="1" Column="1" />
       <File FileName="Modules/WriteModule.cs" Line="1" Column="1" />
+      <File FileName="Models/Helper.cs" Line="12" Column="28" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.NUnit.TestPad">
@@ -12,7 +13,7 @@
           <Node name="TestAdminDriver" expanded="True">
             <Node name="TestAdminDriver" expanded="True">
               <Node name="Test" expanded="True">
-                <Node name="TestUpdateColors" selected="True" />
+                <Node name="TestUpdateFlavor" selected="True" />
               </Node>
             </Node>
           </Node>

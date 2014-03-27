@@ -9,6 +9,7 @@ namespace Mtg
             new Dictionary<string,string> () 
         {
             {"id","int"},
+            {"relatedCardId","int"},
             {"setNumber", "int"},
             {"name", "string"},
             {"searchName", "string"},

@@ -48,6 +48,15 @@ namespace TestAdminDriver
         }
 
         [Test ()]
+        public void TestUpdateRelatedCardId ()
+        {
+            bool updated = admin.UpdateCardField(ssaUser.AuthToken,
+                1,"relatedCardId","6");
+            //
+            Assert.IsTrue (updated);
+        }
+
+        [Test ()]
         public void TestUpdateSetNumber ()
         {
             bool updated = admin.UpdateCardField(ssaUser.AuthToken,
