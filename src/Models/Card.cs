@@ -74,6 +74,7 @@ namespace Mtg.Model
         [BsonElement("formats")]
         [JsonProperty("formats")]
         public List<Format> Formats     { get; set; }
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         [BsonElement("releasedAt")]
         [JsonProperty("releasedAt")]
         public DateTime ReleasedAt      { get; set; }
@@ -84,6 +85,7 @@ namespace Mtg.Model
         [BsonId]
         int Id                          { get; set;}
         [BsonElement("releasedAt")]
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         [JsonProperty("releasedAt")]
         public DateTime ReleasedAt      { get; set; }
         [BsonElement("rule")]
