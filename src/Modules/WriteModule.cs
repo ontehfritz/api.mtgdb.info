@@ -51,10 +51,10 @@ namespace Mtg
                     switch(Helper.GetCardFieldType(model.Field))
                     {
                     case "int":
-                        repository.UpdateCardField<int>(mvid,model.Field,int.Parse(model.Value));
+                        repository.UpdateCardField<int>(mvid,model.Field,int.Parse(model.Value ?? "0"));
                         break;
                     case "string":
-                        repository.UpdateCardField<string>(mvid,model.Field, model.Value);
+                        repository.UpdateCardField<string>(mvid,model.Field, model.Value ?? "");
                         break;
                     case "string[]":
                         repository.UpdateCardField<string[]>(mvid,model.Field, model.Value.Split(','));
@@ -65,7 +65,6 @@ namespace Mtg
                     default:
                         return Response.AsJson("false",
                             Nancy.HttpStatusCode.UnprocessableEntity);
-
                     }
                 }
                 catch(Exception e)

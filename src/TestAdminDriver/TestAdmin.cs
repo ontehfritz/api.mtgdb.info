@@ -91,7 +91,7 @@ namespace TestAdminDriver
         [Test ()]
         public void TestUpdateFlavor ()
         {
-            bool updated = admin.UpdateCardField (ssaUser.AuthToken, 1, "flavor", "update");
+            bool updated = admin.UpdateCardField (ssaUser.AuthToken, 1, "flavor", "");
             Assert.IsTrue (updated);
         }
           

@@ -31,7 +31,8 @@ namespace testapi
         [Test ()]
         public void Test_update_card ()
         {
-            Card after = repository.UpdateCardField<string[]>(1, "colors", new string[]{"blue","green"}).Result;
+            //Card after = repository.UpdateCardField<string[]>(1, "colors", new string[]{"blue","green"}).Result;
+            Card after = repository.UpdateCardField<string>(1, "flavor", "").Result;
 
             Assert.AreEqual (after.Colors[0], "blue");
         }

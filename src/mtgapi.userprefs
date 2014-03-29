@@ -1,13 +1,34 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Models/Card.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Modules/WriteModule.cs">
     <Files>
-      <File FileName="TestAdminDriver/TestAdmin.cs" Line="1" Column="1" />
-      <File FileName="MtgDbAdminDriver/Admin.cs" Line="1" Column="1" />
-      <File FileName="Modules/WriteModule.cs" Line="1" Column="1" />
+      <File FileName="TestAdminDriver/TestAdmin.cs" Line="96" Column="10" />
+      <File FileName="MtgDbAdminDriver/Admin.cs" Line="73" Column="17" />
+      <File FileName="Modules/WriteModule.cs" Line="48" Column="17" />
       <File FileName="Models/Helper.cs" Line="1" Column="1" />
-      <File FileName="Models/Card.cs" Line="79" Column="37" />
+      <File FileName="Models/Card.cs" Line="1" Column="1" />
+      <File FileName="Models/UpdateCardModel.cs" Line="1" Column="1" />
+      <File FileName="Models/MongoRepository.cs" Line="1" Column="1" />
+      <File FileName="testapi/TestApi.cs" Line="29" Column="10" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True">
+          <Node name="TestAdminDriver" expanded="True">
+            <Node name="TestAdminDriver" expanded="True">
+              <Node name="Test" expanded="True">
+                <Node name="TestUpdateFlavor" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+          <Node name="TestMtgDbApi" expanded="True">
+            <Node name="testapi" expanded="True">
+              <Node name="TestApi" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
