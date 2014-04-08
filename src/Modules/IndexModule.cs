@@ -8,6 +8,7 @@ using Nancy.Json;
 using Nancy.ModelBinding;
 using Mtg.Model;
 using System.Configuration;
+using System.Reflection;
 
 namespace Mtg
 {
@@ -31,21 +32,47 @@ namespace Mtg
                 return Response.AsJson (cards);
             };
 
+            Get ["/cards/random", true] = async (parameters, ct) => 
+            {
+                JsonSettings.MaxJsonLength =    100000000;
+                Card card =                    null;
+            
+                card = await repo.GetRandomCard();
+
+                return Response.AsJson (card);
+            };
+
             Get ["/cards", true] = async (parameters, ct) => 
             {
                 JsonSettings.MaxJsonLength =    100000000;
                 Card[] cards =                  null;
-                cards =                         await repo.GetCards (Request.Query);
-                  
+               
                 if(Request.Query.Fields != null)
                 {
-                    var c = cards.AsQueryable()
-                        .Select(string.Format("new ({0})",
+                    string[] fields = ((string)Request.Query.Fields).Split(',');
+
+                    foreach(string field in fields)
+                    {
+                        if(typeof(Card).GetProperty(field,BindingFlags.IgnoreCase |  
+                            BindingFlags.Public | BindingFlags.Instance) == null)
+                        {
+                            return Response.AsJson(string.Format("Field: {0} is invalid.", field),
+                                HttpStatusCode.NotAcceptable);
+                        }
+                    }
+
+                    cards = await repo.GetCards (Request.Query);
+
+                    var c = cards
+                            .AsQueryable()
+                            .Select(string.Format("new ({0})",
                             (string)Request.Query.Fields));
 
                     return Response.AsJson(c);
                 }
-                    
+               
+                cards = await repo.GetCards (Request.Query);
+          
                 return Response.AsJson (cards);
             };
 
@@ -103,6 +130,17 @@ namespace Mtg
 
                 return Response.AsJson (cardset);
             };
+
+            Get ["/sets/{id}/cards/random", true] = async (parameters, ct) => 
+            {
+                JsonSettings.MaxJsonLength =    100000000;
+                Card card =                     null;
+
+                card = await repo.GetRandomCardInSet((string)parameters.id);
+
+                return Response.AsJson (card);
+            };
+
 
             Get ["/sets/{id}/cards/", true] = async (parameters, ct) => 
             {

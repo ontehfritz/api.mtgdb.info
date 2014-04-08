@@ -38,6 +38,20 @@ namespace Mtg.Model
         [BsonElement("basicLand")]
         [JsonProperty("basicLand")]
         public int BasicLand        { get; set; }
+        [BsonIgnore]
+        [JsonProperty("total")]
+        public int Total            
+        {
+            get 
+            { 
+                if(this.CardIds == null)
+                {
+                    return 0;
+                }
+
+                return this.CardIds.Length;
+            } 
+        }
         [BsonElement("releasedAt")]
         [JsonProperty("releasedAt")]
         public DateTime ReleasedAt  { get; set; }

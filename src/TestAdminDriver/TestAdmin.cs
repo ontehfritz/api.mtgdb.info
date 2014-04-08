@@ -46,6 +46,15 @@ namespace TestAdminDriver
             ssaUser =   ssa.Authenticate ("mtgdb_tester", 
                 "test123", "127.0.0.1");
         }
+            
+        [Test ()]
+        public void TestUpdateToken ()
+        {
+            bool updated = admin.UpdateCardField(ssaUser.AuthToken,
+                1,"token","true");
+            //
+            Assert.IsTrue (updated);
+        }
 
         [Test ()]
         public void TestUpdateRelatedCardId ()

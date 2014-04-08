@@ -16,6 +16,22 @@ namespace testapi
 
         IRepository repository = new MongoRepository (connectionString);
 
+        [Test()]
+        public void Test_get_random_card()
+        {
+            Card rcard = repository.GetRandomCard().Result;
+            System.Console.Write(rcard.Id.ToString());
+            Assert.IsNotNull(rcard);
+        }
+            
+        [Test()]
+        public void Test_get_random_card_in_set()
+        {
+            Card rcard = repository.GetRandomCardInSet("lea").Result;
+            System.Console.Write(rcard.Id.ToString());
+            Assert.IsNotNull(rcard);
+        }
+
         [Test ()]
         public void Test_update_card_rulings ()
         {

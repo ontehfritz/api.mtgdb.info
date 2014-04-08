@@ -27,6 +27,7 @@ namespace Mtg
             {"rarity","string"},
             {"artist","string"},
             {"cardSetId","string"},
+            {"token","bool"},
             {"formats","string[]"},
             {"releasedAt","DateTime"}
         };

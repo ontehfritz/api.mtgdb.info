@@ -75,6 +75,7 @@ For contact, server status, and updates:
     rarity              String      : the rarity of the card
     artist              String      : artist of the illustrations
     cardSetId           String      : the abbreviated name of the set
+    token               Boolean     : true if a token card, false if not
     rulings             Ruling[]    : list of rulings for this card
     formats             Format[]    : list of legal formats this card is in
     releasedAt          Date        : when the card was released
@@ -162,21 +163,32 @@ For contact, server status, and updates:
         </b>
         </small>
         <br />
+        <h4>Get a random card</h4>
+        <code>
+        Get
+        http://api.mtgdb.info/cards/random
+        </code>
+        <br />
+        <small>
+        This method will return a random card 
+        </small>
+        <br />
 	</div>
     <h1>CardSet</h1>
 	<pre>
-	id          String    : abbreviated name of set   
-	name        String    : name of set
-	block       String    : name of block the set is part of
-	description String    : information about the set
-	wikipedia   String    : link to wiki page
-	common      Integer   : amount of common cards in set
-	uncommon    Integer   : amount of uncommon cards in set
-	rare        Integer   : amount of rare cards in set
-	mythicRare  Integer   : amount of mythic rare cards in set
-	basicLand   Integer   : amount of basic land cards in set
-	releasedAt  Date      : date set was released
-	cardIds     Integer[] : multiverse ids of all the cards in the set
+    id          String    : abbreviated name of set   
+    name        String    : name of set
+    block       String    : name of block the set is part of
+    description String    : information about the set
+    wikipedia   String    : link to wiki page
+    common      Integer   : amount of common cards in set
+    uncommon    Integer   : amount of uncommon cards in set
+    rare        Integer   : amount of rare cards in set
+    mythicRare  Integer   : amount of mythic rare cards in set
+    basicLand   Integer   : amount of basic land cards in set
+    total       Integer   : total cards
+    releasedAt  Date      : date set was released
+    cardIds     Integer[] : multiverse ids of all the cards in the set
 	</pre>
 	<div style="border: solid black 1px;padding:5px;">
     	<h4>Get all sets</h4>
@@ -218,6 +230,16 @@ For contact, server status, and updates:
         </code><br />
         <small><i>Ranges are inclusive, start=1&end=10 will include card 1 to 10 inclusive.
         </i></small>
+        <h4>Get a random card in a set</h4>
+        <code>
+        Get
+        http://api.mtgdb.info/sets/[id]/cards/random
+        </code>
+        <br />
+        <small>
+        This method will return a random card from a set
+        </small>
+        <br />
 	</div>
 <hr />
 <p>Please send feature request, comments, corrections or anything else to: 

@@ -50,6 +50,9 @@ namespace Mtg
                 {
                     switch(Helper.GetCardFieldType(model.Field))
                     {
+                    case "bool":
+                        repository.UpdateCardField<bool>(mvid,model.Field,bool.Parse(model.Value ?? "false"));
+                        break;
                     case "int":
                         repository.UpdateCardField<int>(mvid,model.Field,int.Parse(model.Value ?? "0"));
                         break;

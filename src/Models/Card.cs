@@ -68,6 +68,9 @@ namespace Mtg.Model
         [BsonElement("cardSetId")]
         [JsonProperty("cardSetId")]
         public string CardSetId         { get; set; }
+        [BsonElement("token")]
+        [JsonProperty("token")]
+        public bool Token               { get; set; }
         [BsonElement("rulings")]
         [JsonProperty("rulings")]
         public List<Ruling> Rulings     { get; set; }

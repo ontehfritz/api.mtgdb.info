@@ -29,6 +29,53 @@ namespace Mtg
         }
 
         /// <summary>
+        /// Gets the random card.
+        /// </summary>
+        /// <returns>The random card.</returns>
+        public async Task<Card> GetRandomCard()
+        {
+            var client =        new MongoClient (Connection);
+            var server =        client.GetServer ();
+            var database =      server.GetDatabase ("mtg");
+            var collection =    database.GetCollection<Card> ("cards");
+            int max =           collection.AsQueryable<Card>()
+                                .Select(c => c.Id)
+                                .Max();
+
+            Random rand =       new Random();
+
+            var query =         Query<Card>.GTE (e => e.Id, rand.Next(max));
+            Card card =         collection.FindOne (query);
+
+            return card;
+        }
+
+        /// <summary>
+        /// Gets the random card in set.
+        /// </summary>
+        /// <returns>The random card in set.</returns>
+        /// <param name="setId">Set identifier.</param>
+        public async Task<Card> GetRandomCardInSet(string setId)
+        {
+            var client =        new MongoClient (Connection);
+            var server =        client.GetServer ();
+            var database =      server.GetDatabase ("mtg");
+            var collection =    database.GetCollection<Card> ("cards");
+            int max =           collection.AsQueryable<Card>()
+                                .Where(c => c.CardSetId == setId.ToUpper ())
+                                .Select(c => c.SetNumber)
+                                .Max();
+
+            Random rand =       new Random();
+
+            var query =         Query.And(Query<Card>.GTE (e => e.Id, rand.Next(max)),
+                                            Query<Card>.EQ (e => e.CardSetId, setId.ToUpper ()));
+            Card card =         collection.FindOne (query);
+
+            return card;
+        }
+
+        /// <summary>
         /// Gets the sets.
         /// </summary>
         /// <returns>The sets.</returns>
@@ -339,7 +386,7 @@ namespace Mtg
                 cardset.Add (set);
             }
 
-            return cardset.ToArray ();
+            return cardset.OrderBy(x => x.ReleasedAt).ToArray ();
         }
         /// <summary>
         /// Gets the set.

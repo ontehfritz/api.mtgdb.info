@@ -17,6 +17,8 @@ namespace Mtg
         Task<CardSet[]> GetSets (string [] setIds);
         Task<CardSet> GetSet (string id);
         Task<Card[]> Search (string text);
+        Task<Card> GetRandomCard ();
+        Task<Card> GetRandomCardInSet(string setId);
 
         //Write methods for open db functions
         Task<Card> UpdateCardField<T> (int mvid, string field, T value);
