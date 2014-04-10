@@ -2,33 +2,19 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Models/MongoRepository.cs">
     <Files>
-      <File FileName="Models/Helper.cs" Line="26" Column="10" />
-      <File FileName="testapi/TestApi.cs" Line="103" Column="9" />
-      <File FileName="TestAdminDriver/TestAdmin.cs" Line="48" Column="10" />
-      <File FileName="Modules/WriteModule.cs" Line="53" Column="15" />
-      <File FileName="MtgDbAdminDriver/Admin.cs" Line="133" Column="13" />
-      <File FileName="Modules/IndexModule.cs" Line="154" Column="18" />
-      <File FileName="Models/Card.cs" Line="81" Column="17" />
-      <File FileName="Views/index.cshtml" Line="194" Column="20" />
-      <File FileName="Models/MongoRepository.cs" Line="388" Column="13" />
-      <File FileName="Models/CardSet.cs" Line="37" Column="22" />
+      <File FileName="Models/Helper.cs" Line="1" Column="1" />
+      <File FileName="testapi/TestApi.cs" Line="1" Column="1" />
+      <File FileName="TestAdminDriver/TestAdmin.cs" Line="1" Column="1" />
+      <File FileName="Modules/WriteModule.cs" Line="1" Column="1" />
+      <File FileName="MtgDbAdminDriver/Admin.cs" Line="1" Column="1" />
+      <File FileName="Modules/IndexModule.cs" Line="1" Column="1" />
+      <File FileName="Models/Card.cs" Line="1" Column="1" />
+      <File FileName="Views/index.cshtml" Line="1" Column="1" />
+      <File FileName="Models/MongoRepository.cs" Line="72" Column="22" />
+      <File FileName="Models/CardSet.cs" Line="1" Column="1" />
+      <File FileName="Models/UpdateCardModel.cs" Line="1" Column="1" />
+      <File FileName="Models/UpdateCardRulingModel.cs" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True">
-          <Node name="TestAdminDriver" expanded="True">
-            <Node name="TestAdminDriver" expanded="True">
-              <Node name="Test" expanded="True" selected="True" />
-            </Node>
-          </Node>
-          <Node name="TestMtgDbApi" expanded="True">
-            <Node name="testapi" expanded="True">
-              <Node name="TestApi" expanded="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
