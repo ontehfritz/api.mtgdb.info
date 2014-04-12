@@ -2,6 +2,7 @@
 using System.Net;
 using System.Text;
 using Newtonsoft.Json;
+using MtgDbAdminDriver;
 
 
 namespace MtgDb.Info
@@ -90,7 +91,7 @@ namespace MtgDb.Info
             int i = 0; 
             foreach(Ruling ruling in rulings)
             {
-                reqparm.Add (string.Format ("ReleasedAt[{0}]", i), ruling.ReleasedAt.ToString("yyyy-MM-dd"));
+                reqparm.Add (string.Format ("ReleasedAt[{0}]", i), ruling.ReleasedAt);
                 reqparm.Add (string.Format ("Rule[{0}]", i), ruling.Rule);
                 ++i;
             }

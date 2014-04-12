@@ -2,8 +2,8 @@
 using System;
 using MtgDb.Info;
 using System.Collections.Generic;
-using Mtg;
 using SuperSimple.Auth;
+using MtgDbAdminDriver;
 
 
 namespace TestAdminDriver
@@ -191,7 +191,7 @@ namespace TestAdminDriver
         [Test ()]
         public void TestUpdateFormats  ()
         {
-            List<MtgDb.Info.Format> formats = new List<Format> ();
+            List<Format> formats = new List<Format> ();
             formats.Add (new Format(){ Name = "test 1", Legality = "Legal"});
             formats.Add (new Format(){ Name = "test 2", Legality = "Legal"});
             formats.Add (new Format(){ Name = "test 3", Legality = "Legal"});
@@ -211,10 +211,10 @@ namespace TestAdminDriver
         [Test ()]
         public void TestUpdateRulings  ()
         {
-            List<MtgDb.Info.Ruling> rulings = new List<Ruling> ();
-            rulings.Add (new Ruling(){ ReleasedAt = DateTime.Now, Rule = "Rule 1"});
-            rulings.Add (new Ruling(){ ReleasedAt = DateTime.Now, Rule = "Rule 2"});
-            rulings.Add (new Ruling(){ ReleasedAt = DateTime.Now, Rule = "Rule 3"});
+            List<Ruling> rulings = new List<Ruling> ();
+            rulings.Add (new Ruling(){ ReleasedAt = DateTime.Now.ToString("yyyy-MM-dd"), Rule = "Rule 1"});
+            rulings.Add (new Ruling(){ ReleasedAt = DateTime.Now.ToString("yyyy-MM-dd"), Rule = "Rule 2"});
+            rulings.Add (new Ruling(){ ReleasedAt = DateTime.Now.ToString("yyyy-MM-dd"), Rule = "Rule 3"});
 
             bool updated = admin.UpdateCardRulings(ssaUser.AuthToken,1,rulings.ToArray());
             Assert.IsTrue (updated);

@@ -1,30 +1,20 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Models/MongoRepository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MtgDbAdminDriver/Admin.cs">
     <Files>
-      <File FileName="Models/Helper.cs" Line="20" Column="42" />
-      <File FileName="testapi/TestApi.cs" Line="54" Column="15" />
-      <File FileName="TestAdminDriver/TestAdmin.cs" Line="209" Column="10" />
-      <File FileName="Modules/WriteModule.cs" Line="1" Column="1" />
-      <File FileName="MtgDbAdminDriver/Admin.cs" Line="93" Column="108" />
-      <File FileName="Modules/IndexModule.cs" Line="1" Column="1" />
-      <File FileName="Models/Card.cs" Line="87" Column="17" />
-      <File FileName="Views/index.cshtml" Line="1" Column="1" />
-      <File FileName="Models/MongoRepository.cs" Line="448" Column="14" />
-      <File FileName="Models/CardSet.cs" Line="45" Column="17" />
-      <File FileName="Models/UpdateCardModel.cs" Line="1" Column="1" />
-      <File FileName="Models/UpdateCardRulingModel.cs" Line="7" Column="24" />
+      <File FileName="MtgDbAdminDriver/Admin.cs" Line="90" Column="13" />
+      <File FileName="MtgDbAdminDriver/Ruling.cs" Line="1" Column="1" />
+      <File FileName="Models/Card.cs" Line="1" Column="1" />
+      <File FileName="../../../../../../Library/Frameworks/Mono.framework/Versions/3.2.6/lib/mono/4.0/Microsoft.Common.targets" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" />
+        <State expanded="True" selected="True" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
-    <Watch file="../../www.mtgdb.info/src/www.mtgdb.info/www.mtgdb.info/Models/CardChange.cs" line="98" offsetX="361" offsetY="1455" expression="change.Rulings[1].Rule" liveUpdate="False" />
-  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
