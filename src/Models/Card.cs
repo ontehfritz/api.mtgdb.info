@@ -77,10 +77,9 @@ namespace Mtg.Model
         [BsonElement("formats")]
         [JsonProperty("formats")]
         public List<Format> Formats     { get; set; }
-        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         [BsonElement("releasedAt")]
         [JsonProperty("releasedAt")]
-        public DateTime ReleasedAt      { get; set; }
+        public string ReleasedAt        { get; set; }
     }
 
     public class Ruling 
@@ -88,9 +87,8 @@ namespace Mtg.Model
         [BsonId]
         int Id                          { get; set;}
         [BsonElement("releasedAt")]
-        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         [JsonProperty("releasedAt")]
-        public DateTime ReleasedAt      { get; set; }
+        public string ReleasedAt        { get; set; }
         [BsonElement("rule")]
         [JsonProperty("rule")]
         public string Rule              { get; set; }

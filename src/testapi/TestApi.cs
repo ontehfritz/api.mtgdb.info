@@ -13,6 +13,7 @@ namespace testapi
     public class TestApi
     {
         private const string connectionString = "mongodb://localhost";
+        string format = "yyyy-MM-dd";
 
         IRepository repository = new MongoRepository (connectionString);
 
@@ -36,8 +37,10 @@ namespace testapi
         public void Test_update_card_rulings ()
         {
             List<Ruling> rulings = new List<Ruling> ();
-            rulings.Add(new Ruling {ReleasedAt = DateTime.Now, Rule = "test ruling 1"});
-            rulings.Add(new Ruling {ReleasedAt = DateTime.Now, Rule = "test ruling 2"});
+            rulings.Add(new Ruling {ReleasedAt = DateTime.Now.ToString(format), 
+                Rule = "test ruling 1"});
+            rulings.Add(new Ruling {ReleasedAt = DateTime.Now.ToString(format), 
+                Rule = "test ruling 2"});
 
             Card after = repository.UpdateCardRulings(1,rulings.ToArray()).Result;
            

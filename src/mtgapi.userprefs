@@ -1,17 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Models/MongoRepository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Models/CardSet.cs">
     <Files>
       <File FileName="Models/Helper.cs" Line="1" Column="1" />
-      <File FileName="testapi/TestApi.cs" Line="1" Column="1" />
+      <File FileName="testapi/TestApi.cs" Line="36" Column="18" />
       <File FileName="TestAdminDriver/TestAdmin.cs" Line="1" Column="1" />
       <File FileName="Modules/WriteModule.cs" Line="1" Column="1" />
       <File FileName="MtgDbAdminDriver/Admin.cs" Line="1" Column="1" />
       <File FileName="Modules/IndexModule.cs" Line="1" Column="1" />
-      <File FileName="Models/Card.cs" Line="1" Column="1" />
+      <File FileName="Models/Card.cs" Line="67" Column="13" />
       <File FileName="Views/index.cshtml" Line="1" Column="1" />
-      <File FileName="Models/MongoRepository.cs" Line="72" Column="22" />
-      <File FileName="Models/CardSet.cs" Line="1" Column="1" />
+      <File FileName="Models/MongoRepository.cs" Line="90" Column="12" />
+      <File FileName="Models/CardSet.cs" Line="46" Column="15" />
       <File FileName="Models/UpdateCardModel.cs" Line="1" Column="1" />
       <File FileName="Models/UpdateCardRulingModel.cs" Line="1" Column="1" />
     </Files>
