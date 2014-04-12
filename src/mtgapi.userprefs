@@ -1,20 +1,25 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Models/CardSet.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Models/MongoRepository.cs">
     <Files>
-      <File FileName="Models/Helper.cs" Line="1" Column="1" />
-      <File FileName="testapi/TestApi.cs" Line="36" Column="18" />
-      <File FileName="TestAdminDriver/TestAdmin.cs" Line="1" Column="1" />
+      <File FileName="Models/Helper.cs" Line="20" Column="42" />
+      <File FileName="testapi/TestApi.cs" Line="54" Column="15" />
+      <File FileName="TestAdminDriver/TestAdmin.cs" Line="209" Column="10" />
       <File FileName="Modules/WriteModule.cs" Line="1" Column="1" />
-      <File FileName="MtgDbAdminDriver/Admin.cs" Line="1" Column="1" />
+      <File FileName="MtgDbAdminDriver/Admin.cs" Line="93" Column="108" />
       <File FileName="Modules/IndexModule.cs" Line="1" Column="1" />
-      <File FileName="Models/Card.cs" Line="67" Column="13" />
+      <File FileName="Models/Card.cs" Line="87" Column="17" />
       <File FileName="Views/index.cshtml" Line="1" Column="1" />
-      <File FileName="Models/MongoRepository.cs" Line="90" Column="12" />
-      <File FileName="Models/CardSet.cs" Line="46" Column="15" />
+      <File FileName="Models/MongoRepository.cs" Line="448" Column="14" />
+      <File FileName="Models/CardSet.cs" Line="45" Column="17" />
       <File FileName="Models/UpdateCardModel.cs" Line="1" Column="1" />
-      <File FileName="Models/UpdateCardRulingModel.cs" Line="1" Column="1" />
+      <File FileName="Models/UpdateCardRulingModel.cs" Line="7" Column="24" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True" />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

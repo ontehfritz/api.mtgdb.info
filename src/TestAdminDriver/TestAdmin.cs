@@ -203,7 +203,8 @@ namespace TestAdminDriver
         [Test ()]
         public void TestUpdateReleasedAt  ()
         {
-            bool updated = admin.UpdateCardField(ssaUser.AuthToken,1,"releasedAt", DateTime.Now.ToString());
+            bool updated = admin.UpdateCardField(ssaUser.AuthToken,1,"releasedAt", 
+                DateTime.Now.ToString("yyyy-MM-dd"));
             Assert.IsTrue (updated);
         }
 

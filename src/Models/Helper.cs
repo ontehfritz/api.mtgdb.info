@@ -29,7 +29,7 @@ namespace Mtg
             {"cardSetId","string"},
             {"token","bool"},
             {"formats","string[]"},
-            {"releasedAt","DateTime"}
+            {"releasedAt","string"}//"yyyy-MM-dd"
         };
 
         public static string GetCardFieldType(string field)

@@ -446,6 +446,7 @@ namespace Mtg
             int id = 1; 
             foreach(Ruling rule in rulings)
             {
+           
                 newRulings.Add (new BsonDocument
                 {
                     {"_id", id},
