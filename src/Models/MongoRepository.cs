@@ -68,6 +68,21 @@ namespace Mtg
 
             return card;
         }
+        public async Task<Card> GetCardBySetNumber (string setId, int setNumber)
+        {
+            var client =        new MongoClient (Connection);
+            var server =        client.GetServer ();
+            var database =      server.GetDatabase ("mtg");
+
+            var collection =    database.GetCollection<Card> ("cards");
+
+            var query =         Query.And (Query<Card>.EQ(x => x.CardSetId, setId.ToUpper()),
+                Query<Card>.EQ(x => x.SetNumber, setNumber));
+
+            Card card =       collection.FindOne (query);
+
+            return card;
+        }
 
         /// <summary>
         /// Gets the sets.

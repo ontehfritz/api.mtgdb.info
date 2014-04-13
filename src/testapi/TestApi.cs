@@ -18,6 +18,15 @@ namespace testapi
         IRepository repository = new MongoRepository (connectionString);
 
         [Test()]
+        public void Test_get_card_by_setNumber()
+        {
+            Card card = repository.GetCardBySetNumber("THS", 90).Result;
+            System.Console.Write(card.Id.ToString() + ":" + card.SetNumber.ToString());
+            Assert.AreEqual("THS", card.CardSetId);
+            Assert.AreEqual(90, card.SetNumber);
+        }
+            
+        [Test()]
         public void Test_get_random_card()
         {
             Card rcard = repository.GetRandomCard().Result;

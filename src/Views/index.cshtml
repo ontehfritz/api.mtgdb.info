@@ -23,8 +23,12 @@ the gathering database". <b>Supports http and https.</b></small>
 </h2>
 
 <p>
-<h4>Download drivers/wrappers:</h4>
-<a href="~/content/download/MtgDb.Info.Driver.zip"><span class="label label-default">C#</span></a> More to come ...
+<h4>Download drivers/clients/wrappers:</h4>
+<a href="~/content/download/MtgDb.Info.Driver.zip">
+<span class="label label-default">C#</span></a> 
+<a href="~/content/download/mtgdb.info_java_api.jar">
+<span class="label label-default">Java</span></a><br />
+More to come ...
 </p>
 <p>
 For contact, server status, and updates:
@@ -222,6 +226,14 @@ For contact, server status, and updates:
         Get
         http://api.mtgdb.info/sets/[id]/cards/?fields=setnumber,id,name
         </code>
+
+        <h4>Get a card in a set</h4>
+        <code>
+        Get
+        http://api.mtgdb.info/sets/[id]/cards/[setNumber]
+        </code><br />
+        <small><i>This is by the card number in the set not multiverse Id
+        </i></small>
 
         <h4>Get a range of cards in a set</h4>
         <code>

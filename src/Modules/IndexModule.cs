@@ -142,6 +142,14 @@ namespace Mtg
             };
 
 
+            Get ["/sets/{id}/cards/{setNumber}", true] = async (parameters, ct) => 
+            {
+                Card cards = await repo.GetCardBySetNumber((string)parameters.id,
+                    (int)parameters.setNumber);
+
+                return Response.AsJson(cards);
+            };
+
             Get ["/sets/{id}/cards/", true] = async (parameters, ct) => 
             {
                 JsonSettings.MaxJsonLength =    100000000;
