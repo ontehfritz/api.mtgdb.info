@@ -71,6 +71,9 @@ namespace Mtg.Model
         [BsonElement("token")]
         [JsonProperty("token")]
         public bool Token               { get; set; }
+        [BsonElement("promo")]
+        [JsonProperty("promo")]
+        public bool Promo               { get; set; }
         [BsonElement("rulings")]
         [JsonProperty("rulings")]
         public List<Ruling> Rulings     { get; set; }
