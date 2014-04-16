@@ -1,17 +1,23 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Models/MongoRepository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/index.cshtml">
     <Files>
       <File FileName="MtgDbAdminDriver/Admin.cs" Line="1" Column="1" />
       <File FileName="MtgDbAdminDriver/Ruling.cs" Line="1" Column="1" />
       <File FileName="Models/Card.cs" Line="1" Column="1" />
       <File FileName="../../../../../../Library/Frameworks/Mono.framework/Versions/3.2.6/lib/mono/4.0/Microsoft.Common.targets" Line="1" Column="1" />
       <File FileName="Models/IRepository.cs" Line="1" Column="1" />
-      <File FileName="Models/MongoRepository.cs" Line="335" Column="13" />
+      <File FileName="Models/MongoRepository.cs" Line="1" Column="1" />
       <File FileName="testapi/TestApi.cs" Line="1" Column="1" />
       <File FileName="Modules/IndexModule.cs" Line="1" Column="1" />
-      <File FileName="Views/index.cshtml" Line="1" Column="1" />
+      <File FileName="Views/index.cshtml" Line="186" Column="23" />
+      <File FileName="Models/CardSet.cs" Line="22" Column="37" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
