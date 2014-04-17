@@ -44,8 +44,13 @@ namespace Mtg
 
             Random rand =       new Random();
 
-            var query =         Query<Card>.GTE (e => e.Id, rand.Next(max));
+            var query =         Query<Card>.EQ (e => e.Id, rand.Next(max));
             Card card =         collection.FindOne (query);
+            while(card == null)
+            {
+                query =         Query<Card>.EQ (e => e.Id, rand.Next(max));
+                card =          collection.FindOne (query);
+            }
 
             return card;
         }

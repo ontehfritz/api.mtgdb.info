@@ -33,6 +33,17 @@ namespace testapi
             System.Console.Write(rcard.Id.ToString());
             Assert.IsNotNull(rcard);
         }
+
+        [Test()]
+        public void Test_get_random_card_performance()
+        {
+            Card rcard = repository.GetRandomCard().Result;
+           
+            for(int i = 0; i < 1000; i++ )
+            {
+                rcard = repository.GetRandomCard().Result;
+            }
+        }
             
         [Test()]
         public void Test_get_random_card_in_set()
@@ -41,7 +52,7 @@ namespace testapi
             System.Console.Write(rcard.Id.ToString());
             Assert.IsNotNull(rcard);
         }
-
+            
         [Test ()]
         public void Test_update_card_rulings ()
         {
