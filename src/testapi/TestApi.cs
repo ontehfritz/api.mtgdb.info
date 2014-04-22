@@ -4,6 +4,7 @@ using Mtg;
 using Mtg.Model;
 using Nancy;
 using System.Collections.Generic;
+using MongoDB.Driver;
 
 namespace testapi
 {
@@ -16,6 +17,32 @@ namespace testapi
         string format = "yyyy-MM-dd";
 
         IRepository repository = new MongoRepository (connectionString);
+
+        [Test()]
+        public void Test_search_verify()
+        {
+            CardSearch search = new CardSearch("name eq 'shit and shit' and type not creature");
+            string[] elements = search.Verify();
+            foreach(string s in elements)
+            {
+                System.Console.WriteLine(s);
+            }
+        }
+
+        [Test()]
+        public void Test_mongo()
+        {
+            CardSearch search = new CardSearch("name eq 'Giant Growth'");
+            List<IMongoQuery> queries = search.MongoQuery();
+            Assert.Greater(queries.Count, 0);
+        }
+
+        [Test()]
+        public void Test_complex_search()
+        {
+            Card [] cards = repository.Search("name eq 'Giant Growth'",true).Result;
+            Assert.Greater(0, cards.Length);
+        }
 
         [Test()]
         public void Test_get_card_by_setNumber()

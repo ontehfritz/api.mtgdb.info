@@ -141,17 +141,31 @@ namespace Mtg
         /// Search the specified text.
         /// </summary>
         /// <param name="text">Text.</param>
-        public async Task<Card[]> Search (string text)
+        public async Task<Card[]> Search (string text, bool isComplex = false)
         {
             var client =        new MongoClient (Connection);
             var server =        client.GetServer ();
             var database =      server.GetDatabase ("mtg");
 
             var collection =    database.GetCollection<Card> ("cards");
-            var query = Query<Card>.Matches (e => e.SearchName, text.ToLower().Replace(" ", ""));
-            MongoCursor<Card> cursor = collection.Find (query);
 
             List<Card> cards =  new List<Card> ();
+            MongoCursor<Card> cursor = null;
+
+            if(isComplex)
+            {
+                // List<IMongoQuery> queries = new List<IMongoQuery> ();
+
+                CardSearch search = new CardSearch(text);
+
+                cursor = collection.Find (Query.And (search.MongoQuery())).SetSortOrder ("_id");
+
+            }
+            else
+            {
+                var query = Query<Card>.Matches (e => e.SearchName, text.ToLower().Replace(" ", ""));
+                cursor = collection.Find (query);
+            }
 
             foreach (Card card in cursor) 
             {
