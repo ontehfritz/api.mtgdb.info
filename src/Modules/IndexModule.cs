@@ -25,6 +25,16 @@ namespace Mtg
                 return View ["index"];
             };
 
+            Get ["/search/", true] = async (parameters, ct) => 
+            {
+                string query = (string)Request.Query.q;
+
+                Card [] cards = await repo.Search (query, true);
+
+                return Response.AsJson (cards);
+            };
+
+
             Get ["/search/{text}", true] = async (parameters, ct) => 
             {
                 Card [] cards = await repo.Search ((string)parameters.text);

@@ -32,16 +32,65 @@ namespace testapi
         [Test()]
         public void Test_mongo()
         {
-            CardSearch search = new CardSearch("name eq 'Giant Growth'");
+            CardSearch search = 
+                new CardSearch("name eq 'Giant Growth' and color eq green");
             List<IMongoQuery> queries = search.MongoQuery();
-            Assert.Greater(queries.Count, 0);
+            Assert.Greater(queries.Count,1);
         }
 
+//        {"m" , "contains"},
+//        {"eq", "equal"},
+//        {"not","not"},
+//        {"gt" ,"greater"},
+//        {"gte","greaterequal"},
+//        {"lt", "less"},
+//        {"lte","lessequal"}
+
+//        {"name",                "name"},
+//        {"description",         "description"},
+//        {"flavor",              "flavor"},
+//        {"color",               "colors"},
+//        {"manacost",            "manaCost"},
+//        {"convertedmanacost",   "convertedManaCost"},
+//        {"type",                "type"},
+//        {"subtype",             "subType"},
+//        {"power",               "power"},
+//        {"toughness",           "toughness"},
+//        {"loyalty",             "loyalty"},
+//        {"rarity",              "rarity"},
+//        {"artist",              "artist"},
+//        {"setId",               "cardSetId"}
         [Test()]
         public void Test_complex_search()
         {
-            Card [] cards = repository.Search("name eq 'Giant Growth'",true).Result;
-            Assert.Greater(0, cards.Length);
+            Card [] cards = repository.Search("name m 'Giant'",true).Result;
+            Assert.Greater(cards.Length, 0);
+            cards = repository.Search("name eq 'Giant Growth'",true).Result;
+            Assert.Greater(cards.Length, 0);
+            cards = repository.Search("name not 'Giant Growth'",true).Result;
+            Assert.Greater(cards.Length, 0);
+            cards = repository.Search("name gt 'Giant Growth'",true).Result;
+            Assert.Greater(cards.Length, 0);
+            cards = repository.Search("name gte 'Giant Growth'",true).Result;
+            Assert.Greater(cards.Length, 0);
+            cards = repository.Search("name lt 'Giant Growth'",true).Result;
+            Assert.Greater(cards.Length, 0);
+            cards = repository.Search("name lte 'Giant Growth'",true).Result;
+            Assert.Greater(cards.Length, 0);
+            cards = repository.Search("color m green and name m 'Growth'", true).Result;
+            Assert.Greater(cards.Length, 0);
+            cards = repository.Search("convertedmanacost lt 3", true).Result;
+            Assert.Greater(cards.Length, 0);
+
+            //c:rb+t:knight+r:u
+            cards = repository.Search("color eq white and color eq green and subtype m 'Knight' and " +
+                "rarity eq Uncommon", true).Result;
+            Assert.Greater(cards.Length, 0);
+
+            //"c=u+t:creature+d:flying+cc<3+n:cloud"
+            cards = repository.Search("color eq blue and type m 'Creature' and description m 'flying' " +
+                "and convertedmanacost lt 3 and name m 'Cloud'", true).Result;
+            Assert.Greater(cards.Length, 0);
         }
 
         [Test()]

@@ -4,6 +4,7 @@ using System.Linq;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using Mtg.Model;
+using MongoDB.Bson;
 
 namespace Mtg
 {
@@ -34,10 +35,10 @@ namespace Mtg
             {"m" , "contains"},
             {"eq", "equal"},
             {"not","not"},
-            {"gt" ,"greater than"},
-            {"gte","greater than or equal"},
-            {"lt", "less than"},
-            {"lte","less than or equal"}
+            {"gt" ,"greater"},
+            {"gte","greaterequal"},
+            {"lt", "less"},
+            {"lte","lessequal"}
         };
        
 
@@ -128,6 +129,26 @@ namespace Mtg
 
                 return queries;
             }
+            else
+            {
+                int element = 0; 
+                for(int i = 1; i < queryCount; i++)
+                {
+                    col = query[0 + element];
+                    method = query[1 + element];
+                    value = query[2 + element];
+                    op = query[3 + element];
+
+                    queries.Add(this.Build(col,value,method));
+                    element = element + 4; 
+                }
+
+                col = query[0 + element];
+                method = query[1 + element];
+                value = query[2 + element];
+                queries.Add(this.Build(col,value,method));
+
+            }
            
             return queries;
         }
@@ -136,11 +157,57 @@ namespace Mtg
                         string method, string op = null)
         {
             IMongoQuery query = null;
-            switch(method)
+
+            Type type = null;
+
+
+            switch(Helper.GetCardFieldType(fields[col]))
             {
-            case "eq":
-                query = Query.EQ(col,value);
-                break;  
+            case "int":
+                type = Type.GetType("System.Int32");
+                break;
+            case "bool":
+                type = Type.GetType("System.Boolean");
+                break;
+            default:
+                type = Type.GetType("System.String");
+                break;
+            }
+
+
+            switch(this.compareOperators[method])
+            {
+            case "equal":
+                query = Query.EQ(fields[col],
+                    BsonValue.Create(Convert.ChangeType(value, type)));
+                break; 
+            case "contains":
+                query = Query.Matches(fields[col],
+                    value);
+                break; 
+            case "not":
+                query = Query.NE(fields[col],
+                    BsonValue.Create(Convert.ChangeType(value, type)));
+                break; 
+            case "greater":
+                query = Query.GT(fields[col],
+                    BsonValue.Create(Convert.ChangeType(value, type)));
+                break; 
+            case "greaterequal":
+                query = Query.GTE(fields[col],
+                    BsonValue.Create(Convert.ChangeType(value, type)));
+                break; 
+            case "less":
+                query = Query.LT(fields[col],
+                    BsonValue.Create(Convert.ChangeType(value, type)));
+                break; 
+            case "lessequal":
+                query = Query.LTE(fields[col],
+                    BsonValue.Create(Convert.ChangeType(value, type)));
+                break; 
+
+            default:
+                throw new Exception("method: " + method + "not supported.");
             }
 
             return query;
