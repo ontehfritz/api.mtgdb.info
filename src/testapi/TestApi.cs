@@ -63,9 +63,9 @@ namespace testapi
         [Test()]
         public void Test_complex_search()
         {
-            Card [] cards = repository.Search("name m 'Giant'",true).Result;
+            Card [] cards = repository.Search("name m 'giant'",true).Result;
             Assert.Greater(cards.Length, 0);
-            cards = repository.Search("name eq 'Giant Growth'",true).Result;
+            cards = repository.Search("name eq 'giant Growth'",true).Result;
             Assert.Greater(cards.Length, 0);
             cards = repository.Search("name not 'Giant Growth'",true).Result;
             Assert.Greater(cards.Length, 0);

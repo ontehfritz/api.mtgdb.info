@@ -180,10 +180,16 @@ namespace Mtg
             case "equal":
                 query = Query.EQ(fields[col],
                     BsonValue.Create(Convert.ChangeType(value, type)));
+
+                if(type.ToString() == "System.String")
+                {
+                    query = Query.Matches(fields[col],
+                        new BsonRegularExpression(string.Format("^{0}$",value), "i"));
+                }
                 break; 
             case "contains":
                 query = Query.Matches(fields[col],
-                    value);
+                    new BsonRegularExpression(value,"i"));
                 break; 
             case "not":
                 query = Query.NE(fields[col],
