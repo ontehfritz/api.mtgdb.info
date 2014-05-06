@@ -28,8 +28,20 @@ namespace Mtg
             Get ["/search/", true] = async (parameters, ct) => 
             {
                 string query = (string)Request.Query.q;
+                int limit = 0; 
+                int start = 0; 
 
-                Card [] cards = await repo.Search (query, true);
+                if(Request.Query.limit != null)
+                {
+                    limit = (int)Request.Query.limit;
+                }
+
+                if(Request.Query.start != null)
+                {
+                    start = (int)Request.Query.start;
+                }
+                    
+                Card [] cards = await repo.Search (query,start,limit,true);
 
                 return Response.AsJson (cards);
             };
@@ -37,7 +49,21 @@ namespace Mtg
 
             Get ["/search/{text}", true] = async (parameters, ct) => 
             {
-                Card [] cards = await repo.Search ((string)parameters.text);
+                int limit = 0; 
+                int start = 0; 
+
+                if(Request.Query.limit != null)
+                {
+                    limit = (int)Request.Query.limit;
+                }
+
+                if(Request.Query.start != null)
+                {
+                    start = (int)Request.Query.start;
+                }
+
+                Card [] cards = await repo.Search ((string)parameters.text,
+                    start, limit, false);
 
                 return Response.AsJson (cards);
             };

@@ -63,33 +63,34 @@ namespace testapi
         [Test()]
         public void Test_complex_search()
         {
-            Card [] cards = repository.Search("name m 'giant'",true).Result;
+            Card [] cards = repository.Search("name m 'giant'",isComplex: true).Result;
             Assert.Greater(cards.Length, 0);
-            cards = repository.Search("name eq 'giant Growth'",true).Result;
+            cards = repository.Search("name eq 'giant Growth'",isComplex: true).Result;
             Assert.Greater(cards.Length, 0);
-            cards = repository.Search("name not 'Giant Growth'",true).Result;
+            cards = repository.Search("name not 'Giant Growth'",isComplex: true).Result;
             Assert.Greater(cards.Length, 0);
-            cards = repository.Search("name gt 'Giant Growth'",true).Result;
+            cards = repository.Search("name gt 'Giant Growth'",isComplex: true).Result;
             Assert.Greater(cards.Length, 0);
-            cards = repository.Search("name gte 'Giant Growth'",true).Result;
+            cards = repository.Search("name gte 'Giant Growth'",isComplex: true).Result;
             Assert.Greater(cards.Length, 0);
-            cards = repository.Search("name lt 'Giant Growth'",true).Result;
+            cards = repository.Search("name lt 'Giant Growth'",isComplex: true).Result;
             Assert.Greater(cards.Length, 0);
-            cards = repository.Search("name lte 'Giant Growth'",true).Result;
+            cards = repository.Search("name lte 'Giant Growth'",isComplex: true).Result;
             Assert.Greater(cards.Length, 0);
-            cards = repository.Search("color m green and name m 'Growth'", true).Result;
+            cards = repository.Search("color m green and name m 'Growth'", isComplex: true).Result;
             Assert.Greater(cards.Length, 0);
-            cards = repository.Search("convertedmanacost lt 3", true).Result;
+            cards = repository.Search("convertedmanacost lt 3", isComplex: true).Result;
             Assert.Greater(cards.Length, 0);
 
             //c:rb+t:knight+r:u
             cards = repository.Search("color eq white and color eq green and subtype m 'Knight' and " +
-                "rarity eq Uncommon", true).Result;
+                "rarity eq Uncommon", isComplex: true).Result;
             Assert.Greater(cards.Length, 0);
 
             //"c=u+t:creature+d:flying+cc<3+n:cloud"
             cards = repository.Search("color eq blue and type m 'Creature' and description m 'flying' " +
-                "and convertedmanacost lt 3 and name m 'Cloud'", true).Result;
+                "and convertedmanacost lt 3 and name m 'Cloud'", isComplex: true).Result;
+
             Assert.Greater(cards.Length, 0);
         }
 

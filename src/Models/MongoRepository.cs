@@ -141,7 +141,10 @@ namespace Mtg
         /// Search the specified text.
         /// </summary>
         /// <param name="text">Text.</param>
-        public async Task<Card[]> Search (string text, bool isComplex = false)
+        public async Task<Card[]> Search (string text, 
+            int start = 0, 
+            int limit = 0, 
+            bool isComplex = false)
         {
             var client =        new MongoClient (Connection);
             var server =        client.GetServer ();
@@ -152,26 +155,30 @@ namespace Mtg
             List<Card> cards =  new List<Card> ();
             MongoCursor<Card> cursor = null;
 
+            IMongoQuery query = null; 
+
             if(isComplex)
             {
-                // List<IMongoQuery> queries = new List<IMongoQuery> ();
-
                 CardSearch search = new CardSearch(text);
-
-                cursor = collection.Find (Query.And (search.MongoQuery())).SetSortOrder ("_id");
-
+                query = Query.And (search.MongoQuery());
             }
             else
             {
-                var query = Query<Card>.Matches (e => e.SearchName, text.ToLower().Replace(" ", ""));
-                cursor = collection.Find (query);
+                query = Query<Card>.Matches (e => e.SearchName, 
+                    text.ToLower().Replace(" ", ""));
+
             }
+
+            cursor = collection.Find (query)
+                .SetSortOrder ("_id")
+                .SetSkip(start)
+                .SetLimit(limit);
 
             foreach (Card card in cursor) 
             {
                 cards.Add (card);
             }
-
+           
             return cards.ToArray ();
 
         }
@@ -208,13 +215,7 @@ namespace Mtg
                 queries.Add (Query<Card>.EQ (e => e.Rarity, 
                                            (string)query.rarity));
             }
-
-            if (query.loyalty != null) 
-            {
-                queries.Add (Query<Card>.EQ (e => e.Loyalty, 
-                                           (int)query.loyalty));
-            }
-
+  
             if (query.loyalty != null) 
             {
                 queries.Add (Query<Card>.EQ (e => e.Loyalty, 
