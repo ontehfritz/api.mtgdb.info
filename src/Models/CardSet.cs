@@ -44,12 +44,8 @@ namespace Mtg.Model
         {
             get 
             { 
-                if(this.CardIds == null)
-                {
-                    return 0;
-                }
-
-                return this.CardIds.Length;
+                int total = Common + Uncommon + Rare + MythicRare + BasicLand;
+                return total;
             } 
         }
         [BsonElement("releasedAt")]

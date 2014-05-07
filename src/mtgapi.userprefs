@@ -1,22 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Web.config">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Models/CardSet.cs">
     <Files>
       <File FileName="Models/Search.cs" Line="1" Column="1" />
       <File FileName="Models/MongoRepository.cs" Line="1" Column="1" />
       <File FileName="Models/IRepository.cs" Line="1" Column="1" />
       <File FileName="testapi/TestApi.cs" Line="1" Column="1" />
       <File FileName="Models/Helper.cs" Line="1" Column="1" />
-      <File FileName="Modules/IndexModule.cs" Line="68" Column="45" />
-      <File FileName="Models/CardSet.cs" Line="1" Column="1" />
-      <File FileName="Views/index.cshtml" Line="210" Column="43" />
+      <File FileName="Modules/IndexModule.cs" Line="1" Column="1" />
+      <File FileName="Models/CardSet.cs" Line="52" Column="43" />
+      <File FileName="Views/index.cshtml" Line="1" Column="1" />
       <File FileName="Web.config" Line="33" Column="16" />
+      <File FileName="Models/Card.cs" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True" />
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
