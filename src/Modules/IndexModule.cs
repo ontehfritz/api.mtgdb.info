@@ -9,14 +9,16 @@ using Nancy.ModelBinding;
 using Mtg.Model;
 using System.Configuration;
 using System.Reflection;
+using System.Web.Caching;
 
 namespace Mtg
 {
     public class IndexModule : NancyModule
     {
         private IRepository repo;
+        private Cache cache; 
 
-        public IndexModule (IRepository repository)
+        public IndexModule (IRepository repository, Cache cache)
         {
             repo = repository;
 
@@ -107,9 +109,13 @@ namespace Mtg
                     return Response.AsJson(c);
                 }
                
-                cards = await repo.GetCards (Request.Query);
-          
-                return Response.AsJson (cards);
+                if(cache["cards"] == null)
+                {
+                    cards = await repo.GetCards (Request.Query);
+                    cache["cards"] = Response.AsJson (cards);
+                }
+              
+                return (Response)cache["cards"];
             };
 
             Get ["/cards/{id}", true] = async (parameters, ct) => 

@@ -3,7 +3,7 @@ using Nancy.TinyIoc;
 using Newtonsoft.Json;
 using Mtg;
 using Nancy.Bootstrapper;
-//using Nancy.LightningCache.Extensions;
+using System.Web.Caching;
 using Nancy.Routing;
 using System.Configuration;
 
@@ -24,7 +24,11 @@ public class Bootstrapper : DefaultNancyBootstrapper
         IRepository repository = 
             new MongoRepository (ConfigurationManager.AppSettings.Get("db"));
 
+        Cache cache = new Cache();
+
         container.Register<IRepository>(repository);
+        container.Register<Cache>(cache);
+
     }
 }
 
