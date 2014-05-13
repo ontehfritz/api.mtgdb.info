@@ -145,6 +145,20 @@ namespace testapi
         }
 
         [Test ()]
+        public void Test_add_card ()
+        {
+            Card card = repository.GetCard(2).Result;
+            card.Id = -1;
+            card.Name = "test";
+            card.Formats = null;
+            card.Rulings = null;
+
+            card = repository.AddCard(card).Result;
+
+            Assert.AreEqual(card.Id, -1);
+        }
+
+        [Test ()]
         public void Test_update_card ()
         {
             Card after = repository.UpdateCardField<string[]>(1, "colors", new string[]{"blue","green"}).Result;

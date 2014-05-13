@@ -553,6 +553,20 @@ namespace Mtg
 
             return GetCard (mvid).Result;
         }
+
+        public async Task<Card> AddCard(Card newCard)
+        {
+            var client =        new MongoClient (Connection);
+            var server =        client.GetServer ();
+            var database =      server.GetDatabase ("mtg");
+            var collection =    database.GetCollection<Card> ("cards");
+
+            collection.Save(newCard);
+
+            Card card = await this.GetCard(newCard.Id);
+
+            return card;
+        }
     }
 }
 

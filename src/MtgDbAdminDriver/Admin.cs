@@ -31,6 +31,56 @@ namespace MtgDb.Info
         {
             _apiUrl = url;
         }
+
+        public bool AddCard(Guid authToken, Card card)
+        {
+            using(WebClient client = new WebClient())
+            {
+                System.Collections.Specialized.NameValueCollection reqparm = 
+                    new System.Collections.Specialized.NameValueCollection();
+
+//                reqparm.Add("Id", card.Id.ToString());
+//                reqparm.Add("RelatedCardId ", card.RelatedCardId.ToString());
+//                reqparm.Add("SetNumber ", card.SetNumber.ToString());
+//                reqparm.Add("Name", card.Name);
+//                reqparm.Add("Description", card.Description);
+//                reqparm.Add("Flavor", card.Flavor);
+//                reqparm.Add("ManaCost", card.ManaCost);
+//                reqparm.Add("ConvertedManaCost", card.ConvertedManaCost.ToString());
+//                reqparm.Add("Type", card.Type);
+//                reqparm.Add("SubType", card.SubType);
+//                reqparm.Add("Power", card.Power.ToString());
+//                reqparm.Add("Toughness", card.Toughness.ToString());
+//                reqparm.Add("Loyalty", card.Loyalty.ToString());
+//                reqparm.Add("Artist", card.Artist);
+//                reqparm.Add("CardSetId", card.CardSetId.ToString());
+//                reqparm.Add("Token", card.Token.ToString());
+//                reqparm.Add("Promo", card.Promo.ToString());
+                //public string [] Colors         { get; set; }
+                reqparm.Add("AuthToken", authToken.ToString());
+              
+                string responsebody = "";
+
+                try
+                {
+                    ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+
+                    byte[] responsebytes = 
+                        client.UploadValues(string.Format("{0}/cards",_apiUrl), 
+                            "Post", reqparm);
+
+                    responsebody = Encoding.UTF8.GetString(responsebytes);
+
+                }
+                catch(WebException e) 
+                {
+                    throw e;
+                    return false;
+                }
+            }
+
+            return true;
+        }
        
 
         /// <summary>

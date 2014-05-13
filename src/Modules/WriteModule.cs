@@ -42,7 +42,22 @@ namespace Mtg
                 return null;
             };
 
-            Post ["/cards/{id}"] = parameters => {
+            Post["/cards", true] = async(parameters, ct) => {
+//                Card model = this.Bind<Card>();
+//
+//                Card card = await repository.AddCard(model);
+//
+//                if(card == null)
+//                {
+//                    return Response.AsJson("false",
+//                        Nancy.HttpStatusCode.UnprocessableEntity);
+//                }
+
+                //return Response.AsJson(card);
+                return Response.AsJson(true);
+            };
+
+            Post ["/cards/{id}", true] = async(parameters, ct) => {
                 UpdateCardModel model = this.Bind<UpdateCardModel>();
                 int mvid = (int)parameters.id;
 
@@ -51,19 +66,24 @@ namespace Mtg
                     switch(Helper.GetCardFieldType(model.Field))
                     {
                     case "bool":
-                        repository.UpdateCardField<bool>(mvid,model.Field,bool.Parse(model.Value ?? "false"));
+                        await repository.UpdateCardField<bool>(mvid,model.Field,
+                            bool.Parse(model.Value ?? "false"));
                         break;
                     case "int":
-                        repository.UpdateCardField<int>(mvid,model.Field,int.Parse(model.Value ?? "0"));
+                        await repository.UpdateCardField<int>(mvid,model.Field,
+                            int.Parse(model.Value ?? "0"));
                         break;
                     case "string":
-                        repository.UpdateCardField<string>(mvid,model.Field, model.Value ?? "");
+                        await repository.UpdateCardField<string>(mvid,model.Field, 
+                            model.Value ?? "");
                         break;
                     case "string[]":
-                        repository.UpdateCardField<string[]>(mvid,model.Field, model.Value.Split(','));
+                        await repository.UpdateCardField<string[]>(mvid,model.Field, 
+                            model.Value.Split(','));
                         break;
                     case "DateTime":
-                        repository.UpdateCardField<DateTime>(mvid,model.Field, DateTime.Parse(model.Value));
+                        await repository.UpdateCardField<DateTime>(mvid,model.Field, 
+                            DateTime.Parse(model.Value));
                         break;
                     default:
                         return Response.AsJson("false",
@@ -81,13 +101,13 @@ namespace Mtg
                     Nancy.HttpStatusCode.OK);
             };
 
-            Post ["/cards/{id}/rulings"] = parameters => {
+            Post ["/cards/{id}/rulings", true] = async(parameters, ct) => {
                 List<Ruling> rulings = this.Bind<List<Ruling>>();
                 int mvid = (int)parameters.id;
 
                 try
                 {
-                    repository.UpdateCardRulings(mvid,rulings.ToArray());
+                    await repository.UpdateCardRulings(mvid,rulings.ToArray());
                 }
                 catch(Exception e)
                 {
@@ -97,13 +117,13 @@ namespace Mtg
                 return Response.AsJson("true");
             };
 
-            Post ["/cards/{id}/formats"] = parameters => {
+            Post ["/cards/{id}/formats", true] = async(parameters, ct) => {
                 List<Format> formats = this.Bind<List<Format>>();
                 int mvid = (int)parameters.id;
 
                 try
                 {
-                    repository.UpdateCardFormats(mvid,formats.ToArray());
+                    await repository.UpdateCardFormats(mvid,formats.ToArray());
                 }
                 catch(Exception e)
                 {
