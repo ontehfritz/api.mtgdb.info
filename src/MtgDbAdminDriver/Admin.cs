@@ -39,24 +39,29 @@ namespace MtgDb.Info
                 System.Collections.Specialized.NameValueCollection reqparm = 
                     new System.Collections.Specialized.NameValueCollection();
 
-//                reqparm.Add("Id", card.Id.ToString());
-//                reqparm.Add("RelatedCardId ", card.RelatedCardId.ToString());
-//                reqparm.Add("SetNumber ", card.SetNumber.ToString());
-//                reqparm.Add("Name", card.Name);
-//                reqparm.Add("Description", card.Description);
-//                reqparm.Add("Flavor", card.Flavor);
-//                reqparm.Add("ManaCost", card.ManaCost);
-//                reqparm.Add("ConvertedManaCost", card.ConvertedManaCost.ToString());
-//                reqparm.Add("Type", card.Type);
-//                reqparm.Add("SubType", card.SubType);
-//                reqparm.Add("Power", card.Power.ToString());
-//                reqparm.Add("Toughness", card.Toughness.ToString());
-//                reqparm.Add("Loyalty", card.Loyalty.ToString());
-//                reqparm.Add("Artist", card.Artist);
-//                reqparm.Add("CardSetId", card.CardSetId.ToString());
-//                reqparm.Add("Token", card.Token.ToString());
-//                reqparm.Add("Promo", card.Promo.ToString());
-                //public string [] Colors         { get; set; }
+                reqparm.Add("Id", card.Id.ToString());
+                reqparm.Add("RelatedCardId ", card.RelatedCardId.ToString());
+                reqparm.Add("SetNumber ", card.SetNumber.ToString());
+                if(card.Name != null){reqparm.Add("Name", card.Name);}
+                reqparm.Add("Description", card.Description);
+                reqparm.Add("Flavor", card.Flavor);
+                if(card.ManaCost != null){reqparm.Add("ManaCost", card.ManaCost);}
+                reqparm.Add("ConvertedManaCost", card.ConvertedManaCost.ToString());
+                if(card.Type != null){reqparm.Add("Type", card.Type);}
+                if(card.SubType != null){reqparm.Add("SubType", card.SubType);}
+                reqparm.Add("Power", card.Power.ToString());
+                reqparm.Add("Toughness", card.Toughness.ToString());
+                reqparm.Add("Loyalty", card.Loyalty.ToString());
+                if(card.Artist != null){reqparm.Add("Artist", card.Artist);}
+                reqparm.Add("CardSetId", card.CardSetId.ToString());
+                reqparm.Add("Token", card.Token.ToString());
+                reqparm.Add("Promo", card.Promo.ToString());
+
+                if(card.Colors != null && card.Colors.Length > 0)
+                {
+                    reqparm.Add("Colors", String.Join(",", card.Colors));
+                }
+                   
                 reqparm.Add("AuthToken", authToken.ToString());
               
                 string responsebody = "";
@@ -82,7 +87,6 @@ namespace MtgDb.Info
             return true;
         }
        
-
         /// <summary>
         /// Updates the card field specified.
         /// </summary>

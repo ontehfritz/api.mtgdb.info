@@ -69,6 +69,11 @@ namespace TestAdminDriver
                 SubType = "Minion"
             };
 
+            List<string> colors = new List<string>();
+            colors.Add("black");
+            colors.Add("blue");
+
+            card.Colors = colors.ToArray();
 
             bool updated = admin.AddCard(ssaUser.AuthToken, card);
 

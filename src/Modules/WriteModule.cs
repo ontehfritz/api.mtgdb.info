@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Mtg.Model;
 using SuperSimple.Auth;
 using System.Configuration;
+using System.Linq;
 
 namespace Mtg
 {
@@ -43,15 +44,14 @@ namespace Mtg
             };
 
             Post["/cards", true] = async(parameters, ct) => {
-//                Card model = this.Bind<Card>();
-//
-//                Card card = await repository.AddCard(model);
-//
-//                if(card == null)
-//                {
-//                    return Response.AsJson("false",
-//                        Nancy.HttpStatusCode.UnprocessableEntity);
-//                }
+                Card model =    this.Bind<Card>();
+                Card card =     await repository.AddCard(model);
+
+                if(card == null)
+                {
+                    return Response.AsJson("false",
+                        Nancy.HttpStatusCode.UnprocessableEntity);
+                }
 
                 //return Response.AsJson(card);
                 return Response.AsJson(true);
