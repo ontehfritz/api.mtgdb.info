@@ -4,8 +4,8 @@ namespace MtgDbAdminDriver
 {
     public class Ruling
     {
-        public string ReleasedAt { get; set; }
-        public string Rule       { get; set; }
+        public string ReleasedAt        { get; set; }
+        public string Rule              { get; set; }
     }
 
     public class Format
@@ -35,6 +35,21 @@ namespace MtgDbAdminDriver
         public string CardSetId         { get; set; }
         public bool Token               { get; set; }
         public bool Promo               { get; set; }
+    }
+
+    public class CardSet
+    {
+        public string Id                { get; set; }
+        public string Name              { get; set; }
+        public string Block             { get; set; }
+        public string Type              { get; set; }
+        public string Description       { get; set; }
+        public int Common               { get; set; }
+        public int Uncommon             { get; set; }
+        public int Rare                 { get; set; }
+        public int MythicRare           { get; set; }
+        public int BasicLand            { get; set; }
+        public string ReleasedAt        { get; set; }
     }
 }
 

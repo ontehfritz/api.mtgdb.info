@@ -43,6 +43,21 @@ namespace Mtg
                 return null;
             };
 
+            Post["/sets", true] = async(parameters, ct) => {
+                CardSet model =    this.Bind<CardSet>();
+                CardSet set =     await repository.AddCardSet(model);
+
+                if(set == null)
+                {
+                    return Response.AsJson("false",
+                        Nancy.HttpStatusCode.UnprocessableEntity);
+                }
+
+                //return Response.AsJson(card);
+                return Response.AsJson(true);
+            };
+
+
             Post["/cards", true] = async(parameters, ct) => {
                 Card model =    this.Bind<Card>();
                 Card card =     await repository.AddCard(model);

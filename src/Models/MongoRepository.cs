@@ -567,6 +567,43 @@ namespace Mtg
 
             return card;
         }
+
+        public async Task<CardSet> AddCardSet(CardSet newSet)
+        {
+            var client =        new MongoClient (Connection);
+            var server =        client.GetServer ();
+            var database =      server.GetDatabase ("mtg");
+            var collection =    database.GetCollection<CardSet> ("card_sets");
+
+            collection.Save(newSet);
+
+            CardSet set = await this.GetSet(newSet.Id);
+
+            return set;
+        }
+
+        public async Task<CardSet> UpdateCardSet<T>(string id, string field, T value)
+        {
+            var client =            new MongoClient (Connection);
+            var server =            client.GetServer ();
+            var database =          server.GetDatabase ("mtg");
+            var collection =        database.GetCollection<CardSet> ("card_sets");
+            var query =             Query.EQ ("_id", id);
+            var sortBy =            SortBy.Descending("_id");
+
+            UpdateBuilder update =  new UpdateBuilder ();
+
+            update = Update
+                .Set(field, BsonValue.Create (value));
+
+            var result = collection.FindAndModify(
+                query,
+                sortBy,
+                update
+            );
+
+            return GetSet (id).Result;
+        }
     }
 }
 

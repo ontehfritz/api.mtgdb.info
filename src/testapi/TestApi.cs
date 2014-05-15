@@ -37,29 +37,7 @@ namespace testapi
             List<IMongoQuery> queries = search.MongoQuery();
             Assert.Greater(queries.Count,1);
         }
-
-//        {"m" , "contains"},
-//        {"eq", "equal"},
-//        {"not","not"},
-//        {"gt" ,"greater"},
-//        {"gte","greaterequal"},
-//        {"lt", "less"},
-//        {"lte","lessequal"}
-
-//        {"name",                "name"},
-//        {"description",         "description"},
-//        {"flavor",              "flavor"},
-//        {"color",               "colors"},
-//        {"manacost",            "manaCost"},
-//        {"convertedmanacost",   "convertedManaCost"},
-//        {"type",                "type"},
-//        {"subtype",             "subType"},
-//        {"power",               "power"},
-//        {"toughness",           "toughness"},
-//        {"loyalty",             "loyalty"},
-//        {"rarity",              "rarity"},
-//        {"artist",              "artist"},
-//        {"setId",               "cardSetId"}
+            
         [Test()]
         public void Test_complex_search()
         {
@@ -156,6 +134,30 @@ namespace testapi
             card = repository.AddCard(card).Result;
 
             Assert.AreEqual(card.Id, -1);
+        }
+
+        [Test ()]
+        public void Test_add_set ()
+        {
+            CardSet newSet = new CardSet
+            {
+                Id = "FRS",
+                Name = "Fritz Set",
+                Description = "Awesome sauce",
+                //YYYY-MM-DD
+                ReleasedAt = "2014-05-15",
+                Block = "Fritz",
+                Type = "Fritz",
+                BasicLand = 0,
+                Rare = 0, 
+                MythicRare = 80,
+                Common = 1,
+                Uncommon = 1
+            };
+
+            newSet = repository.AddCardSet(newSet).Result;
+
+            Assert.AreEqual(newSet.Id, "FRS");
         }
 
         [Test ()]

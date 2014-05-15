@@ -31,6 +31,51 @@ namespace MtgDb.Info
         {
             _apiUrl = url;
         }
+           
+        public bool AddSet(Guid authToken, CardSet set)
+        {
+            using(WebClient client = new WebClient())
+            {
+                System.Collections.Specialized.NameValueCollection reqparm = 
+                    new System.Collections.Specialized.NameValueCollection();
+
+                if(set.Id != null){reqparm.Add("Id", set.Id);}
+                if(set.Name != null){reqparm.Add("Name", set.Name);}
+                if(set.Type != null){reqparm.Add("Type", set.Type);}
+                if(set.Block != null){reqparm.Add("Block", set.Type);}
+                if(set.Description != null){reqparm.Add("Description", set.Description);}
+                reqparm.Add("BasicLand", set.BasicLand.ToString());
+                reqparm.Add("Common", set.Common.ToString());
+                reqparm.Add("Uncommon", set.Uncommon.ToString());
+                reqparm.Add("Rare", set.Rare.ToString());
+                reqparm.Add("MythicRare", set.MythicRare.ToString());
+                reqparm.Add("ReleasedAt", set.ReleasedAt);
+
+                reqparm.Add("AuthToken", authToken.ToString());
+
+                string responsebody = "";
+
+                try
+                {
+                    ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+
+                    byte[] responsebytes = 
+                        client.UploadValues(string.Format("{0}/sets",_apiUrl), 
+                            "Post", reqparm);
+
+                    responsebody = Encoding.UTF8.GetString(responsebytes);
+
+                }
+                catch(WebException e) 
+                {
+                    throw e;
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
 
         public bool AddCard(Guid authToken, Card card)
         {
@@ -43,8 +88,8 @@ namespace MtgDb.Info
                 reqparm.Add("RelatedCardId ", card.RelatedCardId.ToString());
                 reqparm.Add("SetNumber ", card.SetNumber.ToString());
                 if(card.Name != null){reqparm.Add("Name", card.Name);}
-                reqparm.Add("Description", card.Description);
-                reqparm.Add("Flavor", card.Flavor);
+                if(card.Description != null){reqparm.Add("Description", card.Description);}
+                if(card.Flavor != null){reqparm.Add("Flavor", card.Flavor);}
                 if(card.ManaCost != null){reqparm.Add("ManaCost", card.ManaCost);}
                 reqparm.Add("ConvertedManaCost", card.ConvertedManaCost.ToString());
                 if(card.Type != null){reqparm.Add("Type", card.Type);}

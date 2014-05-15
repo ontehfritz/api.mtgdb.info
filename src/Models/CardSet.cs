@@ -50,7 +50,7 @@ namespace Mtg.Model
         }
         [BsonElement("releasedAt")]
         [JsonProperty("releasedAt")]
-        public string ReleasedAt  { get; set; }
+        public string ReleasedAt    { get; set; }
         [BsonElement("cardIds")]
         [JsonProperty("cardIds")]
         public int [] CardIds       { get; set; }

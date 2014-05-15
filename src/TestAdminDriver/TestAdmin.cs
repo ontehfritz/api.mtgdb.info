@@ -56,6 +56,28 @@ namespace TestAdminDriver
             Assert.IsTrue (updated);
         }
 
+
+        [Test ()]
+        public void Test_Add_New_Set ()
+        {
+            CardSet set = new CardSet(){
+                Name = "Test Set",
+                Description = "This is a test, I repeat this is a test.",
+                Id = "TEST",
+                Type = "TEST",
+                Block = "TEST",
+                Common = 0,
+                Uncommon = 0,
+                Rare = 0, 
+                MythicRare = 0, 
+                ReleasedAt = "2014-05-15" 
+            };
+
+            bool updated = admin.AddSet(ssaUser.AuthToken, set);
+            Assert.IsTrue (updated);
+        }
+
+
         [Test ()]
         public void Test_Add_New_Card ()
         {

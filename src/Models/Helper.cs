@@ -8,6 +8,23 @@ namespace Mtg
         private static Dictionary<string,string> FieldType = 
             new Dictionary<string,string> () 
         {
+            {"id","string"},
+            {"name", "string"},
+            {"description", "string"},
+            {"type", "string"},
+            {"common","int"},
+            {"uncommon","int"},
+            {"toughness","int"},
+            {"rare","int"},
+            {"mythicRare","int"},
+            {"basicLand","int"},
+            {"releasedAt","string"}//"yyyy-MM-dd"
+        };
+
+
+        private static Dictionary<string,string> SetFieldType = 
+            new Dictionary<string,string> () 
+        {
             {"id","int"},
             {"relatedCardId","int"},
             {"setNumber", "int"},
@@ -37,6 +54,16 @@ namespace Mtg
             if (FieldType.ContainsKey (field)) 
             {
                 return FieldType [field];
+            }
+
+            return null;
+        }
+
+        public static string GetSetFieldType(string field)
+        {
+            if (SetFieldType.ContainsKey (field)) 
+            {
+                return SetFieldType [field];
             }
 
             return null;

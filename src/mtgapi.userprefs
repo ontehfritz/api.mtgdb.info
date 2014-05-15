@@ -2,7 +2,11 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.Workbench ActiveDocument="MtgDbAdminDriver/Admin.cs">
     <Files>
-      <File FileName="MtgDbAdminDriver/Admin.cs" Line="52" Column="7" />
+      <File FileName="MtgDbAdminDriver/AdminObjects.cs" Line="1" Column="1" />
+      <File FileName="MtgDbAdminDriver/Admin.cs" Line="32" Column="27" />
+      <File FileName="TestAdminDriver/TestAdmin.cs" Line="1" Column="1" />
+      <File FileName="Modules/WriteModule.cs" Line="1" Column="1" />
+      <File FileName="Models/CardSet.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.NUnit.TestPad">
@@ -10,7 +14,7 @@
           <Node name="TestAdminDriver" expanded="True">
             <Node name="TestAdminDriver" expanded="True">
               <Node name="Test" expanded="True">
-                <Node name="Test_Add_New_Card" selected="True" />
+                <Node name="Test_Add_New_Set" selected="True" />
               </Node>
             </Node>
           </Node>
