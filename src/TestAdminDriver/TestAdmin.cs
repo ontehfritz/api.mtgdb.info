@@ -4,6 +4,7 @@ using MtgDb.Info;
 using System.Collections.Generic;
 using SuperSimple.Auth;
 using MtgDbAdminDriver;
+using Mtg;
 
 
 namespace TestAdminDriver
@@ -36,17 +37,87 @@ namespace TestAdminDriver
         Admin admin;
         SuperSimpleAuth ssa;
         User ssaUser;
+        IWriteRepository repository;
+        string format = "yyyy-MM-dd";
+        private const string connectionString = "mongodb://localhost";
 
         [SetUp()]
         public void Init()
         {
+            repository = new MongoRepository (connectionString);
             admin =     new Admin("http://127.0.0.1:8082");
             ssa =       new SuperSimpleAuth ("testing_mtgdb.info", 
                 "ae132e62-570f-4ffb-87cc-b9c087b09dfb");
             ssaUser =   ssa.Authenticate ("mtgdb_tester", 
                 "test123", "127.0.0.1");
         }
-            
+           
+
+        [Test ()]
+        public void Test_update_card_rulings ()
+        {
+            List<Mtg.Model.Ruling> rulings = new List<Mtg.Model.Ruling> ();
+            rulings.Add(new Mtg.Model.Ruling {ReleasedAt = DateTime.Now.ToString(format), 
+                Rule = "test ruling 1"});
+            rulings.Add(new Mtg.Model.Ruling {ReleasedAt = DateTime.Now.ToString(format), 
+                Rule = "test ruling 2"});
+
+            Mtg.Model.Card after = repository.UpdateCardRulings(1,rulings.ToArray()).Result;
+
+            Assert.AreEqual (after.Rulings.Count, 2);
+        }
+
+        [Test ()]
+        public void Test_add_card ()
+        {
+            Mtg.Model.Card card = new Mtg.Model.Card()
+            {
+                Id = -1,
+                Name = "test",
+                Description = "test",
+                Formats = null,
+                Rulings = null
+            };
+     
+            card = repository.AddCard(card).Result;
+            Assert.AreEqual(card.Id, -1);
+        }
+
+
+        [Test ()]
+        public void Test_add_set ()
+        {
+            Mtg.Model.CardSet newSet = new Mtg.Model.CardSet
+            {
+                Id = "FRS",
+                Name = "Fritz Set",
+                Description = "Awesome sauce",
+                //YYYY-MM-DD
+                ReleasedAt = "2014-05-15",
+                Block = "Fritz",
+                Type = "Fritz",
+                BasicLand = 0,
+                Rare = 0, 
+                MythicRare = 80,
+                Common = 1,
+                Uncommon = 1
+            };
+
+            newSet = repository.AddCardSet(newSet).Result;
+
+            Assert.AreEqual(newSet.Id, "FRS");
+        }
+
+        [Test ()]
+        public void Test_update_card ()
+        {
+            Mtg.Model.Card after = repository.UpdateCardField<string[]>(1, "colors", 
+                new string[]{"blue","green"}).Result;
+            //Card after = repository.UpdateCardField<string>(1, "flavor", "").Result;
+
+            Assert.AreEqual (after.Colors[0], "blue");
+        }
+
         [Test ()]
         public void Test_Update_Token ()
         {
@@ -76,18 +147,7 @@ namespace TestAdminDriver
             bool updated = admin.AddSet(ssaUser.AuthToken, set);
             Assert.IsTrue (updated);
         }
-
-
-//        {"id","string"},
-//        {"name", "string"},
-//        {"description", "string"},
-//        {"type", "string"},
-//        {"common","int"},
-//        {"uncommon","int"},
-//        {"rare","int"},
-//        {"mythicRare","int"},
-//        {"basicLand","int"},
-//        {"releasedAt","string"}//"yyyy-MM-dd"
+            
         [Test ()]
         public void Test_Update_Set_Name  ()
         {

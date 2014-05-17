@@ -14,8 +14,6 @@ namespace testapi
     public class TestApi
     {
         private const string connectionString = "mongodb://localhost";
-        string format = "yyyy-MM-dd";
-
         IRepository repository = new MongoRepository (connectionString);
 
         [Test()]
@@ -108,66 +106,7 @@ namespace testapi
             Assert.IsNotNull(rcard);
         }
             
-        [Test ()]
-        public void Test_update_card_rulings ()
-        {
-            List<Ruling> rulings = new List<Ruling> ();
-            rulings.Add(new Ruling {ReleasedAt = DateTime.Now.ToString(format), 
-                Rule = "test ruling 1"});
-            rulings.Add(new Ruling {ReleasedAt = DateTime.Now.ToString(format), 
-                Rule = "test ruling 2"});
 
-            Card after = repository.UpdateCardRulings(1,rulings.ToArray()).Result;
-           
-            Assert.AreEqual (after.Rulings.Count, 2);
-        }
-
-        [Test ()]
-        public void Test_add_card ()
-        {
-            Card card = repository.GetCard(2).Result;
-            card.Id = -1;
-            card.Name = "test";
-            card.Formats = null;
-            card.Rulings = null;
-
-            card = repository.AddCard(card).Result;
-
-            Assert.AreEqual(card.Id, -1);
-        }
-
-        [Test ()]
-        public void Test_add_set ()
-        {
-            CardSet newSet = new CardSet
-            {
-                Id = "FRS",
-                Name = "Fritz Set",
-                Description = "Awesome sauce",
-                //YYYY-MM-DD
-                ReleasedAt = "2014-05-15",
-                Block = "Fritz",
-                Type = "Fritz",
-                BasicLand = 0,
-                Rare = 0, 
-                MythicRare = 80,
-                Common = 1,
-                Uncommon = 1
-            };
-
-            newSet = repository.AddCardSet(newSet).Result;
-
-            Assert.AreEqual(newSet.Id, "FRS");
-        }
-
-        [Test ()]
-        public void Test_update_card ()
-        {
-            Card after = repository.UpdateCardField<string[]>(1, "colors", new string[]{"blue","green"}).Result;
-            //Card after = repository.UpdateCardField<string>(1, "flavor", "").Result;
-
-            Assert.AreEqual (after.Colors[0], "blue");
-        }
             
         [Test ()]
         public void Test_get_multiple_sets ()

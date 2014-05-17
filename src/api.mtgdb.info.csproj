@@ -96,6 +96,7 @@
     <Compile Include="Models\Helper.cs" />
     <Compile Include="Models\UpdateCardRulingModel.cs" />
     <Compile Include="Models\Search.cs" />
+    <Compile Include="Models\IWriteRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\card_images\.DS_Store" />

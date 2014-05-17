@@ -24,8 +24,12 @@ public class Bootstrapper : DefaultNancyBootstrapper
         IRepository repository = 
             new MongoRepository (ConfigurationManager.AppSettings.Get("db"));
 
+        IWriteRepository wrepository = 
+            new MongoRepository (ConfigurationManager.AppSettings.Get("db"));
+
         Cache cache = new Cache();
 
+        container.Register<IWriteRepository>(wrepository);
         container.Register<IRepository>(repository);
         container.Register<Cache>(cache);
 

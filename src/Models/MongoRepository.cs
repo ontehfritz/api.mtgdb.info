@@ -15,7 +15,7 @@ using System.Linq;
 
 namespace Mtg
 {
-    public class MongoRepository : IRepository
+    public class MongoRepository : IRepository, IWriteRepository
     {
         private string Connection { get; set; }
 

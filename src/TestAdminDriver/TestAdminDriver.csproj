@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{5D0523D6-BE19-45F2-9492-8B93B88115F2}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -44,6 +44,10 @@
     <ProjectReference Include="..\MtgDbAdminDriver\MtgDbAdminDriver.csproj">
       <Project>{450FBB69-E870-4D97-8EA9-E4A532F8D5BE}</Project>
       <Name>MtgDbAdminDriver</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\api.mtgdb.info.csproj">
+      <Project>{ED638DD5-E755-4B7A-940D-5C94AB425686}</Project>
+      <Name>api.mtgdb.info</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

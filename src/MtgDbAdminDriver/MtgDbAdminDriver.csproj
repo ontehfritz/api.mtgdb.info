@@ -43,10 +43,4 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\api.mtgdb.info.csproj">
-      <Project>{ED638DD5-E755-4B7A-940D-5C94AB425686}</Project>
-      <Name>api.mtgdb.info</Name>
-    </ProjectReference>
-  </ItemGroup>
 </Project>

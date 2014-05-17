@@ -10,12 +10,15 @@ using System.Linq;
 
 namespace Mtg
 {
+    /// <summary>
+    /// This can be safely deleted if you want to run the api on your own server
+    /// </summary>
     public class WriteModule : NancyModule
     {
-        private IRepository repository;
+        private IWriteRepository repository;
         private SuperSimpleAuth ssa; 
        
-        public WriteModule (IRepository repository)
+        public WriteModule (IWriteRepository repository)
         {
             if(bool.Parse(ConfigurationManager.AppSettings.Get ("https")))
             {
@@ -48,6 +51,7 @@ namespace Mtg
 
             Post["/sets", true] = async(parameters, ct) => {
                 CardSet model =    this.Bind<CardSet>();
+
                 CardSet set =     await repository.AddCardSet(model);
 
                 if(set == null)
