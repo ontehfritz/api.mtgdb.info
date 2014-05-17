@@ -55,5 +55,13 @@ namespace Mtg.Model
         [JsonProperty("cardIds")]
         public int [] CardIds       { get; set; }
     }
+
+    public class UpdateSetModel
+    {
+        public int SetId     { get; set; }
+        public string Field { get; set; }
+        public string Value { get; set; }
+    }
+
 }
 

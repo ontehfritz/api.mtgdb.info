@@ -17,8 +17,11 @@ namespace Mtg
        
         public WriteModule (IRepository repository)
         {
-            //this.RequiresHttps();
-
+            if(bool.Parse(ConfigurationManager.AppSettings.Get ("https")))
+            {
+                this.RequiresHttps();
+            }
+                
             this.repository = repository;
             ssa = new SuperSimpleAuth (ConfigurationManager.AppSettings.Get ("domain"),
                 ConfigurationManager.AppSettings.Get ("key"));
@@ -55,6 +58,50 @@ namespace Mtg
 
                 //return Response.AsJson(card);
                 return Response.AsJson(true);
+            };
+
+            Post ["/sets/{id}", true] = async(parameters, ct) => {
+                UpdateCardModel model = this.Bind<UpdateCardModel>();
+                string setId = (string)parameters.id;
+
+                try
+                {
+                    switch(Helper.GetSetFieldType(model.Field))
+                    {
+                    case "bool":
+                        await repository.UpdateCardSet<bool>(setId, model.Field,
+                            bool.Parse(model.Value ?? "false"));
+                        break;
+                    case "int":
+                        await repository.UpdateCardSet<int>(setId, model.Field,
+                            int.Parse(model.Value ?? "0"));
+                        break;
+                    case "string":
+                        await repository.UpdateCardSet<string>(setId, model.Field, 
+                            model.Value ?? "");
+                        break;
+                    case "string[]":
+                        await repository.UpdateCardSet<string[]>(setId, model.Field, 
+                            model.Value.Split(','));
+                        break;
+                    case "DateTime":
+                        await repository.UpdateCardSet<DateTime>(setId, model.Field, 
+                            DateTime.Parse(model.Value));
+                        break;
+                    default:
+                        return Response.AsJson("false",
+                            Nancy.HttpStatusCode.UnprocessableEntity);
+                    }
+                }
+                catch(Exception e)
+                {
+                    throw e;
+                    //                    return Response.AsJson(false,
+                    //                        Nancy.HttpStatusCode.UnprocessableEntity);
+                }
+
+                return Response.AsJson(true,
+                    Nancy.HttpStatusCode.OK);
             };
 
 

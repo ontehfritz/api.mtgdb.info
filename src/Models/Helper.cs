@@ -5,7 +5,7 @@ namespace Mtg
 {
     public class Helper
     {
-        private static Dictionary<string,string> FieldType = 
+        private static Dictionary<string,string> SetFieldType = 
             new Dictionary<string,string> () 
         {
             {"id","string"},
@@ -22,7 +22,7 @@ namespace Mtg
         };
 
 
-        private static Dictionary<string,string> SetFieldType = 
+        private static Dictionary<string,string> FieldType = 
             new Dictionary<string,string> () 
         {
             {"id","int"},

@@ -27,6 +27,7 @@ namespace Mtg
         Task<Card> UpdateCardFormats (int mvid, Format[] formats);
         Task<Card> AddCard(Card newCard);
         Task<CardSet> AddCardSet(CardSet newSet);
+        Task<CardSet> UpdateCardSet<T>(string id, string field, T value);
     }
 }
 

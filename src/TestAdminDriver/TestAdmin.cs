@@ -78,6 +78,81 @@ namespace TestAdminDriver
         }
 
 
+//        {"id","string"},
+//        {"name", "string"},
+//        {"description", "string"},
+//        {"type", "string"},
+//        {"common","int"},
+//        {"uncommon","int"},
+//        {"rare","int"},
+//        {"mythicRare","int"},
+//        {"basicLand","int"},
+//        {"releasedAt","string"}//"yyyy-MM-dd"
+        [Test ()]
+        public void Test_Update_Set_Name  ()
+        {
+            bool updated = admin.UpdateCardSetField(ssaUser.AuthToken,"THS","name","Test");
+            Assert.IsTrue (updated);
+        }
+
+        [Test ()]
+        public void Test_Update_Set_Description  ()
+        {
+            bool updated = admin.UpdateCardSetField(ssaUser.AuthToken,"THS","description","Test");
+            Assert.IsTrue (updated);
+        }
+
+        [Test ()]
+        public void Test_Update_Set_Type  ()
+        {
+            bool updated = admin.UpdateCardSetField(ssaUser.AuthToken,"THS","type","Test");
+            Assert.IsTrue (updated);
+        }
+
+        [Test ()]
+        public void Test_Update_Set_Common  ()
+        {
+            bool updated = admin.UpdateCardSetField(ssaUser.AuthToken,"THS","common","0");
+            Assert.IsTrue (updated);
+        }
+
+        [Test ()]
+        public void Test_Update_Set_Uncommon  ()
+        {
+            bool updated = admin.UpdateCardSetField(ssaUser.AuthToken,"THS","uncommon","0");
+            Assert.IsTrue (updated);
+        }
+
+        [Test ()]
+        public void Test_Update_Set_Rare  ()
+        {
+            bool updated = admin.UpdateCardSetField(ssaUser.AuthToken,"THS","rare","0");
+            Assert.IsTrue (updated);
+        }
+
+        [Test ()]
+        public void Test_Update_Set_MythicRare  ()
+        {
+            bool updated = admin.UpdateCardSetField(ssaUser.AuthToken,"THS","mythicRare","0");
+            Assert.IsTrue (updated);
+        }
+
+        [Test ()]
+        public void Test_Update_Set_BasicLand  ()
+        {
+            bool updated = admin.UpdateCardSetField(ssaUser.AuthToken,"THS","basicLand","0");
+            Assert.IsTrue (updated);
+        }
+
+        [Test ()]
+        public void Test_Update_Set_ReleasedAt ()
+        {
+            bool updated = admin.UpdateCardSetField(ssaUser.AuthToken,"THS","releasedAt",
+                DateTime.Now.ToString("yyyy-MM-dd"));
+
+            Assert.IsTrue (updated);
+        }
+            
         [Test ()]
         public void Test_Add_New_Card ()
         {

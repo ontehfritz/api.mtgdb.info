@@ -76,6 +76,44 @@ namespace MtgDb.Info
             return true;
         }
 
+        public bool UpdateCardSetField(Guid authToken, string setId, 
+            string field, string value)
+        {
+            bool end = false;
+
+            using(WebClient client = new WebClient())
+            {
+                System.Collections.Specialized.NameValueCollection reqparm = 
+                    new System.Collections.Specialized.NameValueCollection();
+
+                reqparm.Add("AuthToken", authToken.ToString());
+                reqparm.Add("Field", field);
+                reqparm.Add("Value", value);
+
+                string responsebody = "";
+
+                try
+                {
+                    ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+
+                    byte[] responsebytes = 
+                        client.UploadValues(string.Format("{0}/sets/{1}",_apiUrl, setId), 
+                            "Post", reqparm);
+
+                    responsebody = Encoding.UTF8.GetString(responsebytes);
+
+                }
+                catch(WebException e) 
+                {
+                    throw e;
+                }
+
+                end = JsonConvert.DeserializeObject<bool>(responsebody);
+            }
+
+            return end;
+        }
+
 
         public bool AddCard(Guid authToken, Card card)
         {
