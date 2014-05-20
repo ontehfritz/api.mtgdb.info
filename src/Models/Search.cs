@@ -26,7 +26,7 @@ namespace Mtg
             {"loyalty",             "loyalty"},
             {"rarity",              "rarity"},
             {"artist",              "artist"},
-            {"setId",               "cardSetId"}
+            {"setid",               "cardSetId"}
         };
       
         private Dictionary<string,string> compareOperators = 
