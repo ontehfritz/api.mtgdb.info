@@ -182,7 +182,7 @@ For contact, server status, and updates:
         gt  : greater than,
         gte : greater than or equal to,
         lt  : less than,
-        lte : lesse than oe equal to
+        lte : less than or equal to
         </code>
         <h4><small>Logic</small></h4>
         <code>
@@ -193,11 +193,21 @@ For contact, server status, and updates:
         Get
         http://api.mtgdb.info/search/?q=query goes here&start=0&limit=0 <- start and limit are optional
         </code>
+        <h4><small>Get total results of complex search</small></h4>
+        <i>Currently you will have to requery for the count</i><br />
+        <code>
+        Get
+        http://api.mtgdb.info/search/?q=query goes here&total=true <- This will only return and integer
+        </code>
         <br />
         <br />
 <pre>
 Example:
 http://api.mtgdb.info/search/?q=color eq blue and type m 'Creature' and description m 'flying' and convertedmanacost lt 3 and name m 'Cloud'
+</pre>
+<pre>
+Example of count:
+http://api.mtgdb.info/search/?q=color eq blue and type m 'Creature' and description m 'flying' and convertedmanacost lt 3 and name m 'Cloud'&total=true
 </pre>
 <p>
 <b>Note:</b> When matching text put text with spaces in single quotes example 'giant growth' it is ok to put strings

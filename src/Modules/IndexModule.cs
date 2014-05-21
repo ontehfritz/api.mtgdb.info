@@ -32,6 +32,7 @@ namespace Mtg
                 string query = (string)Request.Query.q;
                 int limit = 0; 
                 int start = 0; 
+                string total = "";
 
                 if(Request.Query.limit != null)
                 {
@@ -41,6 +42,16 @@ namespace Mtg
                 if(Request.Query.start != null)
                 {
                     start = (int)Request.Query.start;
+                }
+
+                if(Request.Query.total != null)
+                {
+                    total = (string)Request.Query.total;
+                    if(total.ToLower() == "true")
+                    {
+                        long count = await repo.SearchTotal(query,true);
+                        return Response.AsJson (count);
+                    }
                 }
                     
                 Card [] cards = await repo.Search (query,start,limit,true);
@@ -53,6 +64,7 @@ namespace Mtg
             {
                 int limit = 0; 
                 int start = 0; 
+               
 
                 if(Request.Query.limit != null)
                 {
@@ -63,7 +75,7 @@ namespace Mtg
                 {
                     start = (int)Request.Query.start;
                 }
-
+                    
                 Card [] cards = await repo.Search ((string)parameters.text,
                     start, limit, false);
 

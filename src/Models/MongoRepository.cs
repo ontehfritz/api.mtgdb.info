@@ -137,6 +137,34 @@ namespace Mtg
 
             return cards.ToArray ();
         }
+
+        public async Task<long> SearchTotal (string text, bool isComplex = false)
+        {
+            var client =        new MongoClient (Connection);
+            var server =        client.GetServer ();
+            var database =      server.GetDatabase ("mtg");
+
+            var collection =    database.GetCollection<Card> ("cards");
+
+            List<Card> cards =  new List<Card> ();
+            MongoCursor<Card> cursor = null;
+
+            IMongoQuery query = null; 
+
+            if(isComplex)
+            {
+                CardSearch search = new CardSearch(text);
+                query = Query.And (search.MongoQuery());
+            }
+            else
+            {
+                query = Query<Card>.Matches (e => e.SearchName, 
+                    text.ToLower().Replace(" ", ""));
+            }
+
+            return collection.Count(query);
+        }
+            
         /// <summary>
         /// Search the specified text.
         /// </summary>
