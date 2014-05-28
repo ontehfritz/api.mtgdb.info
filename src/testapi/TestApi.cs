@@ -17,6 +17,22 @@ namespace testapi
         IRepository repository = new MongoRepository (connectionString);
 
         [Test()]
+        public void Test_get_card_sub_types()
+        {
+            string [] subtypes = repository.GetCardSubTypes().Result;
+
+            Assert.Greater(subtypes.Length, 0);
+        }
+
+        [Test()]
+        public void Test_get_card_types()
+        {
+            string [] types = repository.GetCardTypes().Result;
+
+            Assert.Greater(types.Length, 0);
+        }
+
+        [Test()]
         public void Test_search_verify()
         {
             CardSearch search = new CardSearch("name eq 'shit and shit' and type not creature");

@@ -28,6 +28,43 @@ namespace Mtg
             Connection = connection;
         }
 
+
+        public async Task<string[]> GetCardTypes()
+        {
+            List<string> t = new List<string>();
+            var client =        new MongoClient (Connection);
+            var server =        client.GetServer ();
+            var database =      server.GetDatabase ("mtg");
+            var collection =    database.GetCollection<Card> ("cards");
+
+            var types = collection.Distinct("type");
+
+            foreach(var type in types)
+            {
+                t.Add(type.AsString);
+            }
+
+            return t.ToArray();
+        }
+
+        public async Task<string[]> GetCardSubTypes()
+        {
+            List<string> t = new List<string>();
+            var client =        new MongoClient (Connection);
+            var server =        client.GetServer ();
+            var database =      server.GetDatabase ("mtg");
+            var collection =    database.GetCollection<Card> ("cards");
+
+            var types = collection.Distinct("subType");
+
+            foreach(var type in types)
+            {
+                t.Add(type.AsString);
+            }
+
+            return t.ToArray();
+        }
+
         /// <summary>
         /// Gets the random card.
         /// </summary>

@@ -21,6 +21,8 @@ namespace Mtg
         Task<long> SearchTotal (string text, bool isComplex = false);
         Task<Card> GetRandomCard ();
         Task<Card> GetRandomCardInSet(string setId);
+        Task<string[]> GetCardTypes();
+        Task<string[]> GetCardSubTypes();
     }
 }
 

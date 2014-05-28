@@ -82,6 +82,28 @@ namespace Mtg
                 return Response.AsJson (cards);
             };
 
+            Get ["/cards/types", true] = async (parameters, ct) => 
+            {
+                if(cache["types"] == null)
+                {
+                    string [] types  = await repo.GetCardTypes();
+                    cache["types"] = Response.AsJson (types.OrderBy(x => x));
+                }
+
+                return (Response)cache["types"];
+            };
+
+            Get ["/cards/subtypes", true] = async (parameters, ct) => 
+            {
+                if(cache["subtypes"] == null)
+                {
+                    string [] types  = await repo.GetCardSubTypes();
+                    cache["subtypes"] = Response.AsJson (types.OrderBy(x => x));
+                }
+
+                return (Response)cache["subtypes"];
+            };
+
             Get ["/cards/random", true] = async (parameters, ct) => 
             {
                 JsonSettings.MaxJsonLength =    100000000;
