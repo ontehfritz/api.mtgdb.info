@@ -29,6 +29,24 @@ namespace Mtg
         }
 
 
+        public async Task<string[]> GetCardRarity()
+        {
+            List<string> t = new List<string>();
+            var client =        new MongoClient (Connection);
+            var server =        client.GetServer ();
+            var database =      server.GetDatabase ("mtg");
+            var collection =    database.GetCollection<Card> ("cards");
+
+            var types = collection.Distinct("rarity");
+
+            foreach(var type in types)
+            {
+                t.Add(type.AsString);
+            }
+
+            return t.ToArray();
+        }
+            
         public async Task<string[]> GetCardTypes()
         {
             List<string> t = new List<string>();

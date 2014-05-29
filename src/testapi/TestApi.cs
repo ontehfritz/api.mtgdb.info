@@ -33,6 +33,14 @@ namespace testapi
         }
 
         [Test()]
+        public void Test_get_card_rarity_types()
+        {
+            string [] types = repository.GetCardRarity().Result;
+
+            Assert.Greater(types.Length, 0);
+        }
+
+        [Test()]
         public void Test_search_verify()
         {
             CardSearch search = new CardSearch("name eq 'shit and shit' and type not creature");

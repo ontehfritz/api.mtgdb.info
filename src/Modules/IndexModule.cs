@@ -103,6 +103,17 @@ namespace Mtg
 
                 return (Response)cache["subtypes"];
             };
+                
+            Get ["/cards/rarity", true] = async (parameters, ct) => 
+            {
+                if(cache["rarity"] == null)
+                {
+                    string [] rarity  = await repo.GetCardRarity();
+                    cache["rarity"] = Response.AsJson (rarity.OrderBy(x => x));
+                }
+
+                return (Response)cache["rarity"];
+            };
 
             Get ["/cards/random", true] = async (parameters, ct) => 
             {
