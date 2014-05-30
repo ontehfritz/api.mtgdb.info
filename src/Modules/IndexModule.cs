@@ -84,35 +84,20 @@ namespace Mtg
 
             Get ["/cards/types", true] = async (parameters, ct) => 
             {
-                if(cache["types"] == null)
-                {
-                    string [] types  = await repo.GetCardTypes();
-                    cache["types"] = Response.AsJson (types.OrderBy(x => x));
-                }
-
-                return (Response)cache["types"];
+                string [] types  = await repo.GetCardTypes();
+                return Response.AsJson (types.OrderBy(x => x));
             };
 
             Get ["/cards/subtypes", true] = async (parameters, ct) => 
             {
-                if(cache["subtypes"] == null)
-                {
-                    string [] types  = await repo.GetCardSubTypes();
-                    cache["subtypes"] = Response.AsJson (types.OrderBy(x => x));
-                }
-
-                return (Response)cache["subtypes"];
+                string [] types  = await repo.GetCardSubTypes();
+                return Response.AsJson (types.OrderBy(x => x));
             };
                 
             Get ["/cards/rarity", true] = async (parameters, ct) => 
             {
-                if(cache["rarity"] == null)
-                {
-                    string [] rarity  = await repo.GetCardRarity();
-                    cache["rarity"] = Response.AsJson (rarity.OrderBy(x => x));
-                }
-
-                return (Response)cache["rarity"];
+                string [] rarity  = await repo.GetCardRarity();
+                return Response.AsJson (rarity.OrderBy(x => x));
             };
 
             Get ["/cards/random", true] = async (parameters, ct) => 
@@ -154,13 +139,8 @@ namespace Mtg
                     return Response.AsJson(c);
                 }
                
-                if(cache["cards"] == null)
-                {
-                    cards = await repo.GetCards (Request.Query);
-                    cache["cards"] = Response.AsJson (cards);
-                }
-              
-                return (Response)cache["cards"];
+                cards = await repo.GetCards (Request.Query);
+                return Response.AsJson (cards);
             };
 
             Get ["/cards/{id}", true] = async (parameters, ct) => 
