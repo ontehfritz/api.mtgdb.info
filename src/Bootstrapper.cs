@@ -6,6 +6,7 @@ using Nancy.Bootstrapper;
 using System.Web.Caching;
 using Nancy.Routing;
 using System.Configuration;
+using Nancy.Conventions;
 
 public class Bootstrapper : DefaultNancyBootstrapper
 {
@@ -33,6 +34,15 @@ public class Bootstrapper : DefaultNancyBootstrapper
         container.Register<IRepository>(repository);
         container.Register<Cache>(cache);
 
+    }
+
+    protected override void ConfigureConventions(NancyConventions nancyConventions)
+    {
+        base.ConfigureConventions(nancyConventions);
+
+        nancyConventions.StaticContentsConventions.Add(
+            StaticContentConventionBuilder.AddDirectory("/", "/Static", new[] { ".xml", ".txt" })
+        );
     }
 }
 

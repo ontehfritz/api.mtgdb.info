@@ -1,26 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Modules/IndexModule.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Bootstrapper.cs">
     <Files>
-      <File FileName="MtgDbAdminDriver/Admin.cs" Line="139" Column="17" />
-      <File FileName="Models/MongoRepository.cs" Line="42" Column="39" />
+      <File FileName="MtgDbAdminDriver/Admin.cs" Line="1" Column="1" />
+      <File FileName="Models/MongoRepository.cs" Line="1" Column="1" />
       <File FileName="Modules/IndexModule.cs" Line="101" Column="15" />
-      <File FileName="testapi/TestApi.cs" Line="31" Column="1" />
+      <File FileName="testapi/TestApi.cs" Line="1" Column="1" />
+      <File FileName="Bootstrapper.cs" Line="46" Column="6" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True">
-          <Node name="TestAdminDriver" expanded="True" />
-          <Node name="TestMtgDbApi" expanded="True">
-            <Node name="testapi" expanded="True">
-              <Node name="TestApi" expanded="True">
-                <Node name="Test_get_card_rarity_types" selected="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

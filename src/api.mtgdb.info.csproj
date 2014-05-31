@@ -20853,6 +20853,7 @@
     <None Include="Content\card_images\997.jpeg" />
     <None Include="Content\card_images\998.jpeg" />
     <None Include="Content\card_images\999.jpeg" />
+    <None Include="Static\robots.txt" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
@@ -20898,5 +20899,6 @@
     <Folder Include="Models\" />
     <Folder Include="Content\card_images\" />
     <Folder Include="Content\download\" />
+    <Folder Include="Static\" />
   </ItemGroup>
 </Project>
