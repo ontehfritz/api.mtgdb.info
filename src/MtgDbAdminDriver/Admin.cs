@@ -139,6 +139,7 @@ namespace MtgDb.Info
                 reqparm.Add("CardSetId", card.CardSetId.ToString());
                 reqparm.Add("Token", card.Token.ToString());
                 reqparm.Add("Promo", card.Promo.ToString());
+                reqparm.Add("Rarity", card.Rarity);
 
                 if(card.Colors != null && card.Colors.Length > 0)
                 {
