@@ -12,6 +12,7 @@ using System.Dynamic;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Mtg
 {
@@ -470,6 +471,9 @@ namespace Mtg
             var server = client.GetServer ();
             var database = server.GetDatabase ("mtg");
 
+            Regex rgx = new Regex("[^a-zA-Z0-9]");
+            name = rgx.Replace(name, "");
+
             var collection = database.GetCollection<Card> ("cards");
             var query = Query<Card>.EQ (e => e.SearchName, name.ToLower().Replace(" ", ""));
             MongoCursor<Card> cursor = collection.Find (query);
@@ -483,6 +487,7 @@ namespace Mtg
 
             return cards.ToArray ();
         }
+
         /// <summary>
         /// Gets the sets.
         /// </summary>
@@ -643,6 +648,9 @@ namespace Mtg
             var server =        client.GetServer ();
             var database =      server.GetDatabase ("mtg");
             var collection =    database.GetCollection<Card> ("cards");
+
+            CardSet set = await this.GetSet(newCard.CardSetId);
+            newCard.CardSetName = set.Name;
 
             collection.Save(newCard);
 
