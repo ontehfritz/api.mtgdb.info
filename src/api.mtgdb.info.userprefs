@@ -1,12 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Models/MongoRepository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/index.cshtml">
     <Files>
-      <File FileName="Modules/WriteModule.cs" Line="113" Column="51" />
+      <File FileName="Modules/WriteModule.cs" Line="1" Column="1" />
       <File FileName="Models/Card.cs" Line="1" Column="1" />
-      <File FileName="MtgDbAdminDriver/Admin.cs" Line="121" Column="14" />
-      <File FileName="Models/MongoRepository.cs" Line="200" Column="60" />
+      <File FileName="MtgDbAdminDriver/Admin.cs" Line="1" Column="1" />
+      <File FileName="Models/MongoRepository.cs" Line="685" Column="9" />
       <File FileName="Modules/IndexModule.cs" Line="1" Column="1" />
+      <File FileName="Web.config" Line="1" Column="1" />
+      <File FileName="Views/index.cshtml" Line="175" Column="100" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -60,7 +60,10 @@ namespace Mtg
 
             foreach(var type in types)
             {
-                t.Add(type.AsString);
+                if(!type.IsBsonNull)
+                {
+                    t.Add(type.AsString);  
+                }
             }
 
             return t.ToArray();
@@ -78,7 +81,10 @@ namespace Mtg
 
             foreach(var type in types)
             {
-                t.Add(type.AsString);
+                if(!type.IsBsonNull)
+                {
+                    t.Add(type.AsString);  
+                }
             }
 
             return t.ToArray();

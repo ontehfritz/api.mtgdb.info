@@ -168,9 +168,11 @@ For contact, server status, and updates:
         </code>
         <br />
         <small>
-        This method returns an array of cards not a single card. When calling by name, strip all non alphanumeric 
-        characters in the name. For example:  "Circle of Protection: Red" will cause an error because of the colon. 
+        This method returns an array of cards not a single card. When calling by name, the api
+        cannot use colon (":"). For example:  "Circle of Protection: Red" will cause an error because of the colon. 
         "Circle of Protection Red" is the proper format. 
+
+        Also special characters that are not used in the english alphabet cannot be used currently.
         </small>
         <br />
         <h4>Simple card search <small>[Alpha feature]</small></h4>
