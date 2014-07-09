@@ -3,10 +3,10 @@ using Nancy.TinyIoc;
 using Newtonsoft.Json;
 using Mtg;
 using Nancy.Bootstrapper;
-using System.Web.Caching;
 using Nancy.Routing;
 using System.Configuration;
 using Nancy.Conventions;
+using Newtonsoft.Json.Serialization;
 
 public class Bootstrapper : DefaultNancyBootstrapper
 {
@@ -27,18 +27,19 @@ public class Bootstrapper : DefaultNancyBootstrapper
 
         IWriteRepository wrepository = 
             new MongoRepository (ConfigurationManager.AppSettings.Get("db"));
+            
 
-        Cache cache = new Cache();
+        container.Register(typeof(JsonSerializer), typeof(CustomJsonSerializer));
 
+       
         container.Register<IWriteRepository>(wrepository);
         container.Register<IRepository>(repository);
-        container.Register<Cache>(cache);
-
     }
 
     protected override void ConfigureConventions(NancyConventions nancyConventions)
     {
         base.ConfigureConventions(nancyConventions);
+       
 
         nancyConventions.StaticContentsConventions.Add(
             StaticContentConventionBuilder.AddDirectory("/", "/Static", new[] { ".xml", ".txt" })
@@ -46,3 +47,11 @@ public class Bootstrapper : DefaultNancyBootstrapper
     }
 }
 
+public class CustomJsonSerializer : JsonSerializer
+{
+    public CustomJsonSerializer()
+    {
+        this.ContractResolver = new CamelCasePropertyNamesContractResolver();
+       // this.Formatting = Formatting.Indented;
+    }
+}
