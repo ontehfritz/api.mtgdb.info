@@ -121,8 +121,8 @@ namespace Mtg
 
             if(queryCount == 1)
             {
-                col = query[0];
-                method = query[1];
+                col = query[0].ToLower();
+                method = query[1].ToLower();
                 value = query[2];
 
                 queries.Add(this.Build(col,value,method));
@@ -134,17 +134,17 @@ namespace Mtg
                 int element = 0; 
                 for(int i = 1; i < queryCount; i++)
                 {
-                    col = query[0 + element];
-                    method = query[1 + element];
+                    col = query[0 + element].ToLower();
+                    method = query[1 + element].ToLower();
                     value = query[2 + element];
-                    op = query[3 + element];
+                    op = query[3 + element].ToLower();
 
                     queries.Add(this.Build(col,value,method));
                     element = element + 4; 
                 }
 
-                col = query[0 + element];
-                method = query[1 + element];
+                col = query[0 + element].ToLower();
+                method = query[1 + element].ToLower();
                 value = query[2 + element];
                 queries.Add(this.Build(col,value,method));
 

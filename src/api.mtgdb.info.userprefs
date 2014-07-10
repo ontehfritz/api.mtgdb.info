@@ -1,17 +1,29 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Bootstrapper.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/index.cshtml">
     <Files>
       <File FileName="Modules/WriteModule.cs" Line="1" Column="1" />
       <File FileName="Models/Card.cs" Line="1" Column="1" />
       <File FileName="MtgDbAdminDriver/Admin.cs" Line="1" Column="1" />
       <File FileName="Models/MongoRepository.cs" Line="1" Column="1" />
       <File FileName="Modules/IndexModule.cs" Line="142" Column="61" />
-      <File FileName="Web.config" Line="47" Column="17" />
-      <File FileName="Views/index.cshtml" Line="1" Column="1" />
-      <File FileName="Bootstrapper.cs" Line="5" Column="26" />
-      <File FileName="testapi/TestApi.cs" Line="53" Column="9" />
+      <File FileName="Web.config" Line="1" Column="1" />
+      <File FileName="Views/index.cshtml" Line="34" Column="41" />
+      <File FileName="Bootstrapper.cs" Line="1" Column="1" />
+      <File FileName="testapi/TestApi.cs" Line="1" Column="1" />
+      <File FileName="Models/Search.cs" Line="140" Column="55" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True">
+          <Node name="TestMtgDbApi" expanded="True">
+            <Node name="testapi" expanded="True">
+              <Node name="TestApi" expanded="True" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
