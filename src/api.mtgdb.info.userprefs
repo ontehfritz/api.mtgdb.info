@@ -6,24 +6,13 @@
       <File FileName="Models/Card.cs" Line="1" Column="1" />
       <File FileName="MtgDbAdminDriver/Admin.cs" Line="1" Column="1" />
       <File FileName="Models/MongoRepository.cs" Line="1" Column="1" />
-      <File FileName="Modules/IndexModule.cs" Line="142" Column="61" />
+      <File FileName="Modules/IndexModule.cs" Line="1" Column="1" />
       <File FileName="Web.config" Line="1" Column="1" />
-      <File FileName="Views/index.cshtml" Line="34" Column="41" />
+      <File FileName="Views/index.cshtml" Line="36" Column="30" />
       <File FileName="Bootstrapper.cs" Line="1" Column="1" />
       <File FileName="testapi/TestApi.cs" Line="1" Column="1" />
-      <File FileName="Models/Search.cs" Line="140" Column="55" />
+      <File FileName="Models/Search.cs" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True">
-          <Node name="TestMtgDbApi" expanded="True">
-            <Node name="testapi" expanded="True">
-              <Node name="TestApi" expanded="True" selected="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
