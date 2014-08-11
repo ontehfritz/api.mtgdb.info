@@ -9,28 +9,6 @@ using Mtg;
 
 namespace TestAdminDriver
 {
-    /*id                  Integer     : multiverse Id
-    setNumber           Integer     : card number in the set
-    name                String      : name of the card
-    searchName          String      : easy to search card name
-    description         String      : the cards actions
-    flavor              String      : flavor text adds story, does not effect game
-    colors              String[]    : colors of card
-    manacost            String      : the description of mana to cast spell
-    convertedManaCost   Integer     : the amount of mana needed to cast spell
-    cardSetName         String      : the set or expansion the card belongs to
-    type                String      : the type of card
-    subType             String      : subtype of card
-    power               Integer     : attack strength
-    toughness           Integer     : defense strength 
-    loyalty             Integer     : loyalty points usually on planeswalkers
-    rarity              String      : the rarity of the card
-    artist              String      : artist of the illustration
-    cardSetId           String      : the abbreviated name of the set
-    rulings             Ruling[]    : list of rulings for this card
-    formats             String[]    : list of legal formats this card is in
-    releasedAt          Date        : when the card was released*/
-
     [TestFixture ()]
     public class Test
     {
@@ -48,6 +26,7 @@ namespace TestAdminDriver
             admin =     new Admin("http://127.0.0.1:8082");
             ssa =       new SuperSimpleAuth ("testing_mtgdb.info", 
                 "ae132e62-570f-4ffb-87cc-b9c087b09dfb");
+
             ssaUser =   ssa.Authenticate ("mtgdb_tester", 
                 "test123", "127.0.0.1");
         }
@@ -75,6 +54,7 @@ namespace TestAdminDriver
                 Id = -1,
                 Name = "test",
                 Description = "test",
+                CardSetId = "10E",
                 Formats = null,
                 Rulings = null
             };
@@ -230,7 +210,11 @@ namespace TestAdminDriver
             colors.Add("black");
             colors.Add("blue");
 
+            List<string> promos = new List<string>();
+            promos.Add("FNM");
+
             card.Colors = colors.ToArray();
+            card.Promos = promos.ToArray();
 
             bool updated = admin.AddCard(ssaUser.AuthToken, card);
 

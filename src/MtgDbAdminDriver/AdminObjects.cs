@@ -35,6 +35,7 @@ namespace MtgDbAdminDriver
         public string CardSetId         { get; set; }
         public bool Token               { get; set; }
         public bool Promo               { get; set; }
+        public string[] Promos          { get; set; }
     }
 
     public class CardSet

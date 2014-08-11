@@ -42,7 +42,10 @@ namespace Mtg
 
             foreach(var type in types)
             {
-                t.Add(type.AsString);
+                if(!type.IsBsonNull)
+                {
+                    t.Add(type.AsString);
+                }
             }
 
             return t.ToArray();
@@ -445,7 +448,7 @@ namespace Mtg
 
             return cards
                     .Where(x => x.Token == false)
-                    .Where(x => x.Promo == false)
+                    //.Where(x => x.Promo == false)
                     .ToArray();
         }
 

@@ -125,25 +125,30 @@ namespace MtgDb.Info
                 reqparm.Add("Id", card.Id.ToString());
                 reqparm.Add("RelatedCardId ", card.RelatedCardId.ToString());
                 reqparm.Add("SetNumber ", card.SetNumber.ToString());
-                if(card.Name != null){reqparm.Add("Name", card.Name);}
-                if(card.Description != null){reqparm.Add("Description", card.Description);}
-                if(card.Flavor != null){reqparm.Add("Flavor", card.Flavor);}
-                if(card.ManaCost != null){reqparm.Add("ManaCost", card.ManaCost);}
+                if(card.Name != null){ reqparm.Add("Name", card.Name);}
+                if(card.Description != null){ reqparm.Add("Description", card.Description);}
+                if(card.Flavor != null){ reqparm.Add("Flavor", card.Flavor);}
+                if(card.ManaCost != null){ reqparm.Add("ManaCost", card.ManaCost);}
                 reqparm.Add("ConvertedManaCost", card.ConvertedManaCost.ToString());
-                if(card.Type != null){reqparm.Add("Type", card.Type);}
-                if(card.SubType != null){reqparm.Add("SubType", card.SubType);}
+                if(card.Type != null){ reqparm.Add("Type", card.Type);}
+                if(card.SubType != null){ reqparm.Add("SubType", card.SubType);}
                 reqparm.Add("Power", card.Power.ToString());
                 reqparm.Add("Toughness", card.Toughness.ToString());
                 reqparm.Add("Loyalty", card.Loyalty.ToString());
-                if(card.Artist != null){reqparm.Add("Artist", card.Artist);}
+                if(card.Artist != null){ reqparm.Add("Artist", card.Artist);}
                 reqparm.Add("CardSetId", card.CardSetId.ToString());
                 reqparm.Add("Token", card.Token.ToString());
                 reqparm.Add("Promo", card.Promo.ToString());
-                reqparm.Add("Rarity", card.Rarity);
+                if(card.Rarity != null){ reqparm.Add("Rarity", card.Rarity);}
 
                 if(card.Colors != null && card.Colors.Length > 0)
                 {
                     reqparm.Add("Colors", String.Join(",", card.Colors));
+                }
+
+                if(card.Promos != null && card.Promos.Length > 0)
+                {
+                    reqparm.Add("Promos", String.Join(",", card.Promos));
                 }
                    
                 reqparm.Add("AuthToken", authToken.ToString());
@@ -164,7 +169,7 @@ namespace MtgDb.Info
                 catch(WebException e) 
                 {
                     throw e;
-                    return false;
+                    //return false;
                 }
             }
 
